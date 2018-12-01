@@ -1,17 +1,39 @@
 package fr.nmocs.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Users")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "userType", discriminatorType = DiscriminatorType.STRING)
 public class User {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	private Integer id;
 
+	@Column(name = "firstName", nullable = false)
 	private String firstName;
 
+	@Column(name = "lastName", nullable = false)
 	private String lastName;
 
+	@Column(name = "email", unique = true, nullable = true)
 	private String email;
 
+	@Column(name = "password", nullable = false)
 	private String password;
 
+	@Column(name = "userStatus", nullable = false)
 	private String status;
 
 	/**

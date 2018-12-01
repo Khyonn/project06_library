@@ -1,11 +1,26 @@
 package fr.nmocs.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "BookSamples")
 public class BookSample {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	private Integer id;
 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "bookId")
 	private Book book;
 
+	@Column(name = "bookSampleStatus", nullable = false)
 	private String status;
 
 	/**
