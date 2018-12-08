@@ -1,6 +1,12 @@
 package fr.nmocs.library.webservice;
 
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 
-public class TestWS {
+@WebService
+public interface TestWS {
+
+	@WebMethod
+	Integer getAddition(int a, int b);
 
 }
