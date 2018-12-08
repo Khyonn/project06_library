@@ -1,11 +1,12 @@
-package fr.nmocs.model;
+package fr.nmocs.library.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,8 @@ public class BookSample {
 	@Column(name = "id")
 	private Integer id;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "bookId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "bookId")
 	private Book book;
 
 	@Column(name = "bookSampleStatus", nullable = false)

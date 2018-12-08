@@ -8,8 +8,6 @@
     <packaging>pom</packaging>
     
     <name>library</name>
-    <!-- FIXME change it to the project's website -->
-    <!-- <url>http://www.example.com</url> -->
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -113,9 +111,9 @@
     </build>
   
     <modules>
-        <module>webservice</module>
         <module>model</module>
         <module>consumer</module>
         <module>business</module>
+        <module>webservice</module>
   </modules>
 </project>

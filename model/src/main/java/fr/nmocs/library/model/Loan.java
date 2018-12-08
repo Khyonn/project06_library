@@ -1,4 +1,4 @@
-package fr.nmocs.model;
+package fr.nmocs.library.model;
 
 import java.util.Date;
 
@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +20,12 @@ public class Loan {
 	@Column(name = "id")
 	private Integer id;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "bookSampleId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "bookSampleId")
 	private BookSample bookSample;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "borrowerId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "borrowerId")
 	private User borrower;
 
 	@Column(name = "startDate", nullable = false)

@@ -9,33 +9,35 @@
     </parent>
     <artifactId>webservice</artifactId>
     <packaging>war</packaging>
-    <name>Library webservice</name>
-    
-    <!-- <url>http://maven.apache.org</url> -->
+    <name>webservice Maven Webapp</name>
+    <url>http://maven.apache.org</url>
     
     <dependencies>
         <dependency>
             <artifactId>model</artifactId>
             <groupId>${project.groupId}</groupId>
         </dependency>
-    
+        
+        
+        <!-- DEPENDANCES EXTERNES -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <!-- <version>3.8.1</version> -->
-            <scope>test</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
         </dependency>
     </dependencies>
     
     <build>
-        <finalName>webservice</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-        </plugins>
+        <finalName>Library webservice</finalName>
     </build>
 </project>

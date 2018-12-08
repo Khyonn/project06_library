@@ -1,4 +1,4 @@
-package fr.nmocs.model.constants;
+package fr.nmocs.library.model.constants;
 
 public enum UserStatus {
 

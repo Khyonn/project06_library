@@ -1,4 +1,4 @@
-package fr.nmocs.model;
+package fr.nmocs.library.model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

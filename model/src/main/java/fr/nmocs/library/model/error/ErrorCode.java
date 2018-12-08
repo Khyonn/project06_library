@@ -1,4 +1,4 @@
-package fr.nmocs.model.error;
+package fr.nmocs.library.model.error;
 
 public enum ErrorCode {
 
