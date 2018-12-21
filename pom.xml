@@ -13,12 +13,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <spring.version>5.1.1.RELEASE</spring.version>
+        
+        <!-- DEPENDENCIES VERSIONS -->
+        
+        <!-- == CORE == -->
         <springboot.version>2.1.1.RELEASE</springboot.version>
+        <mysql-connector.version>8.0.13</mysql-connector.version>
+        <!-- == WEBSERVICE == -->
+        <javax.version>8.0</javax.version>
+        <cxf.version>3.2.7</cxf.version>
+        <!-- == UTILS == -->
+        <junit.version>4.11</junit.version>
     </properties>
     
     <dependencyManagement>
         <dependencies>
+            <!-- MODULES -->
             <dependency>
                 <artifactId>webservice</artifactId>
                 <groupId>${project.groupId}</groupId>
@@ -41,13 +51,7 @@
             </dependency>
             
             
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!-- DEPENDANCES EXTERNES -->
             
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -60,15 +64,44 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.13</version>
+                <version>${mysql-connector.version}</version>
             </dependency>
+            
+            <!-- WEBSERVICE -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>${javax.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-databinding-jaxb</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            
+            <!-- UTILS -->
             
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.11</version>
+                <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+            
         </dependencies>
     </dependencyManagement>
     

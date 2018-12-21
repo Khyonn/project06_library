@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://cxf.apache.org/configuration/beans"
+    xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:soap="http://cxf.apache.org/bindings/soap"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://cxf.apache.org/jaxws
+    http://cxf.apache.org/schemas/jaxws.xsd
+    http://www.cxf.apache.org/bindings/soap
+    http://www.cxf.apache.org/bindings/schemas/configuration/soap.xsd">
+
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.BookService" address="/book"
+        serviceBean="#bookservice">
+    </jaxws:server>
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.LoanService" address="/loan"
+        serviceBean="#loanservice">
+    </jaxws:server>
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.UserService" address="/user"
+        serviceBean="#userservice">
+    </jaxws:server>
+    
+    <bean id="bookservice" class="fr.nmocs.library.webservice.impl.BookServiceImpl" />
+    <bean id="loanservice" class="fr.nmocs.library.webservice.impl.LoanServiceImpl"/>
+    <bean id="userservice" class="fr.nmocs.library.webservice.impl.UserServiceImpl" />
+</beans>
