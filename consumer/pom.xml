@@ -19,7 +19,15 @@
             <artifactId>model</artifactId>
             <groupId>${project.groupId}</groupId>
         </dependency>
-    
+        
+        <!-- EXTERNES -->
+        <!-- JPA -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+
+        <!-- TESTS -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
