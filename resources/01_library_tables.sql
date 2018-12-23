@@ -27,7 +27,7 @@ CREATE TABLE `Books` (
   `title` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `summary` longtext,
-  `bookStatus` varchar(10) NOT NULL,
+  `bookStatus` varchar(10) DEFAULT `U`,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `BookSamples`;
 
 CREATE TABLE `BookSamples` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `bookSampleStatus` varchar(10) NOT NULL,
+  `bookSampleStatus` varchar(10) DEFAULT `U`,
   `bookId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

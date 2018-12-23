@@ -12,6 +12,7 @@ import fr.nmocs.library.consumer.AdminRepository;
 import fr.nmocs.library.consumer.UserRepository;
 import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
+import fr.nmocs.library.model.constants.UserStatus;
 import fr.nmocs.library.model.constants.UserType;
 import fr.nmocs.library.model.error.ErrorCode;
 import fr.nmocs.library.model.error.LibraryBusinessException;
@@ -156,6 +157,10 @@ public class UserManagementImpl implements UserManagement {
 		user.setLastName(user.getLastName().trim());
 		user.setFirstName(user.getFirstName().trim());
 		user.setEmail(user.getEmail().trim());
+		if (user.getStatus() != null && (!user.getStatus().equals(UserStatus.ACTIVE.getValue())
+				&& !user.getStatus().equals(UserStatus.UNACTIVE.getValue()))) {
+			user.setStatus(UserStatus.UNACTIVE.getValue());
+		}
 	}
 
 	/**
@@ -177,7 +182,8 @@ public class UserManagementImpl implements UserManagement {
 		if (!StringUtils.isBlank(user.getEmail())) {
 			databaseUser.setEmail(user.getEmail());
 		}
-		if (!StringUtils.isBlank(user.getStatus())) {
+		if (user.getStatus() != null && (user.getStatus().equals(UserStatus.ACTIVE.getValue())
+				|| user.getStatus().equals(UserStatus.UNACTIVE.getValue()))) {
 			databaseUser.setStatus(user.getStatus());
 		}
 
