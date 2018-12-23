@@ -7,18 +7,18 @@ import javax.jws.WebService;
 
 import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
-import fr.nmocs.library.webservice.error.WebserviceException;
+import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 @WebService(name = "UserService", serviceName = "UserService")
 public interface UserService {
 
-	User createUser(@WebParam(name = "user") User user) throws WebserviceException;
+	User createUser(@WebParam(name = "user") User user) throws LibraryWebserviceException;
 
-	User updateUser(@WebParam(name = "user") User user) throws WebserviceException;
+	User updateUser(@WebParam(name = "user") User user) throws LibraryWebserviceException;
 
-	Admin grantAdminRightsToUser(@WebParam(name = "userId") Integer userId) throws WebserviceException;
+	Admin grantAdminRightsToUser(@WebParam(name = "userId") Integer userId) throws LibraryWebserviceException;
 
-	User downgradeAdminToBasicUser(@WebParam(name = "adminId") Integer adminId) throws WebserviceException;
+	User downgradeAdminToBasicUser(@WebParam(name = "adminId") Integer adminId) throws LibraryWebserviceException;
 
 	User findById(@WebParam(name = "id") Integer id);
 

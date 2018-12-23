@@ -4,19 +4,19 @@ import java.util.List;
 
 import fr.nmocs.library.model.Loan;
 import fr.nmocs.library.webservice.LoanService;
-import fr.nmocs.library.webservice.error.WebserviceException;
+import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 
 public class LoanServiceImpl implements LoanService {
 
 	@Override
-	public Loan createLoan(Loan loan) throws WebserviceException {
+	public Loan createLoan(Loan loan) throws LibraryWebserviceException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Loan updateLoan(Loan loan) throws WebserviceException {
+	public Loan updateLoan(Loan loan) throws LibraryWebserviceException {
 		// TODO Auto-generated method stub
 		return null;
 	}

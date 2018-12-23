@@ -5,19 +5,20 @@ import java.util.List;
 import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.BookSample;
 import fr.nmocs.library.webservice.BookService;
-import fr.nmocs.library.webservice.error.WebserviceException;
-
+import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class BookServiceImpl implements BookService {
 
+	// ========= BOOKS
+
 	@Override
-	public Book createBook(Book book) throws WebserviceException {
+	public Book createBook(Book book) throws LibraryWebserviceException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Book updateBook(Book book) throws WebserviceException {
+	public Book updateBook(Book book) throws LibraryWebserviceException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -40,14 +41,16 @@ public class BookServiceImpl implements BookService {
 		return null;
 	}
 
+	// ========== BOOK_SAMPLES
+
 	@Override
-	public BookSample createBookSample(BookSample bookSample) throws WebserviceException {
+	public BookSample createBookSample(BookSample bookSample) throws LibraryWebserviceException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BookSample updateBookSample(BookSample bookSample) throws WebserviceException {
+	public BookSample updateBookSample(BookSample bookSample) throws LibraryWebserviceException {
 		// TODO Auto-generated method stub
 		return null;
 	}

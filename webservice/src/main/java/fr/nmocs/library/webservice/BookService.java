@@ -7,16 +7,16 @@ import javax.jws.WebService;
 
 import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.BookSample;
-import fr.nmocs.library.webservice.error.WebserviceException;
+import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 @WebService(name = "BookService", serviceName = "BookService")
 public interface BookService {
 
 	// ===== Book
 
-	Book createBook(@WebParam(name = "book") Book book) throws WebserviceException;
+	Book createBook(@WebParam(name = "book") Book book) throws LibraryWebserviceException;
 
-	Book updateBook(@WebParam(name = "book") Book book) throws WebserviceException;
+	Book updateBook(@WebParam(name = "book") Book book) throws LibraryWebserviceException;
 
 	Book findBookById(@WebParam(name = "id") Integer id);
 
@@ -26,9 +26,9 @@ public interface BookService {
 
 	// ===== BookSample
 
-	BookSample createBookSample(@WebParam(name = "bookSample") BookSample bookSample) throws WebserviceException;
+	BookSample createBookSample(@WebParam(name = "bookSample") BookSample bookSample) throws LibraryWebserviceException;
 
-	BookSample updateBookSample(@WebParam(name = "bookSample") BookSample bookSample) throws WebserviceException;
+	BookSample updateBookSample(@WebParam(name = "bookSample") BookSample bookSample) throws LibraryWebserviceException;
 
 	BookSample findBookSampleById(@WebParam(name = "id") Integer id);
 

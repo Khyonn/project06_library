@@ -11,7 +11,7 @@ import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
 import fr.nmocs.library.webservice.UserService;
-import fr.nmocs.library.webservice.error.WebserviceException;
+import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class UserServiceImpl implements UserService {
 
@@ -19,38 +19,38 @@ public class UserServiceImpl implements UserService {
 	private UserManagement userMgmt;
 
 	@Override
-	public User createUser(User user) throws WebserviceException {
+	public User createUser(User user) throws LibraryWebserviceException {
 		try {
 			return userMgmt.createUser(user);
 		} catch (LibraryException le) {
-			throw new WebserviceException(getExceptionReason(le));
+			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public User updateUser(User user) throws WebserviceException {
+	public User updateUser(User user) throws LibraryWebserviceException {
 		try {
 			return userMgmt.updateUser(user);
 		} catch (LibraryException le) {
-			throw new WebserviceException(getExceptionReason(le));
+			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public Admin grantAdminRightsToUser(Integer userId) throws WebserviceException {
+	public Admin grantAdminRightsToUser(Integer userId) throws LibraryWebserviceException {
 		try {
 			return userMgmt.grantAdminRightsToUser(userId);
 		} catch (LibraryException le) {
-			throw new WebserviceException("Unable to grand admin rights for user");
+			throw new LibraryWebserviceException("Unable to grand admin rights for user");
 		}
 	}
 
 	@Override
-	public User downgradeAdminToBasicUser(Integer adminId) throws WebserviceException {
+	public User downgradeAdminToBasicUser(Integer adminId) throws LibraryWebserviceException {
 		try {
 			return userMgmt.downgradeAdminToBasicUser(adminId);
 		} catch (LibraryException le) {
-			throw new WebserviceException("Unable to grand admin rights for user");
+			throw new LibraryWebserviceException("Unable to grand admin rights for user");
 		}
 	}
 
