@@ -16,17 +16,18 @@
         
         <!-- DEPENDENCIES VERSIONS -->
         
-        <!-- == CORE == -->
+        <!-- == SPRING == -->
         <springboot.version>2.1.1.RELEASE</springboot.version>
-        <mysql-connector.version>8.0.13</mysql-connector.version>
         <!-- == WEBSERVICE == -->
         <javax.version>8.0</javax.version>
         <cxf.version>3.2.7</cxf.version>
-        <!-- == UTILS == -->
-        <junit.version>4.11</junit.version>
+        <!-- == DATABASE == -->
+        <mysql-connector.version>8.0.13</mysql-connector.version>
         <dbcp.version>1.4</dbcp.version>
+        <!-- == UTILS == -->
         <collection-utils.version>4.1</collection-utils.version>
         <lang-utils.version>3.6</lang-utils.version>
+        <junit.version>4.11</junit.version>
     </properties>
     
     <dependencyManagement>

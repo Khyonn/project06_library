@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.nmocs.library.business.UserManagement;
+import fr.nmocs.library.consumer.AdminRepository;
 import fr.nmocs.library.consumer.UserRepository;
+import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
+import fr.nmocs.library.model.constants.UserType;
 import fr.nmocs.library.model.error.ErrorCode;
 import fr.nmocs.library.model.error.LibraryBusinessException;
 import fr.nmocs.library.model.error.LibraryException;
@@ -18,12 +21,18 @@ import fr.nmocs.library.model.error.LibraryTechnicalException;
 @Service
 public class UserManagementImpl implements UserManagement {
 
+	private static final Integer DATABASE_STRING_SIZE = 255;
+
 	@Autowired
 	private UserRepository userRepo;
 
+	@Autowired
+	private AdminRepository adminRepo;
+
+	// ========== CREATES AND UPDATES
+
 	@Transactional
-	private User checkAndSaveUser(User user) throws LibraryException {
-		checkFields(user);
+	private User formatAndSaveUser(User user) throws LibraryException {
 		formatFields(user);
 		try {
 			return userRepo.save(user);
@@ -33,19 +42,44 @@ public class UserManagementImpl implements UserManagement {
 	}
 
 	@Override
-	@Transactional
 	public User createUser(User user) throws LibraryException {
 		if (user != null) {
 			user.setId(null);
+		} else {
+			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED);
 		}
-		return checkAndSaveUser(user);
+		checkFields(user);
+		return formatAndSaveUser(user);
+	}
+
+	@Override
+	public User updateUser(User user) throws LibraryException {
+		if (user == null) {
+			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED);
+		}
+		if (user.getId() == null || user.getId().equals(0)) {
+			throw new LibraryBusinessException(ErrorCode.USER_DOESNT_EXIST);
+		}
+		User databaseUser = findById(user.getId());
+		mergeUser(databaseUser, user);
+		return formatAndSaveUser(databaseUser);
 	}
 
 	@Override
 	@Transactional
-	public User updateUser(User user) throws LibraryException {
-		return checkAndSaveUser(user);
+	public Admin grantAdminRightsToUser(Integer userId) throws LibraryException {
+		userRepo.updateUserType(userId, UserType.ADMIN.getValue());
+		return adminRepo.findById(userId).orElse(null);
 	}
+
+	@Override
+	@Transactional
+	public User downgradeAdminToBasicUser(Integer adminId) throws LibraryException {
+		userRepo.updateUserType(adminId, UserType.BASIC.getValue());
+		return userRepo.findById(adminId).orElse(null);
+	}
+
+	// ========== READERS
 
 	@Override
 	public User findById(Integer id) throws LibraryTechnicalException {
@@ -76,40 +110,77 @@ public class UserManagementImpl implements UserManagement {
 
 	// ===== UTILS
 
+	/**
+	 * Check if user fields are setted and
+	 * 
+	 * @param user
+	 * @throws LibraryBusinessException
+	 */
 	private void checkFields(User user) throws LibraryBusinessException {
-		if (user == null) {
-			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED);
-		}
+		// USER LASTNAME
 		if (StringUtils.isBlank(user.getLastName())) {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_LASTNAME);
 		}
-		if (user.getLastName().length() > 255) {
+		if (user.getLastName().length() > DATABASE_STRING_SIZE) {
 			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
 		}
+		// USER FIRSTNAME
 		if (StringUtils.isBlank(user.getFirstName())) {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_FIRSTNAME);
 		}
-		if (user.getFirstName().length() > 255) {
+		if (user.getFirstName().length() > DATABASE_STRING_SIZE) {
 			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
 		}
+		// USER EMAIL
 		if (StringUtils.isBlank(user.getEmail())) {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_EMAIL);
 		}
-		if (user.getEmail().length() > 255) {
+		if (user.getEmail().length() > DATABASE_STRING_SIZE) {
 			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
 		}
+		// USER PASSWORD
 		if (StringUtils.isBlank(user.getPassword())) {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_PASSWORD);
 		}
-		if (user.getPassword().length() > 255) {
+		if (user.getPassword().length() > DATABASE_STRING_SIZE) {
 			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
 		}
 	}
 
+	/**
+	 * Trim fields on user entity
+	 * 
+	 * @param user
+	 */
 	private void formatFields(User user) {
 		user.setLastName(user.getLastName().trim());
 		user.setFirstName(user.getFirstName().trim());
 		user.setEmail(user.getEmail().trim());
+	}
+
+	/**
+	 * Merge user fields with database user fields
+	 * 
+	 * @param user
+	 * @param databaseUser
+	 */
+	private void mergeUser(User databaseUser, User user) {
+		if (!StringUtils.isBlank(user.getLastName())) {
+			databaseUser.setLastName(user.getLastName());
+		}
+		if (!StringUtils.isBlank(user.getFirstName())) {
+			databaseUser.setFirstName(user.getFirstName());
+		}
+		if (!StringUtils.isBlank(user.getPassword())) {
+			databaseUser.setPassword(user.getPassword());
+		}
+		if (!StringUtils.isBlank(user.getEmail())) {
+			databaseUser.setEmail(user.getEmail());
+		}
+		if (!StringUtils.isBlank(user.getStatus())) {
+			databaseUser.setStatus(user.getStatus());
+		}
+
 	}
 
 }

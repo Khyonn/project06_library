@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.business.UserManagement;
+import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
@@ -32,6 +33,24 @@ public class UserServiceImpl implements UserService {
 			return userMgmt.updateUser(user);
 		} catch (LibraryException le) {
 			throw new WebserviceException(getExceptionReason(le));
+		}
+	}
+
+	@Override
+	public Admin grantAdminRightsToUser(Integer userId) throws WebserviceException {
+		try {
+			return userMgmt.grantAdminRightsToUser(userId);
+		} catch (LibraryException le) {
+			throw new WebserviceException("Unable to grand admin rights for user");
+		}
+	}
+
+	@Override
+	public User downgradeAdminToBasicUser(Integer adminId) throws WebserviceException {
+		try {
+			return userMgmt.downgradeAdminToBasicUser(adminId);
+		} catch (LibraryException le) {
+			throw new WebserviceException("Unable to grand admin rights for user");
 		}
 	}
 
@@ -65,11 +84,14 @@ public class UserServiceImpl implements UserService {
 	// ===== GESTION DES EXCEPTION
 
 	private String getExceptionReason(LibraryException le) {
-		String reason = le.getErrorCode().getId() + " => Error creating user : ";
+		String reason = le.getErrorCode().getId() + " => Error editing user : ";
 		switch (le.getErrorCode()) {
 		// FIELD MISSING
 		case USER_UNSETTED:
 			reason += "no user given";
+			break;
+		case USER_DOESNT_EXIST:
+			reason += "user doesn't exist";
 			break;
 		case USER_UNSETTED_LASTNAME:
 			reason += "lastname not setted";
