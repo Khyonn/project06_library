@@ -13,6 +13,9 @@ import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
 import fr.nmocs.library.consumer.UserRepository;
 import fr.nmocs.library.model.Loan;
+import fr.nmocs.library.model.constants.BookSampleStatus;
+import fr.nmocs.library.model.constants.BookStatus;
+import fr.nmocs.library.model.constants.UserStatus;
 import fr.nmocs.library.model.error.ErrorCode;
 import fr.nmocs.library.model.error.LibraryBusinessException;
 import fr.nmocs.library.model.error.LibraryException;
@@ -129,7 +132,8 @@ public class LoanManagementImpl implements LoanManagement {
 	}
 
 	/**
-	 * Check if bookSample and borrower exist and if return date is OK
+	 * Check if bookSample and borrower exist and if return date is OK. Also check
+	 * that book and book sample are available, and check that user is not disabled
 	 * 
 	 * @param loan
 	 * @throws LibraryBusinessException
@@ -143,6 +147,21 @@ public class LoanManagementImpl implements LoanManagement {
 		if (!bookSampleRepo.existsById(loan.getBookSample().getId())) {
 			throw new LibraryBusinessException(ErrorCode.LOAN_UNEXISTING_REFERENCED_BOOKSAMPLE);
 		}
+		// Check if book sample is not borrowed
+		if (loan.getId() == null) {
+			if (loanRepo.existsByBookSampleIdAndReturnDateIsNull(loan.getBookSample().getId())) {
+				throw new LibraryBusinessException(ErrorCode.LOAN_ALREADY_BORROWED_BOOKSAMPLE);
+			}
+		} else {
+			if (loanRepo.existsByIdNotAndBookSampleIdAndReturnDateIsNull(loan.getId(), loan.getBookSample().getId())) {
+				throw new LibraryBusinessException(ErrorCode.LOAN_ALREADY_BORROWED_BOOKSAMPLE);
+			}
+		}
+		// Check if book sample and its referenced book is available
+		if (!bookSampleRepo.existsByIdAndStatusAndBookStatus(loan.getBookSample().getId(),
+				BookSampleStatus.AVAILABLE.getValue(), BookStatus.AVAILABLE.getValue())) {
+			throw new LibraryBusinessException(ErrorCode.LOAN_BOOKSAMPLE_UNAVAILABLE);
+		}
 
 		// BORROWER
 		if (loan.getBorrower() == null || loan.getBorrower().getId() == null || loan.getBorrower().getId().equals(0)) {
@@ -150,6 +169,10 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 		if (!userRepo.existsById(loan.getBorrower().getId())) {
 			throw new LibraryBusinessException(ErrorCode.LOAN_UNEXISTING_REFERENCED_BORROWER);
+		}
+		// Check if borrower status is available
+		if (!userRepo.existsByIdAndStatus(loan.getBorrower().getId(), UserStatus.ACTIVE.getValue())) {
+			throw new LibraryBusinessException(ErrorCode.LOAN_USER_UNAVAILABLE);
 		}
 
 		// RETURN DATE

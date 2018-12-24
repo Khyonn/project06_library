@@ -91,6 +91,15 @@ public class LoanServiceImpl implements LoanService {
 		case LOAN_UNSETTED_BORROWERID:
 			reason += "there is no reference to a borrower";
 			break;
+		case LOAN_ALREADY_BORROWED_BOOKSAMPLE:
+			reason += "referenced book sample is already borrowed";
+			break;
+		case LOAN_BOOKSAMPLE_UNAVAILABLE:
+			reason += "referenced book sample is not available for borrow";
+			break;
+		case LOAN_USER_UNAVAILABLE:
+			reason += "referenced user is not allowed to borrow any book sample";
+			break;
 		default:
 			reason += "unknown reason";
 			break;

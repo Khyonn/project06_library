@@ -20,4 +20,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Modifying
 	@Query(value = "UPDATE Users SET userType = :newType WHERE id = :userId", nativeQuery = true)
 	void updateUserType(@Param("userId") Integer userId, @Param("newType") String userType);
+
+	boolean existsByIdAndStatus(Integer id, String status);
 }

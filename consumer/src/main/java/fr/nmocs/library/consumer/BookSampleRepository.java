@@ -10,4 +10,6 @@ public interface BookSampleRepository extends JpaRepository<BookSample, Integer>
 
 	List<BookSample> findByBookId(Integer bookId);
 
+	boolean existsByIdAndStatusAndBookStatus(Integer id, String bookSampleStatus, String bookStatus);
+
 }
