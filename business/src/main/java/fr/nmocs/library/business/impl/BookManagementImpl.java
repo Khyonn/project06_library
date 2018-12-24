@@ -46,9 +46,7 @@ public class BookManagementImpl implements BookManagement {
 		if (book == null) {
 			throw new LibraryBusinessException(ErrorCode.BOOK_UNSETTED);
 		}
-		if (book.getId() != null) {
-			book.setId(null);
-		}
+		book.setId(null);
 		return checkFormatAndSaveBook(book);
 	}
 
@@ -110,9 +108,7 @@ public class BookManagementImpl implements BookManagement {
 		if (bookSample == null) {
 			throw new LibraryBusinessException(ErrorCode.BOOKSAMPLE_UNSETTED);
 		}
-		if (bookSample.getId() != null) {
-			bookSample.setId(null);
-		}
+		bookSample.setId(null);
 		return checkFormatAndSaveBookSample(bookSample);
 	}
 
@@ -247,10 +243,6 @@ public class BookManagementImpl implements BookManagement {
 	 * @param bookSample
 	 */
 	private void mergeBookSample(BookSample databaseBookSample, BookSample bookSample) {
-		if (bookSample.getBook() != null && bookSample.getBook().getId() != null
-				&& !bookSample.getBook().getId().equals(0)) {
-			databaseBookSample.setBook(bookSample.getBook());
-		}
 		if (bookSample.getStatus() != null && (bookSample.getStatus().equals(BookSampleStatus.AVAILABLE.getValue())
 				|| bookSample.getStatus().equals(BookSampleStatus.DAMAGED.getValue())
 				|| bookSample.getStatus().equals(BookSampleStatus.UNAVAILABLE.getValue()))) {
