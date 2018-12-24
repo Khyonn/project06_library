@@ -32,12 +32,12 @@ public class LoanManagementImpl implements LoanManagement {
 	private static final Integer MAX_PROLONGATION_NB = 1;
 
 	// === NOMBRE DE SEMAINES DE PRET
-	private static final int LOAN_BASETIME_WEEKS = 4;
+	private static final long LOAN_BASETIME_WEEKS = 4;
 
-	private static final int LOAN_BASETIME_MS = LOAN_BASETIME_WEEKS * 7 * 24 * 3600 * 1000;
+	private static final long LOAN_BASETIME_MS = LOAN_BASETIME_WEEKS * 7 * 24 * 3600 * 1000;
 
 	// === TEMPS D'UNE PROLONGATION D'UN PRET
-	private static final int PROLONGATION_WEEKS = 4;
+	private static final long PROLONGATION_WEEKS = 4;
 
 	private static final long PROLONGATION_MS = PROLONGATION_WEEKS * 7 * 24 * 3600 * 1000;
 
