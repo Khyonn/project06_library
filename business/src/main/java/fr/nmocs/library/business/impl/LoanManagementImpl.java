@@ -91,7 +91,7 @@ public class LoanManagementImpl implements LoanManagement {
 	@Override
 	public List<Loan> findByUserId(Integer userId) throws LibraryTechnicalException {
 		try {
-			return loanRepo.findByUserId(userId);
+			return loanRepo.findByBorrowerId(userId);
 		} catch (Exception e) {
 			throw new LibraryTechnicalException(ErrorCode.LOAN_NOT_FOUND);
 		}

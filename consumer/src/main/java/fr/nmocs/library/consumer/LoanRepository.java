@@ -8,7 +8,7 @@ import fr.nmocs.library.model.Loan;
 
 public interface LoanRepository extends JpaRepository<Loan, Integer> {
 
-	List<Loan> findByUserId(Integer userId);
+	List<Loan> findByBorrowerId(Integer userId);
 
 	List<Loan> findByReturnDateIsNull();
 
