@@ -26,7 +26,7 @@ public class AuthManagementImpl implements AuthManagement {
     private static final String SECRET_KEY = "y&6yxN,:D7Zu";
     private static final String ISSUER = "Library";
     private static final String USER_KEY = "user";
-    private static final String ADMIN_KEY = "admin";
+    private static final String ADMIN_KEY = "isAdmin";
     private static final Algorithm ALGO = Algorithm.HMAC256(SECRET_KEY);
     
     // ===== DEPENDENCIES
@@ -53,12 +53,12 @@ public class AuthManagementImpl implements AuthManagement {
             throw new LibraryBusinessException(ErrorCode.USER_UNAUTHORIZED);
         }
 
-
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + (HOUR_DURATION * 3600 * 1000)))
-                .withClaim(USER_KEY, user.getId())
+                .withSubject(user.getId().toString())
+                .withClaim(USER_KEY, user.getFirstName() + " " + user.getLastName())
                 .withClaim(ADMIN_KEY, user instanceof Admin)
                 .sign(ALGO);
     }
@@ -88,7 +88,7 @@ public class AuthManagementImpl implements AuthManagement {
     public User getUser(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
-            return userMgmt.findById(jwt.getClaim(USER_KEY).asInt());
+            return userMgmt.findById(Integer.parseInt(jwt.getSubject()));
         } catch (Exception e) {
             return null;
         }
