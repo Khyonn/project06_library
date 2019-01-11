@@ -14,11 +14,13 @@ public interface BookService {
 
 	// ===== Book
 
-	Book createBook(@WebParam(name = "book") Book book) throws LibraryWebserviceException;
+	Book createBook(@WebParam(name = "book") Book book, @WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
 
-	Book updateBook(@WebParam(name = "book") Book book) throws LibraryWebserviceException;
+	Book updateBook(@WebParam(name = "book") Book book, @WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
 
-	Book findBookById(@WebParam(name = "id") Integer id);
+	Book findBookById(@WebParam(name = "id") Integer id) throws LibraryWebserviceException;
 
 	List<Book> findBookByAuthor(@WebParam(name = "author") String author);
 
@@ -26,9 +28,11 @@ public interface BookService {
 
 	// ===== BookSample
 
-	BookSample createBookSample(@WebParam(name = "bookSample") BookSample bookSample) throws LibraryWebserviceException;
+	BookSample createBookSample(@WebParam(name = "bookSample") BookSample bookSample,
+			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
-	BookSample updateBookSample(@WebParam(name = "bookSample") BookSample bookSample) throws LibraryWebserviceException;
+	BookSample updateBookSample(@WebParam(name = "bookSample") BookSample bookSample,
+			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
 	BookSample findBookSampleById(@WebParam(name = "id") Integer id);
 

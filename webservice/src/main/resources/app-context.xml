@@ -37,14 +37,14 @@
         serviceBean="#userservice">
     </jaxws:server>
     <jaxws:server 
-        serviceClass="fr.nmocs.library.webservice.LoginService" address="/login"
+        serviceClass="fr.nmocs.library.webservice.TokenService" address="/token"
         serviceBean="#loginservice">
     </jaxws:server>
     
     <bean id="bookservice" class="fr.nmocs.library.webservice.impl.BookServiceImpl" />
     <bean id="loanservice" class="fr.nmocs.library.webservice.impl.LoanServiceImpl"/>
     <bean id="userservice" class="fr.nmocs.library.webservice.impl.UserServiceImpl" />
-    <bean id="loginservice" class="fr.nmocs.library.webservice.impl.LoginServiceImpl" />
+    <bean id="loginservice" class="fr.nmocs.library.webservice.impl.TokenServiceImpl" />
     
     
 

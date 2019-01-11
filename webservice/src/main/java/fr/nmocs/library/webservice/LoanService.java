@@ -11,13 +11,17 @@ import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 @WebService(name = "LoanService", serviceName = "LoanService")
 public interface LoanService {
 
-	Loan createLoan(@WebParam(name = "loan") Loan loan) throws LibraryWebserviceException;
+	Loan createLoan(@WebParam(name = "loan") Loan loan, @WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
 
-	Loan updateLoan(@WebParam(name = "loan") Loan loan) throws LibraryWebserviceException;
+	Loan updateLoan(@WebParam(name = "loan") Loan loan, @WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
 
-	Loan findLoanById(@WebParam(name = "id") Integer id);
+	Loan findLoanById(@WebParam(name = "id") Integer id, @WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
 
-	List<Loan> findByUserId(@WebParam(name = "userId") Integer userId);
+	List<Loan> findByUserId(@WebParam(name = "userId") Integer userId,
+			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
-	List<Loan> findNotReturned();
+	List<Loan> findNotReturned(@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 }

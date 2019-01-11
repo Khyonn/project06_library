@@ -5,19 +5,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import fr.nmocs.library.business.AuthManagement;
 import fr.nmocs.library.business.LoanManagement;
 import fr.nmocs.library.model.Loan;
+import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.webservice.LoanService;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class LoanServiceImpl implements LoanService {
 
+	private static final String NOT_ALLOWED = "You are not allowed to perform this action";
+
 	@Autowired
 	private LoanManagement loanMgmt;
 
+	@Autowired
+	private AuthManagement authMgmt;
+
 	@Override
-	public Loan createLoan(Loan loan) throws LibraryWebserviceException {
+	public Loan createLoan(Loan loan, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return loanMgmt.createLoan(loan);
 		} catch (LibraryException le) {
@@ -27,7 +35,20 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
-	public Loan updateLoan(Loan loan) throws LibraryWebserviceException {
+	public Loan updateLoan(Loan loan, String token) throws LibraryWebserviceException {
+		User userFromToken = authMgmt.getUser(token);
+		Loan databaseLoan;
+
+		try {
+			databaseLoan = loanMgmt.findLoanById(loan.getId());
+		} catch (LibraryException le) {
+			databaseLoan = null;
+		}
+
+		if (databaseLoan == null || databaseLoan.getBorrower() == null || userFromToken == null
+				|| (!userFromToken.getId().equals(databaseLoan.getBorrower().getId()) && !authMgmt.isAdmin(token))) {
+			throw new LibraryWebserviceException(NOT_ALLOWED);
+		}
 		try {
 			return loanMgmt.updateLoan(loan);
 		} catch (LibraryException le) {
@@ -36,16 +57,26 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
-	public Loan findLoanById(Integer id) {
+	public Loan findLoanById(Integer id, String token) throws LibraryWebserviceException {
+		User userFromToken = authMgmt.getUser(token);
 		try {
-			return loanMgmt.findLoanById(id);
+			Loan loan = loanMgmt.findLoanById(id);
+
+			if (loan == null || loan.getBorrower() == null || userFromToken == null
+					|| (!userFromToken.getId().equals(loan.getBorrower().getId()) && !authMgmt.isAdmin(token))) {
+				throw new LibraryWebserviceException(NOT_ALLOWED);
+			}
+			return loan;
 		} catch (LibraryException le) {
 			return null;
 		}
 	}
 
 	@Override
-	public List<Loan> findByUserId(Integer userId) {
+	public List<Loan> findByUserId(Integer userId, String token) throws LibraryWebserviceException {
+		if (userId == null || (!authMgmt.getUser(token).getId().equals(userId) && !authMgmt.isAdmin(token))) {
+			throw new LibraryWebserviceException(NOT_ALLOWED);
+		}
 		try {
 			return loanMgmt.findByUserId(userId);
 		} catch (LibraryException le) {
@@ -54,7 +85,8 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
-	public List<Loan> findNotReturned() {
+	public List<Loan> findNotReturned(String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return loanMgmt.findNotReturned();
 		} catch (LibraryException le) {
@@ -63,6 +95,18 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	// ===== GESTION DES EXCEPTION
+
+	/**
+	 * Check if user is admin based on request token
+	 * 
+	 * @param token
+	 * @throws LibraryWebserviceException
+	 */
+	private void checkAdmin(String token) throws LibraryWebserviceException {
+		if (!authMgmt.isAdmin(token)) {
+			throw new LibraryWebserviceException(NOT_ALLOWED);
+		}
+	}
 
 	private String getExceptionReason(LibraryException le) {
 		String reason = le.getErrorCode().getId() + " => Error editing loan : ";

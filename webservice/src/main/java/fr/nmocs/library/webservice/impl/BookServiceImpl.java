@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import fr.nmocs.library.business.AuthManagement;
 import fr.nmocs.library.business.BookManagement;
 import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.BookSample;
@@ -15,13 +16,19 @@ import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class BookServiceImpl implements BookService {
 
+	private static final String NOT_ALLOWED = "You are not allowed to perform this action";
+
 	@Autowired
 	private BookManagement bookMgmt;
+
+	@Autowired
+	private AuthManagement authMgmt;
 
 	// ========= BOOKS
 
 	@Override
-	public Book createBook(Book book) throws LibraryWebserviceException {
+	public Book createBook(Book book, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return bookMgmt.createBook(book);
 		} catch (LibraryException le) {
@@ -30,7 +37,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Book updateBook(Book book) throws LibraryWebserviceException {
+	public Book updateBook(Book book, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return bookMgmt.updateBook(book);
 		} catch (LibraryException le) {
@@ -68,7 +76,8 @@ public class BookServiceImpl implements BookService {
 	// ========== BOOK_SAMPLES
 
 	@Override
-	public BookSample createBookSample(BookSample bookSample) throws LibraryWebserviceException {
+	public BookSample createBookSample(BookSample bookSample, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return bookMgmt.createBookSample(bookSample);
 		} catch (LibraryException le) {
@@ -77,7 +86,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public BookSample updateBookSample(BookSample bookSample) throws LibraryWebserviceException {
+	public BookSample updateBookSample(BookSample bookSample, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return bookMgmt.updateBookSample(bookSample);
 		} catch (LibraryException le) {
@@ -104,6 +114,19 @@ public class BookServiceImpl implements BookService {
 	}
 
 	// ==== UTILS
+
+	/**
+	 * Check if user is admin based on request token
+	 * 
+	 * @param token
+	 * @throws LibraryWebserviceException
+	 */
+	private void checkAdmin(String token) throws LibraryWebserviceException {
+		if (!authMgmt.isAdmin(token)) {
+			throw new LibraryWebserviceException(NOT_ALLOWED);
+		}
+	}
+
 	private String getExceptionReason(LibraryException le) {
 		String reason = le.getErrorCode().getId() + " => Error editing book : ";
 		switch (le.getErrorCode()) {

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import fr.nmocs.library.business.AuthManagement;
 import fr.nmocs.library.business.UserManagement;
 import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
@@ -15,8 +16,13 @@ import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class UserServiceImpl implements UserService {
 
+	private static final String NOT_ALLOWED = "You are not allowed to perform this action";
+
 	@Autowired
 	private UserManagement userMgmt;
+
+	@Autowired
+	private AuthManagement authMgmt;
 
 	@Override
 	public User createUser(User user) throws LibraryWebserviceException {
@@ -28,7 +34,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updateUser(User user) throws LibraryWebserviceException {
+	public User updateUser(User user, String token) throws LibraryWebserviceException {
+		// Les utilisateurs peuvent mettre uniquement leur profil à jour sauf s'ils sont
+		// admin
+		User userFromToken = authMgmt.getUser(token);
+		if (user == null || userFromToken == null
+				|| (!authMgmt.isAdmin(token) && !user.getId().equals(userFromToken.getId()))) {
+			throw new LibraryWebserviceException(NOT_ALLOWED);
+		}
+
 		try {
 			return userMgmt.updateUser(user);
 		} catch (LibraryException le) {
@@ -37,25 +51,33 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Admin grantAdminRightsToUser(Integer userId) throws LibraryWebserviceException {
+	public Admin grantAdminRightsToUser(Integer userId, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return userMgmt.grantAdminRightsToUser(userId);
 		} catch (LibraryException le) {
-			throw new LibraryWebserviceException("Unable to grand admin rights for user");
+			throw new LibraryWebserviceException("You are not allowed to perform this action");
 		}
 	}
 
 	@Override
-	public User downgradeAdminToBasicUser(Integer adminId) throws LibraryWebserviceException {
+	public User downgradeAdminToBasicUser(Integer adminId, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return userMgmt.downgradeAdminToBasicUser(adminId);
 		} catch (LibraryException le) {
-			throw new LibraryWebserviceException("Unable to grand admin rights for user");
+			throw new LibraryWebserviceException("You are not allowed to perform this action");
 		}
 	}
 
 	@Override
-	public User findById(Integer id) {
+	public User findById(Integer id, String token) throws LibraryWebserviceException {
+		// Les utilisateurs peuvent consulter leur profil uniquement (et admin)
+		User userFromToken = authMgmt.getUser(token);
+		if (userFromToken == null || (!authMgmt.isAdmin(token) && !userFromToken.getId().equals(id))) {
+			throw new LibraryWebserviceException("You are not allowed to perform this action");
+		}
+
 		try {
 			return userMgmt.findById(id);
 		} catch (LibraryTechnicalException le) {
@@ -64,7 +86,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findByEmail(String email) {
+	public User findByEmail(String email, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return userMgmt.findByEmail(email);
 		} catch (LibraryTechnicalException le) {
@@ -73,7 +96,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findByName(String name) {
+	public List<User> findByName(String name, String token) throws LibraryWebserviceException {
+		checkAdmin(token);
 		try {
 			return userMgmt.findByName(name);
 		} catch (LibraryTechnicalException le) {
@@ -82,6 +106,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// ===== GESTION DES EXCEPTION
+
+	/**
+	 * Check if user is admin based on request token
+	 * 
+	 * @param token
+	 * @throws LibraryWebserviceException
+	 */
+	private void checkAdmin(String token) throws LibraryWebserviceException {
+		if (!authMgmt.isAdmin(token)) {
+			throw new LibraryWebserviceException(NOT_ALLOWED);
+		}
+	}
 
 	private String getExceptionReason(LibraryException le) {
 		String reason = le.getErrorCode().getId() + " => Error editing user : ";
