@@ -109,6 +109,21 @@ public class AuthManagementImpl implements AuthManagement {
 	 * @param token
 	 * @return
 	 */
+	public Integer getUserId(String token) {
+		try {
+			verifyToken(token);
+			DecodedJWT jwt = JWT.decode(token);
+			return Integer.parseInt(jwt.getSubject());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 
+	 * @param token
+	 * @return
+	 */
 	@Override
 	public Boolean isAdmin(String token) {
 		try {

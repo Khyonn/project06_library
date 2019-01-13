@@ -46,6 +46,7 @@ public class UserManagementImpl implements UserManagement {
 	public User createUser(User user) throws LibraryException {
 		if (user != null) {
 			user.setId(null);
+			user.setStatus(UserStatus.ACTIVE.getValue());
 		} else {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED);
 		}
@@ -63,6 +64,7 @@ public class UserManagementImpl implements UserManagement {
 		}
 		User databaseUser = findById(user.getId());
 		mergeUser(databaseUser, user);
+		checkFields(databaseUser);
 		return formatAndSaveUser(databaseUser);
 	}
 
@@ -130,21 +132,25 @@ public class UserManagementImpl implements UserManagement {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_FIRSTNAME);
 		}
 		if (user.getFirstName().length() > DATABASE_STRING_SIZE) {
-			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
+			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_FIRSTNAME);
 		}
 		// USER EMAIL
 		if (StringUtils.isBlank(user.getEmail())) {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_EMAIL);
 		}
 		if (user.getEmail().length() > DATABASE_STRING_SIZE) {
-			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
+			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_EMAIL);
+		}
+		User databaseUser = userRepo.findByEmailIgnoreCase(user.getEmail()).orElse(null);
+		if (databaseUser != null && !databaseUser.getId().equals(user.getId())) {
+			throw new LibraryBusinessException(ErrorCode.USER_DUPLICATED_EMAIL);
 		}
 		// USER PASSWORD
 		if (StringUtils.isBlank(user.getPassword())) {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED_PASSWORD);
 		}
 		if (user.getPassword().length() > DATABASE_STRING_SIZE) {
-			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_LASTNAME);
+			throw new LibraryBusinessException(ErrorCode.USER_OVERSIZED_PASSWORD);
 		}
 	}
 

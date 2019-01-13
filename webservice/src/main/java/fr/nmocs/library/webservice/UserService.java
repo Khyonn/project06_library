@@ -20,8 +20,8 @@ public interface UserService {
 	Admin grantAdminRightsToUser(@WebParam(name = "userId") Integer userId,
 			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
-	User downgradeAdminToBasicUser(@WebParam(name = "adminId") Integer adminId, @WebParam(name = "token") String token)
-			throws LibraryWebserviceException;
+	User downgradeAdminToBasicUser(@WebParam(name = "adminId") Integer adminId,
+			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
 	User findById(@WebParam(name = "id") Integer id, @WebParam(name = "token", header = true) String token)
 			throws LibraryWebserviceException;

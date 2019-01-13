@@ -35,12 +35,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User updateUser(User user, String token) throws LibraryWebserviceException {
-		// Les utilisateurs peuvent mettre uniquement leur profil à jour sauf s'ils sont
-		// admin
 		User userFromToken = authMgmt.getUser(token);
-		if (user == null || userFromToken == null
-				|| (!authMgmt.isAdmin(token) && !user.getId().equals(userFromToken.getId()))) {
-			throw new LibraryWebserviceException(NOT_ALLOWED);
+
+		if (user != null && !authMgmt.isAdmin(token)) {
+			// Si l'utilisateur n'est pas possesseur du compte, on refuse
+			if (userFromToken == null || !user.getId().equals(userFromToken.getId())) {
+				throw new LibraryWebserviceException(NOT_ALLOWED);
+			}
+			// Seul un admin peu modifier le status
+			user.setStatus(null);
 		}
 
 		try {
@@ -75,7 +78,7 @@ public class UserServiceImpl implements UserService {
 		// Les utilisateurs peuvent consulter leur profil uniquement (et admin)
 		User userFromToken = authMgmt.getUser(token);
 		if (userFromToken == null || (!authMgmt.isAdmin(token) && !userFromToken.getId().equals(id))) {
-			throw new LibraryWebserviceException("You are not allowed to perform this action");
+			throw new LibraryWebserviceException(NOT_ALLOWED);
 		}
 
 		try {

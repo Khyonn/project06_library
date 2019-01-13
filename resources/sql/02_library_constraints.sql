@@ -1,10 +1,4 @@
---
--- Table constraints for table `Users`
---
-
-ALTER TABLE `Users`
-ADD CONSTRAINT `Users_Email_UQ` UNIQUE (`email`);
-
+USE library;
 
 --
 -- Table constraints for table `BookSamples`
