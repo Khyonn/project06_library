@@ -163,7 +163,7 @@ public class BookManagementImpl implements BookManagement {
 		if (StringUtils.isBlank(book.getTitle())) {
 			throw new LibraryBusinessException(ErrorCode.BOOK_UNSETTED_TITLE);
 		}
-		if (book.getAuthor().length() > DATABASE_STRING_SIZE) {
+		if (book.getTitle().length() > DATABASE_STRING_SIZE) {
 			throw new LibraryBusinessException(ErrorCode.BOOK_OVERSIZED_TITLE);
 		}
 	}

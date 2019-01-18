@@ -149,10 +149,14 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 		// Check if book sample is not borrowed
 		if (loan.getId() == null) {
+			// Cas création : on vérifie que l'exemplaire de livre n'est pas utilisé (=>
+			// returnDate setté)
 			if (loanRepo.existsByBookSampleIdAndReturnDateIsNull(loan.getBookSample().getId())) {
 				throw new LibraryBusinessException(ErrorCode.LOAN_ALREADY_BORROWED_BOOKSAMPLE);
 			}
 		} else {
+			// Cas modification : on vérifie que l'exemplaire de livre n'est pas utilisé sur
+			// un autre pret
 			if (loanRepo.existsByIdNotAndBookSampleIdAndReturnDateIsNull(loan.getId(), loan.getBookSample().getId())) {
 				throw new LibraryBusinessException(ErrorCode.LOAN_ALREADY_BORROWED_BOOKSAMPLE);
 			}

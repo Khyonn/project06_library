@@ -810,18 +810,16 @@
       <soap:address location="http://localhost:8080/Library_webservice/services/book"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint></con:endpoints><con:operation id="f4fc437f-f874-4608-be32-6ce42eec81ec" isOneWay="false" action="" name="createBook" bindingOperationName="createBook" type="Request-Response" outputName="createBookResponse" inputName="createBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="22e08407-9f07-470c-8307-23a29fe73b3f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint></con:endpoints><con:operation id="f4fc437f-f874-4608-be32-6ce42eec81ec" isOneWay="false" action="" name="createBook" bindingOperationName="createBook" type="Request-Response" outputName="createBookResponse" inputName="createBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="22e08407-9f07-470c-8307-23a29fe73b3f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
-      <web:token>?</web:token>
+      <web:token>${#Project#adminToken}</web:token>
    </soapenv:Header>
    <soapenv:Body>
       <web:createBook>
          <!--Optional:-->
          <book>
             <!--Optional:-->
-            <author>?</author>
-            <!--Optional:-->
-            <id>?</id>
+            <author></author>
             <!--Optional:-->
             <status>?</status>
             <!--Optional:-->
@@ -831,7 +829,7 @@
          </book>
       </web:createBook>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/></con:call></con:operation><con:operation id="c12e7820-c26c-4250-88d3-14bf59d00cf3" isOneWay="false" action="" name="createBookSample" bindingOperationName="createBookSample" type="Request-Response" outputName="createBookSampleResponse" inputName="createBookSample" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4e2a7e36-c381-42cd-a58e-9ce1514b6bff" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c12e7820-c26c-4250-88d3-14bf59d00cf3" isOneWay="false" action="" name="createBookSample" bindingOperationName="createBookSample" type="Request-Response" outputName="createBookSampleResponse" inputName="createBookSample" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4e2a7e36-c381-42cd-a58e-9ce1514b6bff" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
       <web:token>?</web:token>
    </soapenv:Header>
@@ -859,7 +857,7 @@
          </bookSample>
       </web:createBookSample>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/></con:call></con:operation><con:operation id="a0d5418b-5b4f-4dd6-b10f-4e06da445d12" isOneWay="false" action="" name="findBookByAuthor" bindingOperationName="findBookByAuthor" type="Request-Response" outputName="findBookByAuthorResponse" inputName="findBookByAuthor" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0b956d00-c0ad-4682-8919-b2d34f5ccd07" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a0d5418b-5b4f-4dd6-b10f-4e06da445d12" isOneWay="false" action="" name="findBookByAuthor" bindingOperationName="findBookByAuthor" type="Request-Response" outputName="findBookByAuthorResponse" inputName="findBookByAuthor" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0b956d00-c0ad-4682-8919-b2d34f5ccd07" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:findBookByAuthor>
@@ -867,7 +865,7 @@
          <author>?</author>
       </web:findBookByAuthor>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByAuthor"/></con:call></con:operation><con:operation id="cf3e3ea0-548c-4df7-b2dd-43b63072ee35" isOneWay="false" action="" name="findBookById" bindingOperationName="findBookById" type="Request-Response" outputName="findBookByIdResponse" inputName="findBookById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3d7b0673-5ac1-4c7d-b4ab-5799de003fb8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByAuthor"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="cf3e3ea0-548c-4df7-b2dd-43b63072ee35" isOneWay="false" action="" name="findBookById" bindingOperationName="findBookById" type="Request-Response" outputName="findBookByIdResponse" inputName="findBookById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3d7b0673-5ac1-4c7d-b4ab-5799de003fb8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:findBookById>
@@ -875,7 +873,7 @@
          <id>?</id>
       </web:findBookById>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookById"/></con:call></con:operation><con:operation id="2749c50c-d98f-4097-9d2d-65e51186e2ec" isOneWay="false" action="" name="findBookByTitle" bindingOperationName="findBookByTitle" type="Request-Response" outputName="findBookByTitleResponse" inputName="findBookByTitle" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6f4508e2-661f-4200-b671-e25dcf51c8ea" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookById"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2749c50c-d98f-4097-9d2d-65e51186e2ec" isOneWay="false" action="" name="findBookByTitle" bindingOperationName="findBookByTitle" type="Request-Response" outputName="findBookByTitleResponse" inputName="findBookByTitle" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6f4508e2-661f-4200-b671-e25dcf51c8ea" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:findBookByTitle>
@@ -883,15 +881,15 @@
          <title>?</title>
       </web:findBookByTitle>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByTitle"/></con:call></con:operation><con:operation id="d642b287-028e-42fa-bd72-17744f717dfa" isOneWay="false" action="" name="findBookSampleByBookId" bindingOperationName="findBookSampleByBookId" type="Request-Response" outputName="findBookSampleByBookIdResponse" inputName="findBookSampleByBookId" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7f447f82-da89-470d-83a2-9c0007281e58" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByTitle"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d642b287-028e-42fa-bd72-17744f717dfa" isOneWay="false" action="" name="findBookSampleByBookId" bindingOperationName="findBookSampleByBookId" type="Request-Response" outputName="findBookSampleByBookIdResponse" inputName="findBookSampleByBookId" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7f447f82-da89-470d-83a2-9c0007281e58" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:findBookSampleByBookId>
          <!--Optional:-->
-         <bookId>?</bookId>
+         <bookId>${#Project#fakeBookId}</bookId>
       </web:findBookSampleByBookId>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleByBookId"/></con:call></con:operation><con:operation id="75ed11f5-7cbd-443f-89a6-69d6904a1966" isOneWay="false" action="" name="findBookSampleById" bindingOperationName="findBookSampleById" type="Request-Response" outputName="findBookSampleByIdResponse" inputName="findBookSampleById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="61e746d1-e322-4b98-bc7b-3a53e90ae46e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleByBookId"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="75ed11f5-7cbd-443f-89a6-69d6904a1966" isOneWay="false" action="" name="findBookSampleById" bindingOperationName="findBookSampleById" type="Request-Response" outputName="findBookSampleByIdResponse" inputName="findBookSampleById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="61e746d1-e322-4b98-bc7b-3a53e90ae46e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:findBookSampleById>
@@ -899,7 +897,7 @@
          <id>?</id>
       </web:findBookSampleById>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleById"/></con:call></con:operation><con:operation id="b4b3303b-50c5-430d-8868-89068541b9d1" isOneWay="false" action="" name="updateBook" bindingOperationName="updateBook" type="Request-Response" outputName="updateBookResponse" inputName="updateBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98338e6d-5b5a-4dec-b2f6-ff21b8be03a5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleById"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b4b3303b-50c5-430d-8868-89068541b9d1" isOneWay="false" action="" name="updateBook" bindingOperationName="updateBook" type="Request-Response" outputName="updateBookResponse" inputName="updateBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98338e6d-5b5a-4dec-b2f6-ff21b8be03a5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
       <web:token>?</web:token>
    </soapenv:Header>
@@ -920,35 +918,22 @@
          </book>
       </web:updateBook>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/></con:call></con:operation><con:operation id="99fa66e8-10e9-4f7f-9dd3-a66ed990a25a" isOneWay="false" action="" name="updateBookSample" bindingOperationName="updateBookSample" type="Request-Response" outputName="updateBookSampleResponse" inputName="updateBookSample" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="baf61386-868a-4515-960f-937942229535" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="99fa66e8-10e9-4f7f-9dd3-a66ed990a25a" isOneWay="false" action="" name="updateBookSample" bindingOperationName="updateBookSample" type="Request-Response" outputName="updateBookSampleResponse" inputName="updateBookSample" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="baf61386-868a-4515-960f-937942229535" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
-      <web:token>?</web:token>
+      <web:token>${#Project#adminToken}</web:token>
    </soapenv:Header>
    <soapenv:Body>
       <web:updateBookSample>
          <!--Optional:-->
          <bookSample>
             <!--Optional:-->
-            <book>
-               <!--Optional:-->
-               <author>?</author>
-               <!--Optional:-->
-               <id>?</id>
-               <!--Optional:-->
-               <status>?</status>
-               <!--Optional:-->
-               <summary>?</summary>
-               <!--Optional:-->
-               <title>?</title>
-            </book>
+            <id>${#Project#fakeBookSampleId}</id>
             <!--Optional:-->
-            <id>?</id>
-            <!--Optional:-->
-            <status>?</status>
+            <status>U</status>
          </bookSample>
       </web:updateBookSample>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="78501caf-98d3-4361-b6ca-e5e99da90641" wsaVersion="NONE" name="LoanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}LoanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/Library_webservice/services/loan?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/loan?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/loan?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="78501caf-98d3-4361-b6ca-e5e99da90641" wsaVersion="NONE" name="LoanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}LoanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/Library_webservice/services/loan?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/loan?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/loan?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="createLoan" type="tns:createLoan"/>
@@ -1192,9 +1177,9 @@
       <soap:address location="http://localhost:8080/Library_webservice/services/loan"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint></con:endpoints><con:operation id="d651056f-74cb-41ef-91c0-b7a8e97f9c6b" isOneWay="false" action="" name="createLoan" bindingOperationName="createLoan" type="Request-Response" outputName="createLoanResponse" inputName="createLoan" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a9ed380-6587-4cf6-98f0-1b762a02fcae" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint></con:endpoints><con:operation id="d651056f-74cb-41ef-91c0-b7a8e97f9c6b" isOneWay="false" action="" name="createLoan" bindingOperationName="createLoan" type="Request-Response" outputName="createLoanResponse" inputName="createLoan" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a9ed380-6587-4cf6-98f0-1b762a02fcae" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
-      <web:token>?</web:token>
+      <web:token>${#Project#adminToken}</web:token>
    </soapenv:Header>
    <soapenv:Body>
       <web:createLoan>
@@ -1203,50 +1188,17 @@
             <!--Optional:-->
             <bookSample>
                <!--Optional:-->
-               <book>
-                  <!--Optional:-->
-                  <author>?</author>
-                  <!--Optional:-->
-                  <id>?</id>
-                  <!--Optional:-->
-                  <status>?</status>
-                  <!--Optional:-->
-                  <summary>?</summary>
-                  <!--Optional:-->
-                  <title>?</title>
-               </book>
-               <!--Optional:-->
-               <id>?</id>
-               <!--Optional:-->
-               <status>?</status>
+               <id>${#Project#bookAvailableBookSampleAvailableId}</id>
             </bookSample>
             <!--Optional:-->
             <borrower>
                <!--Optional:-->
-               <email>?</email>
-               <!--Optional:-->
-               <firstName>?</firstName>
-               <!--Optional:-->
-               <id>?</id>
-               <!--Optional:-->
-               <lastName>?</lastName>
-               <!--Optional:-->
-               <password>?</password>
-               <!--Optional:-->
-               <status>?</status>
+               <id>${#Project#classicActiveId}</id>
             </borrower>
-            <!--Optional:-->
-            <id>?</id>
-            <!--Optional:-->
-            <prolongationNumber>?</prolongationNumber>
-            <!--Optional:-->
-            <returnDate>?</returnDate>
-            <!--Optional:-->
-            <startDate>?</startDate>
          </loan>
       </web:createLoan>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/></con:call></con:operation><con:operation id="fd35aa54-7d2a-4f2d-8f22-1343552900df" isOneWay="false" action="" name="findByUserId" bindingOperationName="findByUserId" type="Request-Response" outputName="findByUserIdResponse" inputName="findByUserId" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7585a2fa-099a-49fa-a7e4-7e4a4850dd3f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="fd35aa54-7d2a-4f2d-8f22-1343552900df" isOneWay="false" action="" name="findByUserId" bindingOperationName="findByUserId" type="Request-Response" outputName="findByUserIdResponse" inputName="findByUserId" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7585a2fa-099a-49fa-a7e4-7e4a4850dd3f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
       <web:token>?</web:token>
    </soapenv:Header>
@@ -1256,24 +1208,24 @@
          <userId>?</userId>
       </web:findByUserId>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findByUserId"/></con:call></con:operation><con:operation id="fe4217b8-bd0b-4638-a3ad-b181ae3a1724" isOneWay="false" action="" name="findLoanById" bindingOperationName="findLoanById" type="Request-Response" outputName="findLoanByIdResponse" inputName="findLoanById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fc597432-e708-457c-86bf-1fdb8ef613c0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findByUserId"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="fe4217b8-bd0b-4638-a3ad-b181ae3a1724" isOneWay="false" action="" name="findLoanById" bindingOperationName="findLoanById" type="Request-Response" outputName="findLoanByIdResponse" inputName="findLoanById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fc597432-e708-457c-86bf-1fdb8ef613c0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
-      <web:token>?</web:token>
+      <web:token>${#Project#classicToken}</web:token>
    </soapenv:Header>
    <soapenv:Body>
       <web:findLoanById>
          <!--Optional:-->
-         <id>?</id>
+         <id>${#Project#loanId}</id>
       </web:findLoanById>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/></con:call></con:operation><con:operation id="e2d14ca3-69dd-4c6b-8ff9-22373742d1e0" isOneWay="false" action="" name="findNotReturned" bindingOperationName="findNotReturned" type="Request-Response" outputName="findNotReturnedResponse" inputName="findNotReturned" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9b45efeb-5809-44a8-b658-6a6e51c9779a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e2d14ca3-69dd-4c6b-8ff9-22373742d1e0" isOneWay="false" action="" name="findNotReturned" bindingOperationName="findNotReturned" type="Request-Response" outputName="findNotReturnedResponse" inputName="findNotReturned" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9b45efeb-5809-44a8-b658-6a6e51c9779a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
       <web:token>?</web:token>
    </soapenv:Header>
    <soapenv:Body>
       <web:findNotReturned/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findNotReturned"/></con:call></con:operation><con:operation id="6f6c6921-9465-4d89-ace1-82a548929061" isOneWay="false" action="" name="updateLoan" bindingOperationName="updateLoan" type="Request-Response" outputName="updateLoanResponse" inputName="updateLoan" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f65e5c31-e852-40cb-a0b1-679e3f2bf990" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findNotReturned"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="6f6c6921-9465-4d89-ace1-82a548929061" isOneWay="false" action="" name="updateLoan" bindingOperationName="updateLoan" type="Request-Response" outputName="updateLoanResponse" inputName="updateLoan" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f65e5c31-e852-40cb-a0b1-679e3f2bf990" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header>
       <web:token>?</web:token>
    </soapenv:Header>
@@ -1327,7 +1279,7 @@
          </loan>
       </web:updateLoan>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/></con:call></con:operation></con:interface><con:testSuite id="7e39ed95-f584-449f-8061-98ce22830a05" name="Test TokenService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e856db88-9622-457b-a5a1-68455440678a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLoginToken" searchProperties="true"><con:settings/><con:testStep type="request" id="099115ec-68f6-40b7-b1c6-1b76f505093f" name="getLoginTokenOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="getLoginTokenOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9227c30-cb0d-4f7e-806f-7e0cd562cbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="7e39ed95-f584-449f-8061-98ce22830a05" name="Test TokenService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e856db88-9622-457b-a5a1-68455440678a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLoginToken" searchProperties="true"><con:settings/><con:testStep type="request" id="099115ec-68f6-40b7-b1c6-1b76f505093f" name="getLoginTokenOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="getLoginTokenOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9227c30-cb0d-4f7e-806f-7e0cd562cbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:getLoginToken>
@@ -1396,7 +1348,13 @@
          </user>
       </web:createUser>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="00b84b13-dff5-403d-a756-10ff6865515a"/><con:assertion type="Schema Compliance" id="9631c0d3-b69d-4550-b8f6-31cc522b7934"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="ac4d740e-3c5f-4f55-b7af-3230225730d1"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="createUserKO : duplicated email" id="a66ba418-dcd3-4cdc-a9e2-f1fd04727f61"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UserServiceSoapBinding</con:interface><con:operation>createUser</con:operation><con:request name="createUserKO : duplicated email" id="3f0cfeb9-6994-4055-8cdd-4fedf0f645be"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/user</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="00b84b13-dff5-403d-a756-10ff6865515a"/><con:assertion type="Schema Compliance" id="9631c0d3-b69d-4550-b8f6-31cc522b7934"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="ac4d740e-3c5f-4f55-b7af-3230225730d1"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="createUserKO : no user" id="32d9de26-c5fc-4535-a30b-e5be5de719fb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UserServiceSoapBinding</con:interface><con:operation>createUser</con:operation><con:request name="createUserKO : no user" id="3f0cfeb9-6994-4055-8cdd-4fedf0f645be"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/user</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:createUser>
+      </web:createUser>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="00b84b13-dff5-403d-a756-10ff6865515a"/><con:assertion type="Schema Compliance" id="9631c0d3-b69d-4550-b8f6-31cc522b7934"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="e26c622c-6b64-4b27-b1df-93695595325e" name="Contains"><con:configuration><token>LBE0000</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="createUserKO : duplicated email" id="a66ba418-dcd3-4cdc-a9e2-f1fd04727f61"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UserServiceSoapBinding</con:interface><con:operation>createUser</con:operation><con:request name="createUserKO : duplicated email" id="3f0cfeb9-6994-4055-8cdd-4fedf0f645be"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/user</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:createUser>
@@ -1797,4 +1755,840 @@
          <adminId>${#Project#classicUnactiveId}</adminId>
       </web:downgradeAdminToBasicUser>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="37856aeb-338d-4274-aa0e-063723d6a1cf" name="SOAP Response"/><con:assertion type="Schema Compliance" id="b23ae793-5926-4214-84e7-25a8f9eb2a01" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a9c49ffb-c1d5-40a8-b0b9-27d5204afd29" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/UserService/downgradeAdminToBasicUser"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDc0MDkyNDMsImlhdCI6MTU0NzM4NzY0MywidXNlciI6IkZsb3JpYW4gUGxvcCJ9.nzCFv4UxH0ZiJ6bw_v9b9sR3lN9mHNTFKq75nz641bM</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0NzQwOTI0MywiaWF0IjoxNTQ3Mzg3NjQzLCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.FujDn664UR6IopyqZWO4dbsbMEo9UJKociKYXOTjqsY</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="37856aeb-338d-4274-aa0e-063723d6a1cf" name="SOAP Response"/><con:assertion type="Schema Compliance" id="b23ae793-5926-4214-84e7-25a8f9eb2a01" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a9c49ffb-c1d5-40a8-b0b9-27d5204afd29" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/UserService/downgradeAdminToBasicUser"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="90fe6289-2d3d-4e85-9fa8-8ab5e87691ba" name="Test BookService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="cacc7b73-fd1a-424f-9aa9-68df4fcebcce" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createBook" searchProperties="true"><con:settings/><con:testStep type="request" id="d198eaae-1e24-4086-ad75-5cc951c4c0ce" name="createBookOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <author>Victor Hugo</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>Les misérables</title>
+         </book>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="57bd1aab-2aff-4dff-aeb7-0085744863e9" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="b8ffb950-3ae2-4151-bbf0-bc2526775f84" name="createBookKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <author>Victor Hugo</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>Les misérables</title>
+         </book>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="47ea1900-f2dc-46bf-bce4-ef6b6dbf3d57" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="37e5ae1c-5200-4f4b-8402-44c6e1af616c" name="createBookKO : no book"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookKO : no book" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="20f0b8b1-dc0d-4942-a71a-1cdfba8fd8f2" name="Contains"><con:configuration><token>LBE0010</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="88c35bbe-6f44-453d-8fc8-e5bdadd56895" name="createBookKO : no author"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookKO : no author" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>Les misérables</title>
+         </book>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a0fabd14-9d41-4841-b2ce-72fe1b44423a" name="Contains"><con:configuration><token>LBE0012</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="56d76ef2-9db9-4e3f-bd4c-6208d77186e5" name="createBookKO : author too long"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookKO : author too long" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <author>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>Les misérables</title>
+         </book>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a0fabd14-9d41-4841-b2ce-72fe1b44423a" name="Contains"><con:configuration><token>LBE0014</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="91144fce-9df4-4e80-9f3e-991c068caeed" name="createBookKO : no title"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookKO : no title" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <author>Victor Hugo</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+         </book>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="41f1740b-68e4-4468-9bfe-7f9ebff1ef00" name="Contains"><con:configuration><token>LBE0011</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="aa246f53-59cf-4f79-b5ad-5388062ec19b" name="createBookKO : title too long"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBook</con:operation><con:request name="createBookKO : title too long" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="96deff68-f1ab-47d4-824c-48b86b840649"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <author>Victor Hugo</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</title>
+         </book>
+      </web:createBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e0d72be-eac0-428d-a6ad-75d644053fd3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a583f409-06bb-4f17-a3e6-7db01885a2b2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="dc9d9bec-8602-4187-bc3a-008f20b45776" name="Contains"><con:configuration><token>LBE0015</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d6f3fa5e-49d0-4a31-a7e3-41253c1bd5c6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateBook" searchProperties="true"><con:settings/><con:testStep type="request" id="fa7fd69d-54f6-41e9-9332-805ad44e0861" name="updateBookOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBook>
+         <!--Optional:-->
+         <book>
+            <id>1</id>
+            <!--Optional:-->
+            <status>U</status>
+         </book>
+      </web:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="db256691-a983-4a11-9f4e-986ba0b5e7f7" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="5e37366a-2894-4935-b1b0-a6c08f6c5e0c" name="updateBookKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBook>
+         <!--Optional:-->
+         <book>
+            <id>1</id>
+            <!--Optional:-->
+            <status>U</status>
+         </book>
+      </web:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="b7f71fbe-ded9-487a-ab04-b5cff5a4a739" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="2c639ca0-6632-4739-9153-dfa09f92e548" name="updateBookKO : no book"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookKO : no book" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBook>
+      </web:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="29e22ce9-eac1-404b-9b3b-64508637ce1c" name="Contains"><con:configuration><token>LBE0010</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="15f753fc-91b0-4d2b-8ea7-a9f24b9d3c26" name="updateBookKO : no book id"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookKO : no book id" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBook>
+      	<book>
+      	</book>
+      </web:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="29e22ce9-eac1-404b-9b3b-64508637ce1c" name="Contains"><con:configuration><token>LBE0013</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="e5391926-94c1-4d01-a435-38f9fe715951" name="updateBookKO : author too long"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookKO : author too long" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <id>1</id>
+            <!--Optional:-->
+            <author>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>Les misérables</title>
+         </book>
+      </web:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="29e22ce9-eac1-404b-9b3b-64508637ce1c" name="Contains"><con:configuration><token>LBE0014</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="491a2236-ca8b-4d38-b3cf-bcfe996aae84" name="updateBookKO : title too long"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookKO : title too long" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBook>
+         <!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <id>1</id><!--Optional:-->
+            <author>Victor Hugo</author>
+            <!--Optional:-->
+            <status>A</status>
+            <!--Optional:-->
+            <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</title>
+         </book>
+      </web:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="29e22ce9-eac1-404b-9b3b-64508637ce1c" name="Contains"><con:configuration><token>LBE0015</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="570ad639-6ed6-4ad1-a656-cda414551288" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findBookById" searchProperties="true"><con:settings/><con:testStep type="request" id="2b47897c-781c-4541-a7d9-77fa24ce9373" name="findBookByIdOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="findBookByIdOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="da162619-5943-45d5-9ae0-88f7fbb1cd6a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>${#Project#availableBookId}</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="758580be-2616-4f56-83e7-6b93a8a5dbca" name="SOAP Response"/><con:assertion type="Schema Compliance" id="2fe5dc6b-ab96-4412-ba5a-690b2d74494e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="c5622153-ac7a-43e3-87ce-4eb62c9d7022" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="80a1fe1c-47f4-48a1-b8cd-49f7290f21d2" name="findBookByIdOK : not found"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="findBookByIdOK : not found" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="da162619-5943-45d5-9ae0-88f7fbb1cd6a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>5</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="758580be-2616-4f56-83e7-6b93a8a5dbca" name="SOAP Response"/><con:assertion type="Schema Compliance" id="2fe5dc6b-ab96-4412-ba5a-690b2d74494e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="c5622153-ac7a-43e3-87ce-4eb62c9d7022" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6715238f-177b-4d5f-a8db-19ba4e56f138" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findBookByAuthor" searchProperties="true"><con:settings/><con:testStep type="request" id="81cf03e5-faa6-4719-a05a-6ba526fc016a" name="findBookByAuthorOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookByAuthor</con:operation><con:request name="findBookByAuthorOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="cec936b2-ecc6-452f-be13-f65e3db29bd3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookByAuthor>
+         <!--Optional:-->
+         <author>fake</author>
+      </web:findBookByAuthor>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="245479d1-4efe-4147-bcca-936bc4eab211" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d6383418-e79f-4da7-9045-c4da676f1991" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="f0845242-95f9-48ee-80e8-59cf47931807" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByAuthor"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="7235ee66-b1ea-460c-b51a-333a4333527a" name="findBookByAuthorOK : not found"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookByAuthor</con:operation><con:request name="findBookByAuthorOK : not found" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="cec936b2-ecc6-452f-be13-f65e3db29bd3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookByAuthor>
+         <!--Optional:-->
+         <author>blablablablabl</author>
+      </web:findBookByAuthor>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="245479d1-4efe-4147-bcca-936bc4eab211" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d6383418-e79f-4da7-9045-c4da676f1991" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="f0845242-95f9-48ee-80e8-59cf47931807" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByAuthor"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="e5eb38eb-e735-40bc-8f93-8c03b2301267" name="findBookByAuthorOK : multiple result"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookByAuthor</con:operation><con:request name="findBookByAuthorOK : multiple result" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="cec936b2-ecc6-452f-be13-f65e3db29bd3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookByAuthor>
+         <!--Optional:-->
+         <author>a</author>
+      </web:findBookByAuthor>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="245479d1-4efe-4147-bcca-936bc4eab211" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d6383418-e79f-4da7-9045-c4da676f1991" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="f0845242-95f9-48ee-80e8-59cf47931807" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByAuthor"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="738096b6-6558-42de-86a6-25dc6e56c683" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findBookByTitle" searchProperties="true"><con:settings/><con:testStep type="request" id="f11d9f02-1ed5-4105-b323-fd025d8a5e70" name="findBookByTitleOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookByTitle</con:operation><con:request name="findBookByTitleOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="6e3cd97e-68bd-45d4-8195-bfed7dfc1f18"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookByTitle>
+         <!--Optional:-->
+         <title>bleach</title>
+      </web:findBookByTitle>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1191dc0e-24fd-4748-98f2-acc474b6e856" name="SOAP Response"/><con:assertion type="Schema Compliance" id="28264370-2261-4f69-a00d-4a74e6be6cf0" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="410888fb-97e4-46e2-8692-7a279e0b5e40" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByTitle"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="f2163264-a852-42fe-97f4-bef3db06b4c8" name="findBookByTitleOK : not found"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookByTitle</con:operation><con:request name="findBookByTitleOK : not found" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="6e3cd97e-68bd-45d4-8195-bfed7dfc1f18"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookByTitle>
+         <!--Optional:-->
+         <title>blablabla</title>
+      </web:findBookByTitle>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1191dc0e-24fd-4748-98f2-acc474b6e856" name="SOAP Response"/><con:assertion type="Schema Compliance" id="28264370-2261-4f69-a00d-4a74e6be6cf0" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="410888fb-97e4-46e2-8692-7a279e0b5e40" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByTitle"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="91e7eb4b-20b9-4d0e-aca0-bbcecb37fced" name="findBookByTitleOK : multiple result"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookByTitle</con:operation><con:request name="findBookByTitleOK : multiple result" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="6e3cd97e-68bd-45d4-8195-bfed7dfc1f18"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookByTitle>
+         <!--Optional:-->
+         <title>a</title>
+      </web:findBookByTitle>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1191dc0e-24fd-4748-98f2-acc474b6e856" name="SOAP Response"/><con:assertion type="Schema Compliance" id="28264370-2261-4f69-a00d-4a74e6be6cf0" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="410888fb-97e4-46e2-8692-7a279e0b5e40" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookByTitle"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="37fb283c-ab0c-467a-bb78-e7554b476738" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createBookSample" searchProperties="true"><con:settings/><con:testStep type="request" id="def8aee1-01c2-4d4c-ba8c-8c40bbf32f4c" name="createBookSampleOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBookSample</con:operation><con:request name="createBookSampleOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="71bb2d49-7ed5-4556-aae1-4432042cf4d4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <book>
+               <id>${#Project#availableBookId}</id>
+            </book>
+            <!--Optional:-->
+            <status>A</status>
+         </bookSample>
+      </web:createBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d987b0f4-2189-4ddd-b221-b05e54e0deee" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a0eb86a9-04ef-4bae-8db0-d2bae12bec27" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="b2a21e5b-8044-450d-a349-d731e8df009d" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="95b9d468-ccc3-4034-ada0-f0046fea3e6f" name="createBookSampleKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBookSample</con:operation><con:request name="createBookSampleKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="71bb2d49-7ed5-4556-aae1-4432042cf4d4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <book>
+               <id>${#Project#availableBookId}</id>
+            </book>
+            <!--Optional:-->
+            <status>A</status>
+         </bookSample>
+      </web:createBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d987b0f4-2189-4ddd-b221-b05e54e0deee" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a0eb86a9-04ef-4bae-8db0-d2bae12bec27" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="74e66f7d-3849-4c49-b8e5-268e0721988b" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="521835ff-c2a3-4b67-a7b7-3d6ad9ef33ad" name="createBookSampleKO : no book"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBookSample</con:operation><con:request name="createBookSampleKO : no book" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="71bb2d49-7ed5-4556-aae1-4432042cf4d4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <status>A</status>
+         </bookSample>
+      </web:createBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d987b0f4-2189-4ddd-b221-b05e54e0deee" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a0eb86a9-04ef-4bae-8db0-d2bae12bec27" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="74e66f7d-3849-4c49-b8e5-268e0721988b" name="Contains"><con:configuration><token>LBE0016</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="41b859f2-f057-4d28-a93d-22230935535a" name="createBookSampleKO : no book id"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBookSample</con:operation><con:request name="createBookSampleKO : no book id" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="71bb2d49-7ed5-4556-aae1-4432042cf4d4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <book>
+            </book>
+            <!--Optional:-->
+            <status>A</status>
+         </bookSample>
+      </web:createBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d987b0f4-2189-4ddd-b221-b05e54e0deee" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a0eb86a9-04ef-4bae-8db0-d2bae12bec27" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="74e66f7d-3849-4c49-b8e5-268e0721988b" name="Contains"><con:configuration><token>LBE0016</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="2ce44e7f-812c-48bf-be2e-cb5e1f0b54e4" name="createBookSampleKO : book doesn't exist"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>createBookSample</con:operation><con:request name="createBookSampleKO : book doesn't exist" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="71bb2d49-7ed5-4556-aae1-4432042cf4d4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <book>
+            	<id>99999</id>
+            </book>
+            <!--Optional:-->
+            <status>A</status>
+         </bookSample>
+      </web:createBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d987b0f4-2189-4ddd-b221-b05e54e0deee" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a0eb86a9-04ef-4bae-8db0-d2bae12bec27" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="74e66f7d-3849-4c49-b8e5-268e0721988b" name="Contains"><con:configuration><token>LBE0019</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/createBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="cbbe6ef7-5c77-49ff-b8c3-87c6eb0d981c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateBookSample" searchProperties="true"><con:settings/><con:testStep type="request" id="36c9b783-4500-45bc-b619-ac1207a192d3" name="updateBookSampleOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBookSample</con:operation><con:request name="updateBookSampleOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d92aace9-93c1-4540-bce5-1e47409cb883"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <id>${#Project#fakeBookSampleId}</id>
+            <!--Optional:-->
+            <status>U</status>
+         </bookSample>
+      </web:updateBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e7b1be7-64d0-4f31-b12b-e87c9964ebb3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="89de6944-0370-4491-8005-eb17188e684b" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="0c247bcf-536f-4460-b5ce-44fdf23a2707" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="88ff1a16-209f-4b8a-9867-46678e595629" name="updateBookSampleKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBookSample</con:operation><con:request name="updateBookSampleKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d92aace9-93c1-4540-bce5-1e47409cb883"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <id>${#Project#fakeBookSampleId}</id>
+            <!--Optional:-->
+            <status>U</status>
+         </bookSample>
+      </web:updateBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e7b1be7-64d0-4f31-b12b-e87c9964ebb3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="89de6944-0370-4491-8005-eb17188e684b" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="f1a62e5a-f9fb-4bfc-b53e-886a73246503" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="527bb697-9841-4079-8326-8f588e79e7d8" name="updateBookSampleKO : no booksample"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBookSample</con:operation><con:request name="updateBookSampleKO : no booksample" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d92aace9-93c1-4540-bce5-1e47409cb883"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBookSample>
+      </web:updateBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e7b1be7-64d0-4f31-b12b-e87c9964ebb3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="89de6944-0370-4491-8005-eb17188e684b" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="f1a62e5a-f9fb-4bfc-b53e-886a73246503" name="Contains"><con:configuration><token>LBE0017</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="eabe6adb-05c1-458c-a9f5-984959461edc" name="updateBookSampleKO : booksample doesn't exist"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBookSample</con:operation><con:request name="updateBookSampleKO : booksample doesn't exist" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d92aace9-93c1-4540-bce5-1e47409cb883"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateBookSample>
+         <!--Optional:-->
+         <bookSample>
+            <!--Optional:-->
+            <id>9999</id>
+            <!--Optional:-->
+            <status>U</status>
+         </bookSample>
+      </web:updateBookSample>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0e7b1be7-64d0-4f31-b12b-e87c9964ebb3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="89de6944-0370-4491-8005-eb17188e684b" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="f1a62e5a-f9fb-4bfc-b53e-886a73246503" name="Contains"><con:configuration><token>LTE0003</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3c70a20b-2727-4818-aeca-68ed84876ee8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findBookSampleByBookId" searchProperties="true"><con:settings/><con:testStep type="request" id="5806f6bd-855f-4359-ae32-9f870d5f74ba" name="findBookSampleByBookIdOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookSampleByBookId</con:operation><con:request name="findBookSampleByBookIdOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="1b547b45-f7c7-44f3-8fea-090b0baed9a4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookSampleByBookId>
+         <!--Optional:-->
+         <bookId>${#Project#fakeBookId}</bookId>
+      </web:findBookSampleByBookId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dd5f3757-2135-4d8d-bfbf-cb19733acb11" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c0284290-84f1-4041-95b1-d978bb6c47ea" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="5d434576-cf36-492a-b046-a570d671a4f2" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleByBookId"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="f6da20f7-4f49-4ada-ba35-7c602c4eacdb" name="findBookSampleByBookIdOK : not found"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookSampleByBookId</con:operation><con:request name="findBookSampleByBookIdOK : not found" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="1b547b45-f7c7-44f3-8fea-090b0baed9a4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookSampleByBookId>
+         <!--Optional:-->
+         <bookId>9999</bookId>
+      </web:findBookSampleByBookId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dd5f3757-2135-4d8d-bfbf-cb19733acb11" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c0284290-84f1-4041-95b1-d978bb6c47ea" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="5d434576-cf36-492a-b046-a570d671a4f2" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleByBookId"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="deb2b00e-ab22-48cc-8eb9-3498d12add91" name="findBookSampleByBookIdOK : multiple result"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookSampleByBookId</con:operation><con:request name="findBookSampleByBookIdOK : multiple result" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="1b547b45-f7c7-44f3-8fea-090b0baed9a4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookSampleByBookId>
+         <!--Optional:-->
+         <bookId>${#Project#availableBookId}</bookId>
+      </web:findBookSampleByBookId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dd5f3757-2135-4d8d-bfbf-cb19733acb11" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c0284290-84f1-4041-95b1-d978bb6c47ea" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="5d434576-cf36-492a-b046-a570d671a4f2" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleByBookId"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c2e519ba-dd2e-4b2c-87d2-4d4510199897" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findBookSampleById" searchProperties="true"><con:settings/><con:testStep type="request" id="ed421e65-8b47-45b8-bac8-8cb2c1112559" name="findBookSampleByIdOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookSampleById</con:operation><con:request name="findBookSampleByIdOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="1d0a3aba-398f-41d8-a714-33b90928731d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookSampleById>
+         <!--Optional:-->
+         <id>${#Project#fakeBookSampleId}</id>
+      </web:findBookSampleById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2d4eb940-aeab-433b-a49b-3aecc818467c" name="SOAP Response"/><con:assertion type="Schema Compliance" id="20178d83-e9f5-4a76-bd23-cffcd1670d76" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="daa84d3c-4414-4fee-af22-dc01962d24d8" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="3ba3732a-829a-400e-9abb-57a1ec41ce73" name="findBookSampleByIdKO : not found"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookSampleById</con:operation><con:request name="findBookSampleByIdKO : not found" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="1d0a3aba-398f-41d8-a714-33b90928731d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookSampleById>
+         <!--Optional:-->
+         <id>9999</id>
+      </web:findBookSampleById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2d4eb940-aeab-433b-a49b-3aecc818467c" name="SOAP Response"/><con:assertion type="Schema Compliance" id="20178d83-e9f5-4a76-bd23-cffcd1670d76" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="daa84d3c-4414-4fee-af22-dc01962d24d8" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findBookSampleById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="7a321a6e-7412-4a68-9c00-190f2b95df32" name="Test LoanService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2b9d2bf1-05e9-49fd-8743-8ac4372669ed" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createLoan" searchProperties="true"><con:settings/><con:testStep type="request" id="1dc26946-3370-470e-bc9e-bbc2e01d54e4" name="createLoanOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookAvailableBookSampleAvailableId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="07ed291d-e893-4e57-94df-baf16f3b45e4" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="41d011c5-e8ac-4f6f-892e-b9551767be33" name="createLoanKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookAvailableBookSampleAvailableId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="50e55c75-cbcc-411b-9530-ea6eeaea2e36" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="1e004b13-2dab-4197-8bc1-743c2e2fa6a4" name="createLoanKO : no loan"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : no loan" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="50e55c75-cbcc-411b-9530-ea6eeaea2e36" name="Contains"><con:configuration><token>LBE0024</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="1080e076-2702-422e-8d06-9292fe972a7a" name="createLoanKO : no booksample"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : no booksample" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="50e55c75-cbcc-411b-9530-ea6eeaea2e36" name="Contains"><con:configuration><token>LBE0020</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="93fa6dbe-e579-4717-bfb3-6b430ff2ee94" name="createLoanKO : no borrower"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : no borrower" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookAvailableBookSampleAvailableId2}</id>
+            </bookSample>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="e72b07f9-852c-436d-a321-ce24e8a58e96" name="Contains"><con:configuration><token>LBE0022</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="23d38298-7599-4a0f-a396-9f55c70feb39" name="createLoanKO : booksample doesn't exist"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : booksample doesn't exist" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>9999</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a8d037dc-137d-491a-8fd4-a678374c1247" name="Contains"><con:configuration><token>LBE0020</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="addd5dc5-6719-416d-b2af-d698edf6b7fa" name="createLoanKO : borrower doesn't exist"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : borrower doesn't exist" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookAvailableBookSampleAvailableId2}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>9999</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="6acdbe4e-9c84-4a37-b441-5578ce4ee15a" name="Contains"><con:configuration><token>LBE0022</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="7af515f4-ce80-40c3-aa6d-02edaf53e41d" name="createLoanKO : booksample already borrowed"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : booksample already borrowed" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookSampleBorrowedId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="1e195e09-e1cb-4543-a918-de13bd5826d2" name="Contains"><con:configuration><token>LBE0027</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="18b1a9de-3691-4a1e-80ed-813f81944127" name="createLoanOK : returned booksample"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanOK : returned booksample" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookSampleNotBorrowedId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="c00103fa-a4d3-4b97-ac15-841770ced7cb" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="5aa91b9b-8a54-4ec3-8ae9-fe8c9baa06e9" name="createLoanKO : booksample unavailable"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : booksample unavailable" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookAvailableBookSampleUnavailableId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="c8bf200b-3b88-4518-865f-672cff3ac23f" name="Contains"><con:configuration><token>LBE0028</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="6067bfb2-c603-42dd-8ef6-f600bf568941" name="createLoanKO : booksample's book unavailable"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : booksample's book unavailable" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookUnavailableBookSampleAvailableId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="c8bf200b-3b88-4518-865f-672cff3ac23f" name="Contains"><con:configuration><token>LBE0028</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="8b8f4505-6779-43fc-9359-3b3dcceb8828" name="createLoanKO : booksample and booksample's book unavailable"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="createLoanKO : booksample and booksample's book unavailable" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a5e90aa-2ea5-44b0-8f29-f0cc56d52984"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#Project#bookUnavailableBookSampleUnavailableId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#Project#classicActiveId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80cbbb4e-9b6f-4af9-8787-5f89c92fe4a3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="916d20b0-e5be-4ac7-b59f-862dd33c1d2e" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="c8bf200b-3b88-4518-865f-672cff3ac23f" name="Contains"><con:configuration><token>LBE0028</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/createLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="dcf9ed68-bd64-4a14-92df-a7a1bf982753" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateLoan" searchProperties="true"><con:settings/><con:testStep type="request" id="b6899403-83a5-415a-9b7e-b2fbcb7c7e68" name="updateLoanOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="updateLoanOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dda8bd62-1e74-40f1-b822-80f4ed463ee3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <id>${#Project#loanId}</id>
+            <!--Optional:-->
+            <prolongationNumber>1</prolongationNumber>
+            <!--Optional:-->
+            <returnDate>2019-02-19T00:00:00</returnDate>
+         </loan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1556246f-ed05-41f1-850b-ace3436d2033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="60b51143-d70e-46b8-8392-2a5944b61c6a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6dae4b8f-64c5-47a0-97c0-3c78d2e22478" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="8ab0a7b8-c5d3-44de-9b96-e923053cbceb" name="updateLoanKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="updateLoanKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dda8bd62-1e74-40f1-b822-80f4ed463ee3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <id>${#Project#loanId}</id>
+            <!--Optional:-->
+            <prolongationNumber>1</prolongationNumber>
+            <!--Optional:-->
+            <returnDate>2019-02-19T00:00:00</returnDate>
+         </loan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1556246f-ed05-41f1-850b-ace3436d2033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="60b51143-d70e-46b8-8392-2a5944b61c6a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="819f4254-05fc-4b87-9d75-ed97085404c8" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="4a6303c4-f47e-41d5-9f2e-d6b8ffd50867" name="updateLoanKO : no loan"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="updateLoanKO : no loan" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dda8bd62-1e74-40f1-b822-80f4ed463ee3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1556246f-ed05-41f1-850b-ace3436d2033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="60b51143-d70e-46b8-8392-2a5944b61c6a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="b0a71d2e-ff0e-4364-9ed6-fe32fdc8fa30" name="Contains"><con:configuration><token>LBE0024</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="70fefc17-e109-4c45-b115-ec4bf7183d59" name="updateLoanKO : no loan referenced"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="updateLoanKO : no loan referenced" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dda8bd62-1e74-40f1-b822-80f4ed463ee3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <prolongationNumber>1</prolongationNumber>
+            <!--Optional:-->
+            <returnDate>2019-02-19T00:00:00</returnDate>
+         </loan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1556246f-ed05-41f1-850b-ace3436d2033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="60b51143-d70e-46b8-8392-2a5944b61c6a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="96461888-2413-49b6-9526-0fd1bf6913e2" name="Contains"><con:configuration><token>LBE0024</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="fdc773a5-8415-4ab9-94b3-4a49475156d6" name="updateLoanKO : no existing loan"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="updateLoanKO : no existing loan" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dda8bd62-1e74-40f1-b822-80f4ed463ee3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <id>9999</id>
+            <!--Optional:-->
+            <prolongationNumber>1</prolongationNumber>
+            <!--Optional:-->
+            <returnDate>2019-02-19T00:00:00</returnDate>
+         </loan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1556246f-ed05-41f1-850b-ace3436d2033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="60b51143-d70e-46b8-8392-2a5944b61c6a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="b0e84749-8786-46ca-bf9d-c0bcd89cac21" name="Contains"><con:configuration><token>LBE0026</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="542048fd-db44-449e-96c4-9e5a3490a213" name="updateLoanKO : ambigous return date"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="updateLoanKO : ambigous return date" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dda8bd62-1e74-40f1-b822-80f4ed463ee3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <id>${#Project#loanId}</id>
+            <!--Optional:-->
+            <prolongationNumber>1</prolongationNumber>
+            <!--Optional:-->
+            <returnDate>2019-01-18T17:28:00</returnDate>
+         </loan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1556246f-ed05-41f1-850b-ace3436d2033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="60b51143-d70e-46b8-8392-2a5944b61c6a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="93323496-20dd-46f9-9b80-a2fdbe0e6c4a" name="Contains"><con:configuration><token>LBE0025</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3ca0ca7e-3ad6-4624-8167-7b0bae874d61" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findNotReturned" searchProperties="true"><con:settings/><con:testStep type="request" id="682bf305-1856-4855-b233-dd00c5c0cea0" name="findNotReturnedOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findNotReturned</con:operation><con:request name="findNotReturnedOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2992cf67-2d52-44ab-9839-a69a8752c868"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findNotReturned/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="621f084a-ed80-43f7-8ac8-76fbcb73eab5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="3923b00e-ba93-40c3-ae29-50f56527f1ce" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d6d88d3b-d690-4802-833f-46d181f7701e" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findNotReturned"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="fb02f4c1-93e5-4f28-9f74-83a08b3bd3de" name="findNotReturnedKO : not admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findNotReturned</con:operation><con:request name="findNotReturnedKO : not admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2992cf67-2d52-44ab-9839-a69a8752c868"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findNotReturned/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="621f084a-ed80-43f7-8ac8-76fbcb73eab5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="3923b00e-ba93-40c3-ae29-50f56527f1ce" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="763566e8-1965-4a5c-aeef-85bcff72eeaf" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findNotReturned"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="1cd21ed4-9ff1-4a12-8a8d-9dfa5892c874" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findByUserId" searchProperties="true"><con:settings/><con:testStep type="request" id="e41ab3d9-0d6f-4e21-8db5-bf14730ffde6" name="findByUserIdOK : admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findByUserId</con:operation><con:request name="findByUserIdOK : admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="67b46069-dcfe-4a7e-8489-bb4ef8a0653c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findByUserId>
+         <!--Optional:-->
+         <userId>${#Project#classicActiveId}</userId>
+      </web:findByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1687776f-0f49-4b4c-a216-453baa5373aa" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f8408d73-322e-4840-9740-eb218aafe4e2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="a9735da7-c14d-4329-98d2-3acd4ba76c85" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findByUserId"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="988a8a7c-cd46-4958-b325-a9e8a9dbeddb" name="findByUserIdOK : same user"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findByUserId</con:operation><con:request name="findByUserIdOK : same user" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="67b46069-dcfe-4a7e-8489-bb4ef8a0653c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findByUserId>
+         <!--Optional:-->
+         <userId>${#Project#classicActiveId}</userId>
+      </web:findByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1687776f-0f49-4b4c-a216-453baa5373aa" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f8408d73-322e-4840-9740-eb218aafe4e2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="a9735da7-c14d-4329-98d2-3acd4ba76c85" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findByUserId"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="1cad5ec5-3ec2-495a-9a49-044d5f39374a" name="findByUserIdKO : not admin and not same user"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findByUserId</con:operation><con:request name="findByUserIdKO : not admin and not same user" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="67b46069-dcfe-4a7e-8489-bb4ef8a0653c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findByUserId>
+         <!--Optional:-->
+         <userId>${#Project#adminActiveId}</userId>
+      </web:findByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1687776f-0f49-4b4c-a216-453baa5373aa" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f8408d73-322e-4840-9740-eb218aafe4e2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a2b6928a-44a9-4aa5-9666-27908367136c" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findByUserId"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="5310cad4-385c-4e36-8dab-8f5f60328b1e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findByLoanId" searchProperties="true"><con:settings/><con:testStep type="request" id="22775ad4-857b-4229-9fa8-337aa2ba9288" name="findLoanByIdOK : user is the borrower"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findLoanById</con:operation><con:request name="findLoanByIdOK : user is the borrower" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="bd043b61-2e32-491d-965b-a149e6912516"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findLoanById>
+         <!--Optional:-->
+         <id>${#Project#loanId}</id>
+      </web:findLoanById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="abf0bacb-f0f6-4337-934b-84b50f84aade" name="SOAP Response"/><con:assertion type="Schema Compliance" id="9ac169f3-50eb-4ab8-96b5-3462dcfa1dc8" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="673d2d91-4bb1-4446-88e6-28ea0244a010" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="29c0150a-4897-48a6-a6f4-ad7faeb251bf" name="findLoanByIdOK : admin"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findLoanById</con:operation><con:request name="findLoanByIdOK : admin" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="bd043b61-2e32-491d-965b-a149e6912516"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findLoanById>
+         <!--Optional:-->
+         <id>${#Project#loanId}</id>
+      </web:findLoanById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="abf0bacb-f0f6-4337-934b-84b50f84aade" name="SOAP Response"/><con:assertion type="Schema Compliance" id="9ac169f3-50eb-4ab8-96b5-3462dcfa1dc8" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="673d2d91-4bb1-4446-88e6-28ea0244a010" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="d6e2ccb6-1083-4649-82f9-decac25c367e" name="findLoanByIdKO : not admin and not same user"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findLoanById</con:operation><con:request name="findLoanByIdKO : not admin and not same user" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="bd043b61-2e32-491d-965b-a149e6912516"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findLoanById>
+         <!--Optional:-->
+         <id>${#Project#loanAdminId}</id>
+      </web:findLoanById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="abf0bacb-f0f6-4337-934b-84b50f84aade" name="SOAP Response"/><con:assertion type="Schema Compliance" id="9ac169f3-50eb-4ab8-96b5-3462dcfa1dc8" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="5db8402d-f33a-4f0e-80bb-a0f1bf820c0c" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDc4NTYyMDYsImlhdCI6MTU0NzgzNDYwNiwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.SbUp-eYt6RECh6GvAPAwok_PCd8WKZtekCbWpxB70m8</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0Nzg1NjIwNiwiaWF0IjoxNTQ3ODM0NjA2LCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.mao4m3YwPbdiHhbJbryOTGgyWPqPpvBgwM0z2lWOwTw</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
