@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://cxf.apache.org/configuration/beans"
+    xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xmlns:soap="http://cxf.apache.org/bindings/soap"
+    
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://cxf.apache.org/jaxws
+                        http://cxf.apache.org/schemas/jaxws.xsd
+                        http://www.cxf.apache.org/bindings/soap
+                        http://www.cxf.apache.org/bindings/schemas/configuration/soap.xsd
+                        
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx.xsd
+                        http://www.springframework.org/schema/data/jpa
+                        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.BookService" address="/book"
+        serviceBean="#bookservice">
+    </jaxws:server>
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.LoanService" address="/loan"
+        serviceBean="#loanservice">
+    </jaxws:server>
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.UserService" address="/user"
+        serviceBean="#userservice">
+    </jaxws:server>
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.TokenService" address="/token"
+        serviceBean="#loginservice">
+    </jaxws:server>
+    
+    <bean id="bookservice" class="fr.nmocs.library.webservice.impl.BookServiceImpl" />
+    <bean id="loanservice" class="fr.nmocs.library.webservice.impl.LoanServiceImpl"/>
+    <bean id="userservice" class="fr.nmocs.library.webservice.impl.UserServiceImpl" />
+    <bean id="loginservice" class="fr.nmocs.library.webservice.impl.TokenServiceImpl" />
+    
+    
+
+    <!-- CONFIGURATION JPA -->
+    <context:property-placeholder location="classpath:/jdbc.properties" />
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        p:driverClassName="${jdbc.driverClassName}"
+        p:url="${jdbc.url}"
+        p:username="${jdbc.username}"
+        p:password="${jdbc.password}"/>
+
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+
+    <!-- Configure the entity manager factory bean -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+        <!-- Set JPA properties -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="fr.nmocs.library" />
+    </bean>
+
+    <!-- Configure the transaction manager bean -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <tx:annotation-driven />
+
+    <jpa:repositories base-package="fr.nmocs.library" />
+</beans>
