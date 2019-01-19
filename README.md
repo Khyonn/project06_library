@@ -14,7 +14,7 @@ Le système comprendra :
 
 ## Contraintes techniques
 Dans une démarche SOA, le coeur de la logique métier sera portée par un module webservice. Les applications s'appuieront sur ce webservice pour fonctionner.  
-Le projet sera réalisé en Java EE et du framework Spring. Les livrables seront packagés avec Maven
+Le projet sera réalisé en Java EE et avec l'aide du framework Spring. Les livrables seront packagés avec Maven.
 
 ## Premier rendu attendu
 1) Le web service SOAP connecté à la base de données
@@ -44,7 +44,7 @@ L'application est découpé en plusieurs modules Maven :
 1) Démarrez l'application webservice en local sur le port 8080 et vérifiez que le service fonctionne en accédant à la page `http://localhost:8080/Library_webservice/services`
 2) Placez vous dans le dossier resources/sql
     > $ cd resources/sql
-3) Lancez le script afin d'avoir le jeu de données minimal pour les testq
+3) Lancez le script afin d'avoir le jeu de données minimal pour les tests
     > $ ./run_sql.sh
 4) Importer le projet SOAP UI (`webservice/src/main/resources/soap/Library-soapui-project.xml`)
 5) Double-clic sur le projet `Library`
