@@ -21,6 +21,8 @@
         <!-- == WEBSERVICE == -->
         <javax.version>8.0</javax.version>
         <cxf.version>3.2.7</cxf.version>
+        <!-- == MAIL API == -->
+        <mail-api.version>1.6.0</mail-api.version>
         <!-- == DATABASE == -->
         <mysql-connector.version>8.0.13</mysql-connector.version>
         <dbcp.version>1.4</dbcp.version>
@@ -106,6 +108,13 @@
                 <version>${cxf.version}</version>
             </dependency>
             
+            <!-- MAIL API -->
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${mail-api.version}</version>
+            </dependency>
+            
             <!-- UTILS -->
 	        <dependency>
 			    <groupId>com.auth0</groupId>
@@ -136,37 +145,49 @@
     
     <build>
         <pluginManagement>
-        <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+        <!-- lock down plugins versions to avoid using Maven defaults -->
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
                 
                 <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.0.2</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.7.0</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.20.1</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>3.0.2</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
                     <version>2.5.2</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -177,5 +198,7 @@
         <module>consumer</module>
         <module>business</module>
         <module>webservice</module>
+    <module>webapp</module>
+    <module>batch</module>
   </modules>
 </project>

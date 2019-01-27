@@ -37,7 +37,7 @@ L'application est découpé en plusieurs modules Maven :
 - business : OK
 - webservice : OK
 - webapp : TODO
-- batch : TODO
+- batch : OK
 - script SQL : OK
 
 ### Tests SOAP UI
@@ -50,3 +50,14 @@ L'application est découpé en plusieurs modules Maven :
 5) Double-clic sur le projet `Library`
 6) Onglet `Test Suites`
 7) Clic `bouton play`
+
+### Configuration Batch
+1) Lancer mvn package sur le dossier batch
+2) Récupérer le zip `target/batch-1.0-SNAPSHOT-archive-deploy.zip` et le dézipper
+3) Modifier les fichiers de configurations (dossier `conf`) :
+    - `email.properties` permet de renseigner les informations pour envoyer des emails (serveur SMTP (et port), email, password)
+    - `webservice.properties` permet de renseigner les informations liés au webservice (*base URL du webservice* (garder `http://localhost:8080/Library_webservice/services` si en local), email, password)
+4) Lancer le batch (dossier `bin`)
+    > $ ./run.sh
+
+Les utilisateurs n'ayant pas rendu les livres prêtés recevront un email (voir dossier SPAM)

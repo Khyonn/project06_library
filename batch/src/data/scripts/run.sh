@@ -1,0 +1,1 @@
+java -jar ../lib/batch-1.0-SNAPSHOT.jar ../conf/webservice.properties ../conf/email.properties
