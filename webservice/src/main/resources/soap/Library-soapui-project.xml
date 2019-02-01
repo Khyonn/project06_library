@@ -938,6 +938,8 @@
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="createLoan" type="tns:createLoan"/>
       <xs:element name="createLoanResponse" type="tns:createLoanResponse"/>
+      <xs:element name="extendLoan" type="tns:extendLoan"/>
+      <xs:element name="extendLoanResponse" type="tns:extendLoanResponse"/>
       <xs:element name="findByUserId" type="tns:findByUserId"/>
       <xs:element name="findByUserIdResponse" type="tns:findByUserIdResponse"/>
       <xs:element name="findLoanById" type="tns:findLoanById"/>
@@ -1000,6 +1002,26 @@
           <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loan"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="updateLoan">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="loan" type="tns:loan"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateLoanResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:loan"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="extendLoan">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="extendLoanResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:loan"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="findLoanById">
         <xs:sequence>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
@@ -1020,16 +1042,6 @@
           <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loan"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="updateLoan">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="loan" type="tns:loan"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="updateLoanResponse">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:loan"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
       <xs:complexType name="LibraryWebserviceException">
         <xs:sequence>
@@ -1045,6 +1057,14 @@
   </wsdl:message>
   <wsdl:message name="findByUserIdResponse">
     <wsdl:part element="tns:findByUserIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findLoanById">
+    <wsdl:part element="tns:findLoanById" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findByUserId">
+    <wsdl:part element="tns:findByUserId" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="findNotReturned">
     <wsdl:part element="tns:findNotReturned" name="parameters"></wsdl:part>
@@ -1063,16 +1083,15 @@
   <wsdl:message name="createLoanResponse">
     <wsdl:part element="tns:createLoanResponse" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="extendLoan">
+    <wsdl:part element="tns:extendLoan" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendLoanResponse">
+    <wsdl:part element="tns:extendLoanResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="findLoanByIdResponse">
     <wsdl:part element="tns:findLoanByIdResponse" name="parameters"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findLoanById">
-    <wsdl:part element="tns:findLoanById" name="parameters"></wsdl:part>
-    <wsdl:part element="tns:token" name="token"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findByUserId">
-    <wsdl:part element="tns:findByUserId" name="parameters"></wsdl:part>
-    <wsdl:part element="tns:token" name="token"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="findNotReturnedResponse">
     <wsdl:part element="tns:findNotReturnedResponse" name="parameters"></wsdl:part>
@@ -1088,6 +1107,16 @@
       <wsdl:output message="tns:findNotReturnedResponse" name="findNotReturnedResponse"></wsdl:output>
       <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="updateLoan">
+      <wsdl:input message="tns:updateLoan" name="updateLoan"></wsdl:input>
+      <wsdl:output message="tns:updateLoanResponse" name="updateLoanResponse"></wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extendLoan">
+      <wsdl:input message="tns:extendLoan" name="extendLoan"></wsdl:input>
+      <wsdl:output message="tns:extendLoanResponse" name="extendLoanResponse"></wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="findLoanById">
       <wsdl:input message="tns:findLoanById" name="findLoanById"></wsdl:input>
       <wsdl:output message="tns:findLoanByIdResponse" name="findLoanByIdResponse"></wsdl:output>
@@ -1096,11 +1125,6 @@
     <wsdl:operation name="findByUserId">
       <wsdl:input message="tns:findByUserId" name="findByUserId"></wsdl:input>
       <wsdl:output message="tns:findByUserIdResponse" name="findByUserIdResponse"></wsdl:output>
-      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="updateLoan">
-      <wsdl:input message="tns:updateLoan" name="updateLoan"></wsdl:input>
-      <wsdl:output message="tns:updateLoanResponse" name="updateLoanResponse"></wsdl:output>
       <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
@@ -1132,6 +1156,32 @@
         <soap:fault name="LibraryWebserviceException" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="updateLoan">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateLoan">
+        <soap:header message="tns:updateLoan" part="token" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extendLoan">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extendLoan">
+        <soap:header message="tns:extendLoan" part="token" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extendLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="findLoanById">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findLoanById">
@@ -1152,19 +1202,6 @@
         <soap:body parts="parameters" use="literal"/>
       </wsdl:input>
       <wsdl:output name="findByUserIdResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-      <wsdl:fault name="LibraryWebserviceException">
-        <soap:fault name="LibraryWebserviceException" use="literal"/>
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="updateLoan">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="updateLoan">
-        <soap:header message="tns:updateLoan" part="token" use="literal"></soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="updateLoanResponse">
         <soap:body use="literal"/>
       </wsdl:output>
       <wsdl:fault name="LibraryWebserviceException">
@@ -1279,7 +1316,17 @@
          </loan>
       </web:updateLoan>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="7e39ed95-f584-449f-8061-98ce22830a05" name="Test TokenService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e856db88-9622-457b-a5a1-68455440678a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLoginToken" searchProperties="true"><con:settings/><con:testStep type="request" id="099115ec-68f6-40b7-b1c6-1b76f505093f" name="getLoginTokenOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="getLoginTokenOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9227c30-cb0d-4f7e-806f-7e0cd562cbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/updateLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8a6d425e-c630-49b9-aa3a-fa15a71cf223" isOneWay="false" action="" name="extendLoan" bindingOperationName="extendLoan" type="Request-Response" outputName="extendLoanResponse" inputName="extendLoan" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7799c5aa-bc32-4e52-a623-c7c482e0b2f4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>?</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:extendLoan>
+         <!--Optional:-->
+         <id>?</id>
+      </web:extendLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="7e39ed95-f584-449f-8061-98ce22830a05" name="Test TokenService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e856db88-9622-457b-a5a1-68455440678a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLoginToken" searchProperties="true"><con:settings/><con:testStep type="request" id="099115ec-68f6-40b7-b1c6-1b76f505093f" name="getLoginTokenOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="getLoginTokenOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9227c30-cb0d-4f7e-806f-7e0cd562cbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:getLoginToken>
@@ -2591,4 +2638,14 @@
          <id>${#Project#loanAdminId}</id>
       </web:findLoanById>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="abf0bacb-f0f6-4337-934b-84b50f84aade" name="SOAP Response"/><con:assertion type="Schema Compliance" id="9ac169f3-50eb-4ab8-96b5-3462dcfa1dc8" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="5db8402d-f33a-4f0e-80bb-a0f1bf820c0c" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDc4NTYyMDYsImlhdCI6MTU0NzgzNDYwNiwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.SbUp-eYt6RECh6GvAPAwok_PCd8WKZtekCbWpxB70m8</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0Nzg1NjIwNiwiaWF0IjoxNTQ3ODM0NjA2LCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.mao4m3YwPbdiHhbJbryOTGgyWPqPpvBgwM0z2lWOwTw</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="abf0bacb-f0f6-4337-934b-84b50f84aade" name="SOAP Response"/><con:assertion type="Schema Compliance" id="9ac169f3-50eb-4ab8-96b5-3462dcfa1dc8" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="5db8402d-f33a-4f0e-80bb-a0f1bf820c0c" name="Contains"><con:configuration><token>not allowed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findLoanById"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="163f3875-e09f-43f5-8120-a3204259d786" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="extendLoan" searchProperties="true"><con:settings/><con:testStep type="request" id="26f69799-88ff-4c6a-b1d6-e3f94c7be0ce" name="extendLoanOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>extendLoan</con:operation><con:request name="extendLoanOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="f0c445fb-a7cf-4ba6-95e4-2941faf02b5c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#classicToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:extendLoan>
+         <!--Optional:-->
+         <id>${#Project#loanToExtend}</id>
+      </web:extendLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1c5e10c8-8883-49df-a000-69a1b3a0f5c5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="864aae44-ca05-4c22-b37a-48f63dc1afa2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="23030cba-dd4d-4b9c-b1e7-1eba4398d669" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDkwNTk5OTgsImlhdCI6MTU0OTAzODM5OCwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.EVa356rfxniBWGxa_iRzHKQvdMNnS-L3BDh0cjG0PQ4</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0OTA1OTk5OCwiaWF0IjoxNTQ5MDM4Mzk4LCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.Oqz9cZYvMROddORPZFfYakYr3VN6aVdenO5A55CcWM8</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property><con:property><con:name>loanToExtend</con:name><con:value>4</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
