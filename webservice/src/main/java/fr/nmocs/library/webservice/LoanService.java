@@ -20,6 +20,9 @@ public interface LoanService {
 	Loan findLoanById(@WebParam(name = "id") Integer id, @WebParam(name = "token", header = true) String token)
 			throws LibraryWebserviceException;
 
+	Loan extendLoan(@WebParam(name = "id") Integer id, @WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
+
 	List<Loan> findByUserId(@WebParam(name = "userId") Integer userId,
 			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 

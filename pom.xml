@@ -23,6 +23,10 @@
         <cxf.version>3.2.7</cxf.version>
         <!-- == MAIL API == -->
         <mail-api.version>1.6.0</mail-api.version>
+        <!-- == STRUTS == -->
+        <struts.version>2.5.18</struts.version>
+        <!-- == SERVLET == -->
+        <servlet.version>4.0.1</servlet.version>
         <!-- == DATABASE == -->
         <mysql-connector.version>8.0.13</mysql-connector.version>
         <dbcp.version>1.4</dbcp.version>
@@ -115,6 +119,22 @@
                 <version>${mail-api.version}</version>
             </dependency>
             
+            <!-- SERVLET -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- STRUTS -->
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-bom</artifactId>
+                <version>${struts.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
             <!-- UTILS -->
 	        <dependency>
 			    <groupId>com.auth0</groupId>
@@ -198,7 +218,7 @@
         <module>consumer</module>
         <module>business</module>
         <module>webservice</module>
-    <module>webapp</module>
-    <module>batch</module>
+        <module>webapp</module>
+        <module>batch</module>
   </modules>
 </project>

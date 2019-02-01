@@ -62,6 +62,23 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
+	public Loan extendLoan(Integer id, String token) throws LibraryWebserviceException {
+		User userFromToken = authMgmt.getUser(token);
+		try {
+			Loan loan = loanMgmt.findLoanById(id);
+
+			if (loan == null || loan.getBorrower() == null || userFromToken == null
+					|| (!userFromToken.getId().equals(loan.getBorrower().getId()) && !authMgmt.isAdmin(token))) {
+				throw new LibraryWebserviceException(NOT_ALLOWED);
+			}
+			loan.setProlongationNumber(loan.getProlongationNumber() + 1);
+			return loanMgmt.updateLoan(loan);
+		} catch (LibraryException le) {
+			throw new LibraryWebserviceException(getExceptionReason(le));
+		}
+	}
+
+	@Override
 	public List<Loan> findByUserId(Integer userId, String token) throws LibraryWebserviceException {
 		if (userId == null || (!authMgmt.getUser(token).getId().equals(userId) && !authMgmt.isAdmin(token))) {
 			throw new LibraryWebserviceException(NOT_ALLOWED);
