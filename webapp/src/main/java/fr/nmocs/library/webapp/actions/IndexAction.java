@@ -1,5 +1,5 @@
 package fr.nmocs.library.webapp.actions;
 
-public class IndexAction extends LibrarySessionAction {
-
+@SuppressWarnings("serial")
+public class IndexAction extends LibraryAbstractAction {
 }
