@@ -479,6 +479,8 @@
       <xs:element name="findBookSampleByBookIdResponse" type="tns:findBookSampleByBookIdResponse"/>
       <xs:element name="findBookSampleById" type="tns:findBookSampleById"/>
       <xs:element name="findBookSampleByIdResponse" type="tns:findBookSampleByIdResponse"/>
+      <xs:element name="findNotBorrowedBookSampleByBookId" type="tns:findNotBorrowedBookSampleByBookId"/>
+      <xs:element name="findNotBorrowedBookSampleByBookIdResponse" type="tns:findNotBorrowedBookSampleByBookIdResponse"/>
       <xs:element name="updateBook" type="tns:updateBook"/>
       <xs:element name="updateBookResponse" type="tns:updateBookResponse"/>
       <xs:element name="updateBookSample" type="tns:updateBookSample"/>
@@ -537,6 +539,16 @@
       <xs:complexType name="findBookSampleByIdResponse">
         <xs:sequence>
           <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findNotBorrowedBookSampleByBookId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bookId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findNotBorrowedBookSampleByBookIdResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSample"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateBookSample">
@@ -606,6 +618,12 @@
   </wsdl:message>
   <wsdl:message name="findBookSampleByIdResponse">
     <wsdl:part element="tns:findBookSampleByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findNotBorrowedBookSampleByBookId">
+    <wsdl:part element="tns:findNotBorrowedBookSampleByBookId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findNotBorrowedBookSampleByBookIdResponse">
+    <wsdl:part element="tns:findNotBorrowedBookSampleByBookIdResponse" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateBookSample">
     <wsdl:part element="tns:updateBookSample" name="parameters"></wsdl:part>
@@ -677,6 +695,10 @@
       <wsdl:input message="tns:findBookSampleById" name="findBookSampleById"></wsdl:input>
       <wsdl:output message="tns:findBookSampleByIdResponse" name="findBookSampleByIdResponse"></wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findNotBorrowedBookSampleByBookId">
+      <wsdl:input message="tns:findNotBorrowedBookSampleByBookId" name="findNotBorrowedBookSampleByBookId"></wsdl:input>
+      <wsdl:output message="tns:findNotBorrowedBookSampleByBookIdResponse" name="findNotBorrowedBookSampleByBookIdResponse"></wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updateBookSample">
       <wsdl:input message="tns:updateBookSample" name="updateBookSample"></wsdl:input>
       <wsdl:output message="tns:updateBookSampleResponse" name="updateBookSampleResponse"></wsdl:output>
@@ -741,6 +763,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="findBookSampleByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findNotBorrowedBookSampleByBookId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findNotBorrowedBookSampleByBookId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findNotBorrowedBookSampleByBookIdResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -933,7 +964,15 @@
          </bookSample>
       </web:updateBookSample>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="78501caf-98d3-4361-b6ca-e5e99da90641" wsaVersion="NONE" name="LoanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}LoanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/Library_webservice/services/loan?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/loan?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/loan?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBookSample"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="9bda08a4-f932-44ab-8f0b-96bc8eac7715" isOneWay="false" action="" name="findNotBorrowedBookSampleByBookId" bindingOperationName="findNotBorrowedBookSampleByBookId" type="Request-Response" outputName="findNotBorrowedBookSampleByBookIdResponse" inputName="findNotBorrowedBookSampleByBookId" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bcd65102-66fb-4ea7-a9c3-c9e5bb23b231" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findNotBorrowedBookSampleByBookId>
+         <!--Optional:-->
+         <bookId>?</bookId>
+      </web:findNotBorrowedBookSampleByBookId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findNotBorrowedBookSampleByBookId"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="78501caf-98d3-4361-b6ca-e5e99da90641" wsaVersion="NONE" name="LoanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}LoanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/Library_webservice/services/loan?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/loan?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/loan?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="createLoan" type="tns:createLoan"/>
@@ -2648,4 +2687,4 @@
          <id>${#Project#loanToExtend}</id>
       </web:extendLoan>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1c5e10c8-8883-49df-a000-69a1b3a0f5c5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="864aae44-ca05-4c22-b37a-48f63dc1afa2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="23030cba-dd4d-4b9c-b1e7-1eba4398d669" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDkwNTk5OTgsImlhdCI6MTU0OTAzODM5OCwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.EVa356rfxniBWGxa_iRzHKQvdMNnS-L3BDh0cjG0PQ4</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0OTA1OTk5OCwiaWF0IjoxNTQ5MDM4Mzk4LCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.Oqz9cZYvMROddORPZFfYakYr3VN6aVdenO5A55CcWM8</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property><con:property><con:name>loanToExtend</con:name><con:value>4</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1c5e10c8-8883-49df-a000-69a1b3a0f5c5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="864aae44-ca05-4c22-b37a-48f63dc1afa2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="23030cba-dd4d-4b9c-b1e7-1eba4398d669" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDkxMzY4NzAsImlhdCI6MTU0OTExNTI3MCwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.sktP6CSWYv_8B2VEbrAhsgFe4DH2QEAAQcObAzU6CBc</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0OTEzNjg3MCwiaWF0IjoxNTQ5MTE1MjcwLCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.L2A-kWehXEUVMGACCJZyBHfsbleUsttc30rG1UmqcO0</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property><con:property><con:name>loanToExtend</con:name><con:value>4</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

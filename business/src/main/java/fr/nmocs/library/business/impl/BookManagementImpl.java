@@ -1,6 +1,7 @@
 package fr.nmocs.library.business.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.nmocs.library.business.BookManagement;
 import fr.nmocs.library.consumer.BookRepository;
 import fr.nmocs.library.consumer.BookSampleRepository;
+import fr.nmocs.library.consumer.LoanRepository;
 import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.BookSample;
 import fr.nmocs.library.model.constants.BookSampleStatus;
@@ -29,6 +31,9 @@ public class BookManagementImpl implements BookManagement {
 
 	@Autowired
 	private BookSampleRepository bookSampleRepo;
+
+	@Autowired
+	private LoanRepository loanRepo;
 
 	// =============== BOOK
 
@@ -143,6 +148,20 @@ public class BookManagementImpl implements BookManagement {
 		} catch (Exception e) {
 			throw new LibraryTechnicalException(ErrorCode.BOOKSAMPLE_NOT_FOUND);
 		}
+	}
+
+	@Override
+	public List<BookSample> findBookSampleByBookIdNotBorrowed(Integer bookId) {
+		// Retrieving bookSamples by bookId
+		List<BookSample> bookSamples = bookSampleRepo.findByBookId(bookId);
+		// Retrieving bookSamples' id of bookSamples currently borrowed (return date is
+		// null)
+		List<Integer> borrowedBookSampleIds = loanRepo.findByReturnDateIsNull().stream()
+				.map(loan -> loan.getBookSample().getId()).collect(Collectors.toList());
+
+		// Return bookSamples that are not borrowed
+		return bookSamples.stream().filter(bookSample -> !borrowedBookSampleIds.contains(bookSample.getId()))
+				.collect(Collectors.toList());
 	}
 
 	// ========== UTILS

@@ -113,6 +113,11 @@ public class BookServiceImpl implements BookService {
 		}
 	}
 
+	@Override
+	public List<BookSample> findNotBorrowedBookSampleByBookId(Integer bookId) {
+		return bookMgmt.findBookSampleByBookIdNotBorrowed(bookId);
+	}
+
 	// ==== UTILS
 
 	/**

@@ -38,4 +38,6 @@ public interface BookService {
 
 	List<BookSample> findBookSampleByBookId(@WebParam(name = "bookId") Integer bookId);
 
+	List<BookSample> findNotBorrowedBookSampleByBookId(@WebParam(name = "bookId") Integer bookId);
+
 }

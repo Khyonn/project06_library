@@ -30,4 +30,6 @@ public interface BookManagement {
 	BookSample findBookSampleById(Integer id) throws LibraryTechnicalException;
 
 	List<BookSample> findBookSampleByBookId(Integer bookId) throws LibraryTechnicalException;
+
+	List<BookSample> findBookSampleByBookIdNotBorrowed(Integer bookId);
 }
