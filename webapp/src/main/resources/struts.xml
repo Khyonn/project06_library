@@ -10,15 +10,19 @@
             <result>WEB-INF/pages/index.jsp</result>
         </action>
         
-       <!--  <action name="login" 
-            class="fr.nmoccourses.javaee.climbing.webapp.actions.UserManagementAction" 
+       <action name="login" 
+            class="fr.nmocs.library.webapp.actions.LoginAction" 
             method="doLogin">
-            <result name="input">WEB-INF/jsp/connexion.jsp</result>
+            <result name="input">WEB-INF/pages/login.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
             <result name="success" type="redirectAction">
                 <param name="actionName">index</param>
             </result>
         </action>
         
+       <!--  
         <action name="logout" 
             class="fr.nmoccourses.javaee.climbing.webapp.actions.UserManagementAction" 
             method="doLogout">

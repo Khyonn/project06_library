@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.auth0.jwt.JWT;
 import com.opensymphony.xwork2.ActionSupport;
 
-import fr.nmocs.library.webapp.factories.WebserviceFactory;
 import fr.nmocs.library.webapp.utils.UserUtils;
 import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.webservice.TokenService;
 import fr.nmocs.library.webapp.webservice.User;
 
 @SuppressWarnings("serial")
@@ -26,7 +26,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 	private Map<String, Object> session;
 
 	@Autowired
-	private WebserviceFactory wsFactory;
+	private TokenService tokenService;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -36,7 +36,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 	// ===== USABLE IN TEMPLATES
 	public boolean getIsUserConnected() {
 		return session != null && session.containsKey(USER_TOKEN)
-				&& JWT.decode((String) session.get(USER_TOKEN)).getExpiresAt().before(new Date());
+				&& JWT.decode((String) session.get(USER_TOKEN)).getExpiresAt().after(new Date());
 	}
 
 	public String getUserName() {
@@ -98,7 +98,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 		User userInfos = getUserInfos();
 		if (userInfos != null && !getIsUserConnected()) {
 			try {
-				wsFactory.getTokenService().getLoginToken(userInfos.getEmail(), userInfos.getPassword());
+				tokenService.getLoginToken(userInfos.getEmail(), userInfos.getPassword());
 			} catch (LibraryWebserviceException_Exception e) {
 				System.err.println(e.getFaultInfo().getMessage());
 			}

@@ -3,18 +3,18 @@ package fr.nmocs.library.webapp.actions;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.factories.WebserviceFactory;
 import fr.nmocs.library.webapp.utils.UserUtils;
 import fr.nmocs.library.webapp.webservice.FindById;
 import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
 import fr.nmocs.library.webapp.webservice.UpdateUser;
 import fr.nmocs.library.webapp.webservice.User;
+import fr.nmocs.library.webapp.webservice.UserService;
 
 @SuppressWarnings("serial")
 public class UserProfileAction extends LibraryAbstractAction {
 
 	@Autowired
-	WebserviceFactory wsFactory;
+	private UserService userService;
 
 	// ===== INPUT
 	public String verifPassword;
@@ -33,7 +33,7 @@ public class UserProfileAction extends LibraryAbstractAction {
 		FindById params = new FindById();
 		params.setId(getUserId());
 		try {
-			user = wsFactory.getUserService().findById(params, getUserToken()).getReturn();
+			user = userService.findById(params, getUserToken()).getReturn();
 		} catch (LibraryWebserviceException_Exception e) {
 			addActionError(e.getFaultInfo().getMessage());
 			return ERROR;
@@ -43,7 +43,7 @@ public class UserProfileAction extends LibraryAbstractAction {
 
 	public String doEdit() {
 		doReconnectIfNecessary();
-		if (!getIsUserConnected() || user == null || user.getId().equals(UserUtils.WRONG_ID)
+		if (!getIsUserConnected() || user == null || getUserId().equals(UserUtils.WRONG_ID)
 				|| !StringUtils.equals(user.getPassword(), verifPassword)) {
 			if (!StringUtils.equals(user.getPassword(), verifPassword)) {
 				addActionError("Passwords don't match");
@@ -55,7 +55,7 @@ public class UserProfileAction extends LibraryAbstractAction {
 		user.setId(getUserId());
 		params.setUser(user);
 		try {
-			wsFactory.getUserService().updateUser(params, getUserToken());
+			userService.updateUser(params, getUserToken());
 			setUserInfos(UserUtils.createUserInfos(user.getEmail(), user.getPassword()));
 			// Update du token
 			setUserToken(null);

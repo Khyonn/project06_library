@@ -1,16 +1,17 @@
 package fr.nmocs.library.webapp.actions;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.factories.WebserviceFactory;
 import fr.nmocs.library.webapp.utils.UserUtils;
 import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.webservice.TokenService;
 
 @SuppressWarnings("serial")
 public class LoginAction extends LibraryAbstractAction {
 
 	@Autowired
-	private WebserviceFactory wsFactory;
+	private TokenService tokenService;
 
 	// ===== INPUTS
 	public String userEmail;
@@ -22,10 +23,13 @@ public class LoginAction extends LibraryAbstractAction {
 		if (getIsUserConnected()) {
 			return ERROR;
 		}
+		if (StringUtils.isAnyBlank(userEmail, userPassword)) {
+			return INPUT;
+		}
 
 		String token;
 		try {
-			token = wsFactory.getTokenService().getLoginToken(userEmail, userPassword);
+			token = tokenService.getLoginToken(userEmail, userPassword);
 		} catch (LibraryWebserviceException_Exception e) {
 			addActionError(e.getFaultInfo().getMessage());
 			return INPUT;

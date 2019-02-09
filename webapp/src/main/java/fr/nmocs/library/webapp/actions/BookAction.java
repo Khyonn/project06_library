@@ -6,15 +6,15 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.factories.WebserviceFactory;
 import fr.nmocs.library.webapp.webservice.Book;
 import fr.nmocs.library.webapp.webservice.BookSample;
+import fr.nmocs.library.webapp.webservice.BookService;
 
 @SuppressWarnings("serial")
 public class BookAction extends LibraryAbstractAction {
 
 	@Autowired
-	private WebserviceFactory wsFactory;
+	private BookService bookService;
 
 	// ===== Inputs
 	public String authorFilter;
@@ -31,12 +31,15 @@ public class BookAction extends LibraryAbstractAction {
 	// ========== ACTIONS
 
 	public String doListBookSample() {
-		bookSampleList = wsFactory.getBookService().findNotBorrowedBookSampleByBookId(bookId);
+		if (bookId == null) {
+			return ERROR;
+		}
+		bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
 		return SUCCESS;
 	}
 
 	public String doListByAuthor() {
-		bookList = wsFactory.getBookService().findBookByAuthor(authorFilter);
+		bookList = bookService.findBookByAuthor(authorFilter);
 		if (!StringUtils.isBlank(titleFilter)) {
 			bookList = bookList.stream().filter(book -> book.getTitle().contains(titleFilter))
 					.collect(Collectors.toList());
@@ -45,7 +48,7 @@ public class BookAction extends LibraryAbstractAction {
 	}
 
 	public String doListByTitle() {
-		bookList = wsFactory.getBookService().findBookByTitle(titleFilter);
+		bookList = bookService.findBookByTitle(titleFilter);
 		if (!StringUtils.isBlank(authorFilter)) {
 			bookList = bookList.stream().filter(book -> book.getAuthor().contains(authorFilter))
 					.collect(Collectors.toList());

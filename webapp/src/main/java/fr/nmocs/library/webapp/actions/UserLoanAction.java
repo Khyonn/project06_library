@@ -4,17 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.factories.WebserviceFactory;
 import fr.nmocs.library.webapp.webservice.ExtendLoan;
 import fr.nmocs.library.webapp.webservice.FindByUserId;
 import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
 import fr.nmocs.library.webapp.webservice.Loan;
+import fr.nmocs.library.webapp.webservice.LoanService;
 
 @SuppressWarnings("serial")
 public class UserLoanAction extends LibraryAbstractAction {
 
 	@Autowired
-	public WebserviceFactory wsFactory;
+	public LoanService loanService;
 
 	// ===== INPUT
 	public Integer loanToExtendId;
@@ -32,7 +32,7 @@ public class UserLoanAction extends LibraryAbstractAction {
 		FindByUserId params = new FindByUserId();
 		params.setUserId(getUserId());
 		try {
-			loanList = wsFactory.getLoanService().findByUserId(params, getUserToken()).getReturn();
+			loanList = loanService.findByUserId(params, getUserToken()).getReturn();
 		} catch (LibraryWebserviceException_Exception e) {
 			addActionError(e.getFaultInfo().getMessage());
 			return ERROR;
@@ -49,7 +49,7 @@ public class UserLoanAction extends LibraryAbstractAction {
 		ExtendLoan params = new ExtendLoan();
 		params.setId(loanToExtendId);
 		try {
-			wsFactory.getLoanService().extendLoan(params, getUserToken());
+			loanService.extendLoan(params, getUserToken());
 		} catch (LibraryWebserviceException_Exception e) {
 			addActionError(e.getFaultInfo().getMessage());
 			return ERROR;
