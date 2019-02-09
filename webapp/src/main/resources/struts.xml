@@ -22,14 +22,14 @@
             </result>
         </action>
         
-       <!--  
         <action name="logout" 
-            class="fr.nmoccourses.javaee.climbing.webapp.actions.UserManagementAction" 
+            class="fr.nmocs.library.webapp.actions.LoginAction" 
             method="doLogout">
             <result name="success" type="redirectAction">
                 <param name="actionName">index</param>
             </result>
         </action>
+       <!--  
         
         <action name="signup" 
             class="fr.nmoccourses.javaee.climbing.webapp.actions.UserManagementAction" 
