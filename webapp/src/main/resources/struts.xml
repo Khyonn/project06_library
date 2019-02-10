@@ -62,10 +62,23 @@
             <result name="success">WEB-INF/pages/user_profile.jsp</result>
         </action>
         
+        <!-- LOANS -->
+        
         <action name="loan-consult" 
-            class="fr.nmocs.library.webapp.actions.UserLoanAction">
-            <result type="redirectAction">
+            class="fr.nmocs.library.webapp.actions.UserLoanAction" method="doConsult">
+            <result name="success">WEB-INF/pages/user_loans.jsp</result>
+            <result name="error" type="redirectAction">
                 <param name="actionName">index</param>
+            </result>
+        </action>
+        
+        <action name="loan-extend" 
+            class="fr.nmocs.library.webapp.actions.UserLoanAction" method="doExtendLoan">
+            <result name="success" type="redirectAction">
+                <param name="actionName">loan-consult</param>
+            </result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">loan-consult</param>
             </result>
         </action>
         
