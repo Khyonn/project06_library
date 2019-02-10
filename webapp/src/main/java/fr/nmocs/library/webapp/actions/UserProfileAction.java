@@ -16,11 +16,21 @@ public class UserProfileAction extends LibraryAbstractAction {
 	@Autowired
 	private UserService userService;
 
+	private User user;
+
 	// ===== INPUT
 	public String verifPassword;
 
-	// ===== INPUT AND OUTPUT
-	public User user;
+	public String verifEmail;
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	// ===== OUTPUT
+	public User getUser() {
+		return user;
+	}
 
 	// ========== ACTIONS
 
@@ -28,6 +38,7 @@ public class UserProfileAction extends LibraryAbstractAction {
 		doReconnectIfNecessary();
 		Integer userId = getUserId();
 		if (!getIsUserConnected() || userId.equals(UserUtils.WRONG_ID)) {
+			addActionError("You are not connected");
 			return ERROR;
 		}
 		FindById params = new FindById();
@@ -43,12 +54,18 @@ public class UserProfileAction extends LibraryAbstractAction {
 
 	public String doEdit() {
 		doReconnectIfNecessary();
-		if (!getIsUserConnected() || user == null || getUserId().equals(UserUtils.WRONG_ID)
-				|| !StringUtils.equals(user.getPassword(), verifPassword)) {
+		if (!getIsUserConnected() || getUserId().equals(UserUtils.WRONG_ID)) {
+			return ERROR;
+		}
+		if (user == null || !StringUtils.equals(user.getPassword(), verifPassword)
+				|| !StringUtils.equals(user.getEmail(), verifEmail)) {
 			if (!StringUtils.equals(user.getPassword(), verifPassword)) {
 				addActionError("Passwords don't match");
 			}
-			return ERROR;
+			if (!StringUtils.equals(user.getEmail(), verifEmail)) {
+				addActionError("Emails don't match");
+			}
+			return INPUT;
 		}
 
 		UpdateUser params = new UpdateUser();
@@ -56,14 +73,16 @@ public class UserProfileAction extends LibraryAbstractAction {
 		params.setUser(user);
 		try {
 			userService.updateUser(params, getUserToken());
-			setUserInfos(UserUtils.createUserInfos(user.getEmail(), user.getPassword()));
-			// Update du token
-			setUserToken(null);
-			doReconnectIfNecessary();
 		} catch (LibraryWebserviceException_Exception e) {
 			addActionError(e.getFaultInfo().getMessage());
-			return ERROR;
+			return INPUT;
 		}
+		cleanSession();
+		// Update du token (en mettant à null le token, la méthode doReconnect forcera
+		// le rechargement du token)
+		setUserInfos(UserUtils.createUserInfos(user.getEmail(), user.getPassword()));
+		doReconnectIfNecessary();
+		addActionMessage("Edition OK");
 		return SUCCESS;
 	}
 }

@@ -67,7 +67,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 
 	protected String getUserToken() {
 		if (session != null) {
-			session.get(USER_TOKEN);
+			return (String) session.get(USER_TOKEN);
 		}
 		return "";
 	}
@@ -98,7 +98,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 		User userInfos = getUserInfos();
 		if (userInfos != null && !getIsUserConnected()) {
 			try {
-				tokenService.getLoginToken(userInfos.getEmail(), userInfos.getPassword());
+				setUserToken(tokenService.getLoginToken(userInfos.getEmail(), userInfos.getPassword()));
 			} catch (LibraryWebserviceException_Exception e) {
 				System.err.println(e.getFaultInfo().getMessage());
 			}

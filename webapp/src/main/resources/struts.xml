@@ -10,6 +10,8 @@
             <result>WEB-INF/pages/index.jsp</result>
         </action>
         
+        <!-- ===== SINGUP / LOGIN / LOGOUT ===== -->
+        
         <action name="login" 
             class="fr.nmocs.library.webapp.actions.LoginAction" 
             method="doLogin">
@@ -38,6 +40,36 @@
                 <param name="actionName">login</param>
             </result>
         </action>
+        
+        <!-- ===== ACCOUNT MANAGEMENT ===== -->
+        
+        <action name="account-consult" 
+            class="fr.nmocs.library.webapp.actions.UserProfileAction" 
+            method="doConsult">
+            <result name="success">WEB-INF/pages/user_profile.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
+        </action>
+        
+        <action name="account-edit" 
+            class="fr.nmocs.library.webapp.actions.UserProfileAction" 
+            method="doEdit">
+            <result name="input">WEB-INF/pages/user_profile.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
+            <result name="success">WEB-INF/pages/user_profile.jsp</result>
+        </action>
+        
+        <action name="loan-consult" 
+            class="fr.nmocs.library.webapp.actions.UserLoanAction">
+            <result type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
+        </action>
+        
+        
        <!--  
         
         <action name="signup" 

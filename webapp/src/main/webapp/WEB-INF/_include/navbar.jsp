@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-brown">
     <s:a cssClass="navbar-brand" action="index"><s:text name="common.nav.brand"></s:text></s:a>
     <!-- BOUTON COLLAPSE -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -34,6 +34,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="account-opt">
 					<s:if test="getIsUserConnected()">
+			        	<s:a action="account-consult" cssClass="dropdown-item"><s:text name="common.nav.userProfileLink"/></s:a>
+			        	<s:a action="loan-consult" cssClass="dropdown-item"><s:text name="common.nav.userLoanLink"/></s:a>
+			        	<div class="dropdown-divider"></div>
 			        	<s:a action="logout" cssClass="dropdown-item"><s:text name="common.nav.logoutLink"/></s:a>
 					</s:if>
 					<s:else>

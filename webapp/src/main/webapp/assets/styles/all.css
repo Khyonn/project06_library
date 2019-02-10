@@ -1,3 +1,43 @@
 body {	
   padding-top: 4.5rem;
+  background-color: #F2DBC7;
+}
+main {
+    border-top-right-radius: 0.5rem;
+	border-left: #CA6F1E 3px solid;
+}
+.bg-brown {
+	background-color: #D1813A !important;
+}
+
+/* BOUTONS */
+.btn-brown {
+	color: #FFF;
+	background-color: #D79356;
+	border-color: #D79356;
+}
+.btn-brown:hover {
+	color: #FFF;
+	background-color: #D1813A;
+	border-color: #D1813A;
+}
+.btn-brown:focus {
+	box-shadow: 0 0 0 0.2rem rgba(209, 129, 58, .25);
+}
+/* LIENS */
+a {
+	color: #D79356;
+	text-decoration: none;
+	background-color: transparent;
+}
+a:hover {
+	color: #D1813A;
+}
+
+
+.dropdown-menu {
+	background-color: #F8EDE3;
+}
+.dropdown-divider {
+    border-top: 2px solid #E5B78F;
 }
