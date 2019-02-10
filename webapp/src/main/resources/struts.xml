@@ -82,17 +82,12 @@
             </result>
         </action>
         
+        <!-- BOOKS -->
         
-       <!--  
-        
-        <action name="signup" 
-            class="fr.nmoccourses.javaee.climbing.webapp.actions.UserManagementAction" 
-            method="doSignup">
-            <result name="input">WEB-INF/jsp/inscription.jsp</result>
-            <result name="error">WEB-INF/jsp/inscription.jsp</result>
-            <result name="success" type="redirectAction">
-                <param name="actionName">login</param>
-            </result>
-        </action> -->
+        <action name="book-search" 
+            class="fr.nmocs.library.webapp.actions.BookAction" method="doSearch">
+            <result name="success">WEB-INF/pages/book_search.jsp</result>
+            <result name="input">WEB-INF/pages/book_search.jsp</result>
+        </action>
     </package>
 </struts>
