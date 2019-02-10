@@ -38,6 +38,7 @@
 					</s:if>
 					<s:else>
 						<s:a action="login" cssClass="dropdown-item"><s:text name="common.nav.loginLink"/></s:a>
+						<s:a action="signup" cssClass="dropdown-item"><s:text name="common.nav.signupLink"/></s:a>
 					</s:else>
                 </div>
             </li>

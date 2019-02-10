@@ -10,7 +10,7 @@
             <result>WEB-INF/pages/index.jsp</result>
         </action>
         
-       <action name="login" 
+        <action name="login" 
             class="fr.nmocs.library.webapp.actions.LoginAction" 
             method="doLogin">
             <result name="input">WEB-INF/pages/login.jsp</result>
@@ -27,6 +27,15 @@
             method="doLogout">
             <result name="success" type="redirectAction">
                 <param name="actionName">index</param>
+            </result>
+        </action>
+        
+        <action name="signup" 
+            class="fr.nmocs.library.webapp.actions.SignupAction" 
+            method="doSignup">
+            <result name="input">WEB-INF/pages/signup.jsp</result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">login</param>
             </result>
         </action>
        <!--  

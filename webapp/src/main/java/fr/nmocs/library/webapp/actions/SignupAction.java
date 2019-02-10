@@ -13,19 +13,34 @@ public class SignupAction extends LibraryAbstractAction {
 	@Autowired
 	private UserService userService;
 
+	private User user;
+
+	// ===== OUTPUTS
+	public User getUser() {
+		return user;
+	}
+
 	// ===== INPUTS
-	public User user;
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String verifPassword;
+
+	public String verifEmail;
 
 	// ========= ACTIONS
 
 	public String doSignup() {
-		if (user == null || !StringUtils.equals(user.getPassword(), verifPassword)) {
-			if (!StringUtils.equals(user.getPassword(), verifPassword)) {
+		if (user == null || !StringUtils.equals(user.getPassword(), verifPassword)
+				|| !StringUtils.equals(user.getEmail(), verifEmail)) {
+			if (user != null && !StringUtils.equals(user.getPassword(), verifPassword)) {
 				addActionError("Passwords don't match");
 			}
-			return ERROR;
+			if (user != null && !StringUtils.equals(user.getEmail(), verifEmail)) {
+				addActionError("Emails don't match");
+			}
+			return INPUT;
 		}
 		try {
 			userService.createUser(user);
@@ -33,7 +48,6 @@ public class SignupAction extends LibraryAbstractAction {
 			addActionError(e.getFaultInfo().getMessage());
 			return INPUT;
 		}
-
 		return LOGIN;
 	}
 
