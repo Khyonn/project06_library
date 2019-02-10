@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.nmocs.library.webapp.webservice.Book;
 import fr.nmocs.library.webapp.webservice.BookSample;
 import fr.nmocs.library.webapp.webservice.BookService;
+import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
 
 @SuppressWarnings("serial")
 public class BookAction extends LibraryAbstractAction {
@@ -75,11 +76,15 @@ public class BookAction extends LibraryAbstractAction {
 			return ERROR;
 		}
 
+		try {
+			book = bookService.findBookById(bookId);
+		} catch (LibraryWebserviceException_Exception e) {
+			return ERROR;
+		}
 		List<BookSample> bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
 		if (CollectionUtils.isNotEmpty(bookSampleList)) {
 			sampleNumber = bookSampleList.stream()
 					.filter(bookSample -> StringUtils.equals(bookSample.getStatus(), AVAILABLE_STATUS)).count();
-			book = bookSampleList.get(0).getBook();
 		} else {
 			sampleNumber = 0L;
 		}

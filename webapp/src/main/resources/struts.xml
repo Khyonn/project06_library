@@ -89,5 +89,13 @@
             <result name="success">WEB-INF/pages/book_search.jsp</result>
             <result name="input">WEB-INF/pages/book_search.jsp</result>
         </action>
+
+        <action name="book-detail" 
+            class="fr.nmocs.library.webapp.actions.BookAction" method="doDetail">
+            <result name="error" type="redirectAction">
+                <param name="actionName">book-search</param>
+            </result>
+            <result name="success">WEB-INF/pages/book_detail.jsp</result>
+        </action>
     </package>
 </struts>
