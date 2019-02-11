@@ -25,7 +25,7 @@
             <li class="nav-item dropdown">
                 <a id="account-opt" class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <s:if test="getIsUserConnected()">
+                    <s:if test="isUserConnected">
                     	<s:property value="userName"/>
                     </s:if>
                     <s:else>
@@ -33,7 +33,7 @@
                     </s:else>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="account-opt">
-					<s:if test="getIsUserConnected()">
+					<s:if test="isUserConnected">
 			        	<s:a action="account-consult" cssClass="dropdown-item"><s:text name="common.nav.userProfileLink"/></s:a>
 			        	<s:a action="loan-consult" cssClass="dropdown-item"><s:text name="common.nav.userLoanLink"/></s:a>
 			        	<div class="dropdown-divider"></div>
