@@ -32,13 +32,35 @@ L'application est découpé en plusieurs modules Maven :
 - batch : le module s'occupera des envois de mails de relance pour les prêt non rendus
 
 ### Avancement
-- model : OK
-- consumer : OK
-- business : OK
-- webservice : OK
-- webapp : TODO
-- batch : OK
-- script SQL : OK
+:white_square_button: module model  
+:white_square_button: module consumer  
+:white_square_button: module business  
+:white_square_button: module webservice  
+:white_square_button: module webapp  
+:white_square_button: module batch  
+
+:white_square_button: Script SQL  
+:white_square_button: Tests SOAP UI  
+:black_square_button: Mise à jour des diagrammes
+
+### :warning: Limitations (non demandées mais importantes)
+
+#### Base de données
+La base de données n'a pas été prévue pour stocker une énorme quantité d'informations (2147483647 par table => on ne pourra donc pas stocker plus de prêts, plus d'exemplaires de livre). Ce nombre reste raisonnable pour ce qui est des livres et des utilisateurs. Il est possible d'augmenter le nombre d'entrées max en utilisant des clés primaires composées.  
+
+Pour faciliter la démo (cas de tests), les mots de passes sont en clairs !!  
+Si vous ré-utilisez ce projet, pensez à utiliser un système de cryptage ou de hashage avant de persister les mots de passes en base lors de la création ou l'édition d'un utilisateur.
+
+#### Webservice
+De plus, pensez à utiliser des DTOs ou autres entités ne mettant pas à découvert les informations sensibles (mot de passes) à la récupération de données depuis la couche webservice.
+
+#### Webservice authentification
+Il est possible de récupérer un jeton d'authentification utile aux appels webservices 'sensibles'.  
+Il a l'avantage de ne pas avoir à faire appel à un serveur d'authentification mais présente cependant le défaut de ne pas être à jour avec des informations de la base de données. Il faudra donc être vigilant vis à vis de l'utilisation de ces tokens.
+
+#### Webapp authentification
+L'application web a été conçue de telle manière à enregistrer les informations de connexion et le jeton d'authentification en session (les informations stockées en session sont nettoyées à la fermeture du navigateur ou à la déconnexion de l'utilisateur).  
+A la récupération de données personnelles de l'utilisateur, ces informations de connexion permettent de recharger le jeton si ce dernier a expiré. Il arrivera donc probablement un moment où le jeton d'authentification sera expiré, que l'application web tentera d'en récupérer un nouveau mais que les informations de connexion ne seront plus valables (modification depuis un autre service connecté à la BDD ou au webservice des informations du compte utilisateur). Ce cas vide la session, l'utilisateur devra re-saisir manuellement ses informations de connexion.
 
 ### Tests SOAP UI
 1) Démarrez l'application webservice en local sur le port 8080 et vérifiez que le service fonctionne en accédant à la page `http://localhost:8080/Library_webservice/services`
@@ -49,7 +71,7 @@ L'application est découpé en plusieurs modules Maven :
 4) Importer le projet SOAP UI (`webservice/src/main/resources/soap/Library-soapui-project.xml`)
 5) Double-clic sur le projet `Library`
 6) Onglet `Test Suites`
-7) Clic `bouton play`
+7) Clic :arrow_forward:
 
 ### Configuration Batch
 1) Lancer mvn package sur le dossier batch
