@@ -126,13 +126,8 @@ public class AuthManagementImpl implements AuthManagement {
 	 */
 	@Override
 	public Boolean isAdmin(String token) {
-		try {
-			verifyToken(token);
-			DecodedJWT jwt = JWT.decode(token);
-			return jwt.getClaim(ADMIN_KEY).asBoolean();
-		} catch (Exception e) {
-			return false;
-		}
+		User user = getUser(token);
+		return user != null && user instanceof Admin;
 	}
 
 }
