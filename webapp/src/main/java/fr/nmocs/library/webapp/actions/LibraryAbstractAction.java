@@ -100,6 +100,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 			try {
 				setUserToken(tokenService.getLoginToken(userInfos.getEmail(), userInfos.getPassword()));
 			} catch (LibraryWebserviceException_Exception e) {
+				cleanSession();
 				System.err.println(e.getFaultInfo().getMessage());
 			}
 		}
