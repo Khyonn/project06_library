@@ -75,7 +75,9 @@
 					<ul class="list-group list-group-flush text-success">
 						<s:iterator value="returnedLoans">	           			
 							<li class="list-group-item">
-								<span class="font-weight-bold">[<s:text name="loan.startDate"/> : <s:date name="startDate.toGregorianCalendar()" format="dd/MM/yyyy" />]</span>
+								<span class="font-weight-bold">
+									[<s:text name="loan.startDate"/> : <s:date name="startDate.toGregorianCalendar()" format="dd/MM/yyyy" /> -
+									<s:text name="loan.returnDate"/> : <s:date name="returnDate.toGregorianCalendar()" format="dd/MM/yyyy" />]</span>
 								<s:property value="bookSample.book.title"/> _ <span class="font-italic"><s:property value="bookSample.book.author"/></span>
 							</li>
 						</s:iterator>
