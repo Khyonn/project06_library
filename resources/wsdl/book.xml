@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="BookService" targetNamespace="http://webservice.library.nmocs.fr/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservice.library.nmocs.fr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/">
+  <xs:element name="createBook" type="tns:createBook"/>
+  <xs:element name="createBookResponse" type="tns:createBookResponse"/>
+  <xs:element name="createBookSample" type="tns:createBookSample"/>
+  <xs:element name="createBookSampleResponse" type="tns:createBookSampleResponse"/>
+  <xs:element name="findBookByAuthor" type="tns:findBookByAuthor"/>
+  <xs:element name="findBookByAuthorResponse" type="tns:findBookByAuthorResponse"/>
+  <xs:element name="findBookById" type="tns:findBookById"/>
+  <xs:element name="findBookByIdResponse" type="tns:findBookByIdResponse"/>
+  <xs:element name="findBookByTitle" type="tns:findBookByTitle"/>
+  <xs:element name="findBookByTitleResponse" type="tns:findBookByTitleResponse"/>
+  <xs:element name="findBookSampleByBookId" type="tns:findBookSampleByBookId"/>
+  <xs:element name="findBookSampleByBookIdResponse" type="tns:findBookSampleByBookIdResponse"/>
+  <xs:element name="findBookSampleById" type="tns:findBookSampleById"/>
+  <xs:element name="findBookSampleByIdResponse" type="tns:findBookSampleByIdResponse"/>
+  <xs:element name="findNotBorrowedBookSampleByBookId" type="tns:findNotBorrowedBookSampleByBookId"/>
+  <xs:element name="findNotBorrowedBookSampleByBookIdResponse" type="tns:findNotBorrowedBookSampleByBookIdResponse"/>
+  <xs:element name="updateBook" type="tns:updateBook"/>
+  <xs:element name="updateBookResponse" type="tns:updateBookResponse"/>
+  <xs:element name="updateBookSample" type="tns:updateBookSample"/>
+  <xs:element name="updateBookSampleResponse" type="tns:updateBookSampleResponse"/>
+  <xs:complexType name="findBookByAuthor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="author" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookByAuthorResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="book">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="author" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="summary" type="xs:string"/>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="book" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateBookResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookSampleByBookId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookSampleByBookIdResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookSample">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="book" type="tns:book"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookSampleById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookSampleByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findNotBorrowedBookSampleByBookId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findNotBorrowedBookSampleByBookIdResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateBookSample">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookSample" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateBookSampleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="book" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createBookResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createBookSample">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookSample" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createBookSampleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookByTitle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookByTitleResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBookByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
+  <xs:complexType name="LibraryWebserviceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="token" nillable="true" type="xs:string"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findBookByAuthor">
+    <wsdl:part element="tns:findBookByAuthor" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookResponse">
+    <wsdl:part element="tns:updateBookResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookSampleByIdResponse">
+    <wsdl:part element="tns:findBookSampleByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findNotBorrowedBookSampleByBookId">
+    <wsdl:part element="tns:findNotBorrowedBookSampleByBookId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findNotBorrowedBookSampleByBookIdResponse">
+    <wsdl:part element="tns:findNotBorrowedBookSampleByBookIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookSample">
+    <wsdl:part element="tns:updateBookSample" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookSampleResponse">
+    <wsdl:part element="tns:updateBookSampleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookByAuthorResponse">
+    <wsdl:part element="tns:findBookByAuthorResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createBook">
+    <wsdl:part element="tns:createBook" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookById">
+    <wsdl:part element="tns:findBookById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBook">
+    <wsdl:part element="tns:updateBook" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookSampleByBookId">
+    <wsdl:part element="tns:findBookSampleByBookId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookSampleByBookIdResponse">
+    <wsdl:part element="tns:findBookSampleByBookIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookSampleById">
+    <wsdl:part element="tns:findBookSampleById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookByIdResponse">
+    <wsdl:part element="tns:findBookByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LibraryWebserviceException">
+    <wsdl:part element="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createBookResponse">
+    <wsdl:part element="tns:createBookResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createBookSample">
+    <wsdl:part element="tns:createBookSample" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createBookSampleResponse">
+    <wsdl:part element="tns:createBookSampleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookByTitle">
+    <wsdl:part element="tns:findBookByTitle" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBookByTitleResponse">
+    <wsdl:part element="tns:findBookByTitleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BookService">
+    <wsdl:operation name="findBookByAuthor">
+      <wsdl:input message="tns:findBookByAuthor" name="findBookByAuthor">
+    </wsdl:input>
+      <wsdl:output message="tns:findBookByAuthorResponse" name="findBookByAuthorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBook">
+      <wsdl:input message="tns:updateBook" name="updateBook">
+    </wsdl:input>
+      <wsdl:output message="tns:updateBookResponse" name="updateBookResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBookSampleByBookId">
+      <wsdl:input message="tns:findBookSampleByBookId" name="findBookSampleByBookId">
+    </wsdl:input>
+      <wsdl:output message="tns:findBookSampleByBookIdResponse" name="findBookSampleByBookIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBookSampleById">
+      <wsdl:input message="tns:findBookSampleById" name="findBookSampleById">
+    </wsdl:input>
+      <wsdl:output message="tns:findBookSampleByIdResponse" name="findBookSampleByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findNotBorrowedBookSampleByBookId">
+      <wsdl:input message="tns:findNotBorrowedBookSampleByBookId" name="findNotBorrowedBookSampleByBookId">
+    </wsdl:input>
+      <wsdl:output message="tns:findNotBorrowedBookSampleByBookIdResponse" name="findNotBorrowedBookSampleByBookIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBookSample">
+      <wsdl:input message="tns:updateBookSample" name="updateBookSample">
+    </wsdl:input>
+      <wsdl:output message="tns:updateBookSampleResponse" name="updateBookSampleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createBook">
+      <wsdl:input message="tns:createBook" name="createBook">
+    </wsdl:input>
+      <wsdl:output message="tns:createBookResponse" name="createBookResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createBookSample">
+      <wsdl:input message="tns:createBookSample" name="createBookSample">
+    </wsdl:input>
+      <wsdl:output message="tns:createBookSampleResponse" name="createBookSampleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBookByTitle">
+      <wsdl:input message="tns:findBookByTitle" name="findBookByTitle">
+    </wsdl:input>
+      <wsdl:output message="tns:findBookByTitleResponse" name="findBookByTitleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBookById">
+      <wsdl:input message="tns:findBookById" name="findBookById">
+    </wsdl:input>
+      <wsdl:output message="tns:findBookByIdResponse" name="findBookByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookServiceSoapBinding" type="tns:BookService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findBookByAuthor">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBookByAuthor">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBookByAuthorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateBook">
+        <soap:header message="tns:updateBook" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBookSampleByBookId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBookSampleByBookId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBookSampleByBookIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBookSampleById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBookSampleById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBookSampleByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findNotBorrowedBookSampleByBookId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findNotBorrowedBookSampleByBookId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findNotBorrowedBookSampleByBookIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBookSample">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateBookSample">
+        <soap:header message="tns:updateBookSample" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateBookSampleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createBook">
+        <soap:header message="tns:createBook" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createBookSample">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createBookSample">
+        <soap:header message="tns:createBookSample" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createBookSampleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBookByTitle">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBookByTitle">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBookByTitleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBookById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBookById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBookByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookService">
+    <wsdl:port binding="tns:BookServiceSoapBinding" name="BookServicePort">
+      <soap:address location="http://localhost:8080/01_Library_Webserice/services/book"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
