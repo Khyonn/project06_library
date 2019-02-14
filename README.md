@@ -41,7 +41,8 @@ L'application est découpé en plusieurs modules Maven :
 
 :white_square_button: Script SQL  
 :white_square_button: Tests SOAP UI  
-:black_square_button: Mise à jour des diagrammes
+:white_square_button: Mise à jour des diagrammes  
+:black_square_button: Mise à jour description déploiement
 
 ### :warning: Limitations (non demandées mais importantes)
 
