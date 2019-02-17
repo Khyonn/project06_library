@@ -45,7 +45,10 @@ L'application est découpé en plusieurs modules Maven :
 :white_square_button: Script SQL  
 :white_square_button: Tests SOAP UI  
 :white_square_button: Mise à jour des diagrammes  
-:black_square_button: Mise à jour description déploiement
+:white_square_button: Mise à jour description déploiement
+
+### Conception
+Vous trouverez tous les schémas de conceptions dans le dossier `resources/diagrams/`
 
 ### :warning: Limitations (non demandées mais importantes)
 
@@ -75,7 +78,7 @@ Enfin concernant le déploiement, il aurait été intéressant d'utiliser le plu
 ## Déploiement et tests
 
 ### Overview
-Comme indiqué ci-dessus, le projet est sur une stack Java (ici Java 8), Tomcat, Mysql avec une gestion des package avec Maven et des tests réalisés avec SOAP UI. 
+Comme indiqué ci-dessus, le projet est sur une stack Java (ici Java 8), Tomcat, Mysql avec une gestion des package avec Maven et des tests réalisés avec SOAP UI. Comme la webapp dépend du webservice, il faut pouvoir déployer en deux temps : d'abord le webservice puis la webapp. C'est pourquoi nous simuleront le comportement en utilisant deux instances de Tomcat, l'une écoutant sur le port 8080, l'autre sur le port 8081.  
 Voici les liens pour obtenir les outils minimums pour fonctionner :  
 [JAVA](https://www.oracle.com/technetwork/java/javaee/downloads/index.html)  
 [Tomcat](https://tomcat.apache.org/download-90.cgi)  
@@ -83,20 +86,19 @@ Voici les liens pour obtenir les outils minimums pour fonctionner :
 [Mysql](https://www.mysql.com/fr/downloads/)  
 [SOAP UI](https://www.soapui.org/downloads/soapui.html)  
   
-Le déploiement va se passer en 6 étapes :
+Le déploiement va se passer en 5 étapes :
 - Génération de la BDD avec jeu de données de test et de démo
-- Configuration du webservice
-- Configuration de la webapp
-- Déploiement du webservice et de la webapp
+- Configuration et déploiement du webservice
+- Configuration de déploiement de la webapp
 - Configuration et indications de lancement du batch
 - Configuration et lancement des tests SOAP-UI
 
 Pour commencer, clonez / téléchargez le repo git et placez vous dans le dossier `project03_library` (dézippé si téléchargement en .zip)
 
 A chaque étape, on considérera que vous vous trouvez dans ce dossier parent.  
-On considérera que la variable `$CATALINA_HOME` référence le dossier Tomcat. 
+On considérera que la variable `$CATALINA_HOME` référence le dossier Tomcat principal et que la vairable `$CATALINA_HOME2` référence le dossier Tomcat secondaire. 
 
-#### BDD : Schéma et données
+#### 1) BDD : Schéma et données
 1) Placez vous dans le dossier resources/sql
     > $ cd resources/sql
 2) Lancez le script afin d'avoir le jeu de données
@@ -104,41 +106,43 @@ On considérera que la variable `$CATALINA_HOME` référence le dossier Tomcat.
 
 Le script permet de charger les différents scripts du dossier sur Mysql (le schéma, les tables, les contraintes, les utilisateurs, les données de tests et les données de démo).
 
-#### Configuration Webservice
-Si votre instance de MySQL ne tourne pas sur le port 3306 (défaut), editez le fichier `webservice/src/main/resources/jdbc.properties` et modifiez la ligne `jdbc.url` pour changer le port.
+#### 2) Configuration et déploiement du webservice
+1) Si votre instance de MySQL ne tourne pas sur le port 3306 (défaut), editez le fichier `webservice/src/main/resources/jdbc.properties` et modifiez la ligne `jdbc.url` pour changer le port.
+2) Lancez un maven package depuis le dossier `webservice/`
+    > $ mvn package  
+3) Déplacez le fichier .war généré dans le dossier `$CATALINA_HOME/webapps/`
+    > $ sudo mv webservice/target/Library\ webservice.war $CATALINA_HOME/webapps/Library_webservice.war  
+4) Lancez Tomcat
+    > $ cd $CATALINA_HOME/bin/  
+    > $ sudo ./startup.sh  
+5) Vérifiez que le webservice est fonctionnel en naviguant à l'adresse `localhost:8080/Library_webservice/services`
 
-#### Configuration Webapp
-Le webservice sera déployé sur le port 8080 par défaut. Si différent, éditez le fichier `webapp/src/main/resources/webservice.properties` et modifiez la ligne webservice.services.url pour changer le port
+#### 3) Configuration et déploiement de la webapp
+1) Le webservice sera déployé sur `http://localhost:8080/Library_webservice/services`. Editez le fichier `webapp/src/main/resources/webservice.properties` et modifiez la ligne webservice.services.url
+2) Editer le fichier `$CATALINA_HOME2/conf/server.xml` et changez les ports 8080 par 8081, 8005 par 8006 et 8009 par 8010
+3) Lancez un maven package depuis le dossier `webapp/`
+    > $ mvn package  
+4) Déplacez le fichier .war généré dans le dossier `$CATALINA_HOME2/webapps/`
+    > $ sudo mv webapp/target/Library\ webapp.war $CATALINA_HOME2/webapps/Library_webapp.war  
+5) Lancez Tomcat
+    > $ cd $CATALINA_HOME2/bin/  
+    > $ sudo ./startup.sh  
+5) Vérifiez que la webapp est fonctionnelle en naviguant à l'adresse `localhost:8081/Library_webapp`
 
-#### Déploiement du webservice et de la webapp
-1) Lancez un maven package
-    > $ mvn package
-2) Déplacez le fichier war webservice généré dans le dossier $CATALINA_HOME/webapps/
-    > $ sudo mv webservice/target/Library\ webservice.war $CATALINA_HOME/webapps/01_Library_Webservice.war
-3) Déplacez le fichier war webapp généré dans le dossier $CATALINA_HOME/webapps/
-    > $ sudo mv webapp/target/Library\ webapp.war $CATALINA_HOME/webapps/02_Library_Webapp.war
-4) Placez-vous dans le dossier $CATALINA_HOME/bin afin de lancer Tomcat
-    > $ cd $CATALINA_HOME/bin  
-    > $ sudo ./startup.sh
-
-### Tests SOAP UI
-1) Démarrez l'application webservice en local sur le port 8080 et vérifiez que le service fonctionne en accédant à la page `http://localhost:8080/Library_webservice/services`
-2) Placez vous dans le dossier resources/sql
-    > $ cd resources/sql
-3) Lancez le script afin d'avoir le jeu de données minimal pour les tests
-    > $ ./run_sql.sh
-4) Importer le projet SOAP UI (`webservice/src/main/resources/soap/Library-soapui-project.xml`)
-5) Double-clic sur le projet `Library`
-6) Onglet `Test Suites`
-7) Clic :arrow_forward:
-
-### Configuration Batch
+#### 4) Configuration et lancement du Batch
 1) Lancer mvn package sur le dossier batch
 2) Récupérer le zip `target/batch-1.0-SNAPSHOT-archive-deploy.zip` et le dézipper
-3) Modifier les fichiers de configurations (dossier `conf`) :
-    - `email.properties` permet de renseigner les informations pour envoyer des emails (serveur SMTP (et port), email, password)
-    - `webservice.properties` permet de renseigner les informations liés au webservice (*base URL du webservice* (garder `http://localhost:8080/Library_webservice/services` si en local), email, password)
-4) Lancer le batch (dossier `bin`)
+3) Modifier les fichiers de configurations (dossier `conf/`) :
+    - `email.properties` permet de renseigner les informations pour envoyer des emails (serveur SMTP (et port), email, password)  
+        Vous trouverez les informations à inscrire en fonction de l'hebergeur de votre email (exemples: [GMAIL](https://support.google.com/a/answer/176600?hl=fr), [outlook.com](https://support.office.com/fr-fr/article/param%C3%A8tres-pop-imap-et-smtp-pour-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040))
+    - `webservice.properties` permet de renseigner les informations liés au webservice (*base URL du webservice* (garder `http://localhost:8080/Library_webservice/services`), email, password)
+4) Pour vérifier le bon fonctionnement du batch, vérifiez dans la table library.Loans qu'il y ait bien des prêts en retard (returnDate = null et startDate + durée de prolongation * prolongationNumber > aujourd'hui). Et éditez l'email des utilisateurs concernés pour les recevoir
+5) Lancer le batch (dossier `bin/`)
     > $ ./run.sh
 
-Les utilisateurs n'ayant pas rendu les livres prêtés recevront un email (voir dossier SPAM)
+#### 5) Configuration Tests SOAP-UI
+1) Démarrez SOAP UI et importez le projet depuis (`webservice/src/main/resources/soap/Library-soapui-project.xml`)
+2) Récupérez l'adresse du webservice (Si non changée : `http://localhost:8080/Library_webservice/services`) et editez la propriété `servicesUrl` du projet Library
+3) Double-clic sur le projet `Library`
+4) Onglet `Test Suites`
+5) Clic :arrow_forward:
