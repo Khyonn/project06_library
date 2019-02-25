@@ -81,6 +81,9 @@ public class BookAction extends LibraryAbstractAction {
 		} catch (LibraryWebserviceException_Exception e) {
 			return ERROR;
 		}
+		if (book == null || !StringUtils.equals(book.getStatus(), AVAILABLE_STATUS)) {
+			return ERROR;
+		}
 		List<BookSample> bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
 		if (CollectionUtils.isNotEmpty(bookSampleList)) {
 			sampleNumber = bookSampleList.stream()
