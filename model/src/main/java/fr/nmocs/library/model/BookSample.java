@@ -10,8 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "BookSamples")
+@Getter
+@Setter
 public class BookSample {
 
 	@Id
@@ -25,47 +30,5 @@ public class BookSample {
 
 	@Column(name = "bookSampleStatus", nullable = false)
 	private String status;
-
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the book
-	 */
-	public Book getBook() {
-		return book;
-	}
-
-	/**
-	 * @param book the book to set
-	 */
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }
