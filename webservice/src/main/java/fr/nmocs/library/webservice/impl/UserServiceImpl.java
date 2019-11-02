@@ -2,16 +2,20 @@ package fr.nmocs.library.webservice.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.business.AuthManagement;
 import fr.nmocs.library.business.UserManagement;
-import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
 import fr.nmocs.library.webservice.UserService;
+import fr.nmocs.library.webservice.dto.AdminDTO;
+import fr.nmocs.library.webservice.dto.UserDTO;
+import fr.nmocs.library.webservice.dto.mapper.UserMapper;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class UserServiceImpl implements UserService {
@@ -24,17 +28,19 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private AuthManagement authMgmt;
 
+	private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+
 	@Override
-	public User createUser(User user) throws LibraryWebserviceException {
+	public UserDTO createUser(UserDTO user) throws LibraryWebserviceException {
 		try {
-			return userMgmt.createUser(user);
+			return userMapper.toDto(userMgmt.createUser(userMapper.toEntity(user)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public User updateUser(User user, String token) throws LibraryWebserviceException {
+	public UserDTO updateUser(UserDTO user, String token) throws LibraryWebserviceException {
 		User userFromToken = authMgmt.getUser(token);
 
 		if (user != null && !authMgmt.isAdmin(token)) {
@@ -47,34 +53,34 @@ public class UserServiceImpl implements UserService {
 		}
 
 		try {
-			return userMgmt.updateUser(user);
+			return userMapper.toDto(userMgmt.updateUser(userMapper.toEntity(user)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public Admin grantAdminRightsToUser(Integer userId, String token) throws LibraryWebserviceException {
+	public AdminDTO grantAdminRightsToUser(Integer userId, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMgmt.grantAdminRightsToUser(userId);
+			return userMapper.toDto(userMgmt.grantAdminRightsToUser(userId));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException("You are not allowed to perform this action");
 		}
 	}
 
 	@Override
-	public User downgradeAdminToBasicUser(Integer adminId, String token) throws LibraryWebserviceException {
+	public UserDTO downgradeAdminToBasicUser(Integer adminId, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMgmt.downgradeAdminToBasicUser(adminId);
+			return userMapper.toDto(userMgmt.downgradeAdminToBasicUser(adminId));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException("You are not allowed to perform this action");
 		}
 	}
 
 	@Override
-	public User findById(Integer id, String token) throws LibraryWebserviceException {
+	public UserDTO findById(Integer id, String token) throws LibraryWebserviceException {
 		// Les utilisateurs peuvent consulter leur profil uniquement (et admin)
 		User userFromToken = authMgmt.getUser(token);
 		if (userFromToken == null || (!authMgmt.isAdmin(token) && !userFromToken.getId().equals(id))) {
@@ -82,29 +88,38 @@ public class UserServiceImpl implements UserService {
 		}
 
 		try {
-			return userMgmt.findById(id);
+			return userMapper.toDto(userMgmt.findById(id));
 		} catch (LibraryTechnicalException le) {
 			return null;
 		}
 	}
 
 	@Override
-	public User findByEmail(String email, String token) throws LibraryWebserviceException {
+	public UserDTO findByEmail(String email, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMgmt.findByEmail(email);
+			return userMapper.toDto(userMgmt.findByEmail(email));
 		} catch (LibraryTechnicalException le) {
 			return null;
 		}
 	}
 
 	@Override
-	public List<User> findByName(String name, String token) throws LibraryWebserviceException {
+	public List<UserDTO> findByName(String name, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMgmt.findByName(name);
+			return userMgmt.findByName(name).stream().map(u -> userMapper.toDto(u)).collect(Collectors.toList());
 		} catch (LibraryTechnicalException le) {
 			return new ArrayList<>();
+		}
+	}
+
+	@Override
+	public UserDTO test() {
+		try {
+			return userMapper.toDto(userMgmt.findById(1));
+		} catch (LibraryTechnicalException e) {
+			return null;
 		}
 	}
 
