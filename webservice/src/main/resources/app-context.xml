@@ -80,4 +80,7 @@
     <tx:annotation-driven />
 
     <jpa:repositories base-package="fr.nmocs.library" />
+    
+    <!-- PROPRIETES METIER -->
+    <context:property-placeholder location="classpath:/business.properties" />
 </beans>

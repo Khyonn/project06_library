@@ -2,7 +2,10 @@ package fr.nmocs.library.business;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.nmocs.library.model.Admin;
+import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
@@ -22,4 +25,6 @@ public interface UserManagement {
 	User findByEmail(String email) throws LibraryTechnicalException;
 
 	List<User> findByName(String name) throws LibraryTechnicalException;
+
+	Reservation create(Reservation reservation);
 }

@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.nmocs.library.business.BusinessHelper;
 import fr.nmocs.library.business.LoanManagement;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
+import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.consumer.UserRepository;
 import fr.nmocs.library.model.Loan;
 import fr.nmocs.library.model.constants.BookSampleStatus;
@@ -20,6 +23,7 @@ import fr.nmocs.library.model.error.ErrorCode;
 import fr.nmocs.library.model.error.LibraryBusinessException;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
+import fr.nmocs.library.model.pk.ReservationPK;
 
 @Service
 public class LoanManagementImpl implements LoanManagement {
@@ -29,17 +33,8 @@ public class LoanManagementImpl implements LoanManagement {
 	private static final Integer MIN_PROLONGATION_NB = 0;
 
 	// === UN SEUL PROLONGEMENT POSSIBLE
-	private static final Integer MAX_PROLONGATION_NB = 1;
-
-	// === NOMBRE DE SEMAINES DE PRET
-	private static final long LOAN_BASETIME_WEEKS = 4;
-
-	private static final long LOAN_BASETIME_MS = LOAN_BASETIME_WEEKS * 7 * 24 * 3600 * 1000;
-
-	// === TEMPS D'UNE PROLONGATION D'UN PRET
-	private static final long PROLONGATION_WEEKS = 4;
-
-	private static final long PROLONGATION_MS = PROLONGATION_WEEKS * 7 * 24 * 3600 * 1000;
+	@Value("${business.loans.prolongation.maxNb}")
+	private Integer MAX_PROLONGATION_NB;
 
 	// === DEPENDENCIES
 
@@ -52,6 +47,12 @@ public class LoanManagementImpl implements LoanManagement {
 	@Autowired
 	private UserRepository userRepo;
 
+	@Autowired
+	private ReservationRepository reservationRepo;
+
+	@Autowired
+	private BusinessHelper businessHelper;
+
 	// ========== CREATE AND UPDATE
 
 	@Override
@@ -62,7 +63,14 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 		formatFieldsForCreate(loan);
 		checkFields(loan);
-		return loanRepo.save(loan);
+		Loan toReturn = loanRepo.save(loan);
+
+		// [TK1] A la création d'un pret, on supprime toute réservation référant le
+		// livre pour l'utilisateur
+		reservationRepo
+				.deleteById(new ReservationPK(loan.getBookSample().getBook().getId(), loan.getBorrower().getId()));
+
+		return toReturn;
 	}
 
 	@Override
@@ -104,7 +112,8 @@ public class LoanManagementImpl implements LoanManagement {
 	public List<Loan> findNotReturned() throws LibraryTechnicalException {
 		Date today = new Date();
 		try {
-			return loanRepo.findByReturnDateIsNull().stream().filter(loan -> getMaxTime(loan) < today.getTime())
+			return loanRepo.findByReturnDateIsNull().stream()
+					.filter(loan -> businessHelper.getLoanActualEndDate(loan).getTime() < today.getTime())
 					.collect(Collectors.toList());
 		} catch (Exception e) {
 			throw new LibraryTechnicalException(ErrorCode.LOAN_NOT_FOUND);
@@ -203,14 +212,10 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 	}
 
-	/**
-	 * For a given loan, returns max return time
-	 * 
-	 * @param loan
-	 * @return
-	 */
-	private long getMaxTime(Loan loan) {
-		return loan.getStartDate().getTime() + LOAN_BASETIME_MS + (PROLONGATION_MS * loan.getProlongationNumber());
+	@Override
+	public Date getSoonestReturnDate(List<Loan> loans) {
+		return new Date(loans.stream().map(loan -> businessHelper.getLoanActualEndDate(loan).getTime())
+				.min(Long::compare).get());
 	}
 
 }

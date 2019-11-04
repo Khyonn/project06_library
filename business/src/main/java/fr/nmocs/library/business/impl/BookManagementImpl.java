@@ -26,6 +26,8 @@ public class BookManagementImpl implements BookManagement {
 
 	private static final Integer DATABASE_STRING_SIZE = 255;
 
+	private static final Integer NB = 1;
+
 	@Autowired
 	private BookRepository bookRepo;
 
