@@ -48,4 +48,7 @@ public class User {
 	@Column(name = "userStatus")
 	private String status;
 
+	@OneToMany(mappedBy = "reserver", fetch = FetchType.LAZY)
+	private List<Reservation> reservations;
+
 }
