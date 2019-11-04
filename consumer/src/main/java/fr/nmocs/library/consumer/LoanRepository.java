@@ -16,4 +16,21 @@ public interface LoanRepository extends JpaRepository<Loan, Integer> {
 
 	boolean existsByIdNotAndBookSampleIdAndReturnDateIsNull(Integer id, Integer bookSampleId);
 
+	/**
+	 * For given user and book id Returns if user is borrowing a booksample of given
+	 * book id
+	 * 
+	 * @param userId
+	 * @param bookId
+	 * @return
+	 */
+	boolean existsByBorrowerIdAndBookSampleBookIdAndReturnDateIsNull(Integer userId, Integer bookId);
+
+	/**
+	 * Returns not-ended loans for a given book
+	 * 
+	 * @param bookId
+	 * @return
+	 */
+	List<Loan> findByBookSampleBookIdAndReturnDateIsNull(Integer bookId);
 }
