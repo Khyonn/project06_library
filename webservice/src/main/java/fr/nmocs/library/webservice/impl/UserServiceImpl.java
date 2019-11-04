@@ -14,7 +14,10 @@ import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
 import fr.nmocs.library.webservice.UserService;
 import fr.nmocs.library.webservice.dto.AdminDTO;
+import fr.nmocs.library.webservice.dto.ReservationDTO;
 import fr.nmocs.library.webservice.dto.UserDTO;
+import fr.nmocs.library.webservice.dto.mapper.BookMapper;
+import fr.nmocs.library.webservice.dto.mapper.ReservationMapper;
 import fr.nmocs.library.webservice.dto.mapper.UserMapper;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
@@ -29,6 +32,10 @@ public class UserServiceImpl implements UserService {
 	private AuthManagement authMgmt;
 
 	private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+
+	private BookMapper bookMapper = Mappers.getMapper(BookMapper.class);
+
+	private ReservationMapper reservationMapper = Mappers.getMapper(ReservationMapper.class);
 
 	@Override
 	public UserDTO createUser(UserDTO user) throws LibraryWebserviceException {
@@ -115,12 +122,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDTO test() {
-		try {
-			return userMapper.toDto(userMgmt.findById(1));
-		} catch (LibraryTechnicalException e) {
-			return null;
-		}
+	public ReservationDTO saveReservation(ReservationDTO reservation) {
+		return reservationMapper.toDto(userMgmt.create(reservationMapper.fromDto(reservation)));
 	}
 
 	// ===== GESTION DES EXCEPTION

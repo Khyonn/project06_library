@@ -7,6 +7,7 @@ import javax.jws.WebService;
 
 import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.BookSample;
+import fr.nmocs.library.webservice.dto.BookDTO;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 @WebService(name = "BookService", serviceName = "BookService")
@@ -20,7 +21,7 @@ public interface BookService {
 	Book updateBook(@WebParam(name = "book") Book book, @WebParam(name = "token", header = true) String token)
 			throws LibraryWebserviceException;
 
-	Book findBookById(@WebParam(name = "id") Integer id) throws LibraryWebserviceException;
+	BookDTO findBookById(@WebParam(name = "id") Integer id) throws LibraryWebserviceException;
 
 	List<Book> findBookByAuthor(@WebParam(name = "author") String author);
 

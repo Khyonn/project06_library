@@ -8,8 +8,8 @@ import fr.nmocs.library.model.User;
 import fr.nmocs.library.webservice.dto.AdminDTO;
 import fr.nmocs.library.webservice.dto.UserDTO;
 
-@Mapper // (componentModel = "spring")
-public interface UserMapper {
+@Mapper
+public interface UserMapper extends LibraryDTOMapper<User, UserDTO> {
 
 	@Mapping(target = "password", ignore = true)
 	UserDTO toDto(User user);
