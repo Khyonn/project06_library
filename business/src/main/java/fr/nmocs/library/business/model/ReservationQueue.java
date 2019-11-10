@@ -17,7 +17,4 @@ public class ReservationQueue {
 
 	private Date latestAvailabilityDate;
 
-	public Boolean getIsReservable() {
-		return reservationNb != null && queueSize != null && reservationNb < queueSize;
-	}
 }

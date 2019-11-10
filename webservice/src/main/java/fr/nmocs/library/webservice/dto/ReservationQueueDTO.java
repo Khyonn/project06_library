@@ -17,5 +17,5 @@ public class ReservationQueueDTO {
 
 	private Date latestAvailabilityDate;
 
-	public Boolean isReservable;
+	public boolean isReservable;
 }

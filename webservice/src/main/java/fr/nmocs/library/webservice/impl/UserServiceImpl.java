@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.business.AuthManagement;
@@ -14,10 +13,7 @@ import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
 import fr.nmocs.library.webservice.UserService;
 import fr.nmocs.library.webservice.dto.AdminDTO;
-import fr.nmocs.library.webservice.dto.ReservationDTO;
 import fr.nmocs.library.webservice.dto.UserDTO;
-import fr.nmocs.library.webservice.dto.mapper.BookMapper;
-import fr.nmocs.library.webservice.dto.mapper.ReservationMapper;
 import fr.nmocs.library.webservice.dto.mapper.UserMapper;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
@@ -31,16 +27,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private AuthManagement authMgmt;
 
-	private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
-
-	private BookMapper bookMapper = Mappers.getMapper(BookMapper.class);
-
-	private ReservationMapper reservationMapper = Mappers.getMapper(ReservationMapper.class);
-
 	@Override
 	public UserDTO createUser(UserDTO user) throws LibraryWebserviceException {
 		try {
-			return userMapper.toDto(userMgmt.createUser(userMapper.toEntity(user)));
+			return UserMapper.INSTANCE.toDTO(userMgmt.createUser(UserMapper.INSTANCE.fromDTO(user)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
@@ -60,7 +50,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		try {
-			return userMapper.toDto(userMgmt.updateUser(userMapper.toEntity(user)));
+			return UserMapper.INSTANCE.toDTO(userMgmt.updateUser(UserMapper.INSTANCE.fromDTO(user)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
@@ -70,7 +60,7 @@ public class UserServiceImpl implements UserService {
 	public AdminDTO grantAdminRightsToUser(Integer userId, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMapper.toDto(userMgmt.grantAdminRightsToUser(userId));
+			return UserMapper.INSTANCE.toDTO(userMgmt.grantAdminRightsToUser(userId));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException("You are not allowed to perform this action");
 		}
@@ -80,7 +70,7 @@ public class UserServiceImpl implements UserService {
 	public UserDTO downgradeAdminToBasicUser(Integer adminId, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMapper.toDto(userMgmt.downgradeAdminToBasicUser(adminId));
+			return UserMapper.INSTANCE.toDTO(userMgmt.downgradeAdminToBasicUser(adminId));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException("You are not allowed to perform this action");
 		}
@@ -95,7 +85,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		try {
-			return userMapper.toDto(userMgmt.findById(id));
+			return UserMapper.INSTANCE.toDTO(userMgmt.findById(id));
 		} catch (LibraryTechnicalException le) {
 			return null;
 		}
@@ -105,7 +95,7 @@ public class UserServiceImpl implements UserService {
 	public UserDTO findByEmail(String email, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMapper.toDto(userMgmt.findByEmail(email));
+			return UserMapper.INSTANCE.toDTO(userMgmt.findByEmail(email));
 		} catch (LibraryTechnicalException le) {
 			return null;
 		}
@@ -115,15 +105,10 @@ public class UserServiceImpl implements UserService {
 	public List<UserDTO> findByName(String name, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return userMgmt.findByName(name).stream().map(u -> userMapper.toDto(u)).collect(Collectors.toList());
+			return userMgmt.findByName(name).stream().map(UserMapper.INSTANCE::toDTO).collect(Collectors.toList());
 		} catch (LibraryTechnicalException le) {
 			return new ArrayList<>();
 		}
-	}
-
-	@Override
-	public ReservationDTO saveReservation(ReservationDTO reservation) {
-		return reservationMapper.toDto(userMgmt.create(reservationMapper.fromDto(reservation)));
 	}
 
 	// ===== GESTION DES EXCEPTION

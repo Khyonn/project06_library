@@ -2,8 +2,6 @@ package fr.nmocs.library.business;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.User;

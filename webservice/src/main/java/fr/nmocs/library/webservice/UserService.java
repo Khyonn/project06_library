@@ -6,7 +6,6 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import fr.nmocs.library.webservice.dto.AdminDTO;
-import fr.nmocs.library.webservice.dto.ReservationDTO;
 import fr.nmocs.library.webservice.dto.UserDTO;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
@@ -32,7 +31,5 @@ public interface UserService {
 
 	List<UserDTO> findByName(@WebParam(name = "name") String name,
 			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
-
-	ReservationDTO saveReservation(@WebParam(name = "reservation") ReservationDTO reservation);
 
 }

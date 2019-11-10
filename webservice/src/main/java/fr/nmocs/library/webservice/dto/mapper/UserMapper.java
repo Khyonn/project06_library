@@ -2,6 +2,7 @@ package fr.nmocs.library.webservice.dto.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.User;
@@ -11,13 +12,15 @@ import fr.nmocs.library.webservice.dto.UserDTO;
 @Mapper
 public interface UserMapper extends LibraryDTOMapper<User, UserDTO> {
 
-	@Mapping(target = "password", ignore = true)
-	UserDTO toDto(User user);
-
-	User toEntity(UserDTO userDto);
+	UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
 	@Mapping(target = "password", ignore = true)
-	AdminDTO toDto(Admin admin);
+	UserDTO toDTO(User user);
 
-	Admin toEntity(AdminDTO adminDto);
+	User fromDTO(UserDTO userDto);
+
+	@Mapping(target = "password", ignore = true)
+	AdminDTO toDTO(Admin admin);
+
+	Admin fromDTO(AdminDTO adminDto);
 }

@@ -2,19 +2,20 @@ package fr.nmocs.library.webservice.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.business.AuthManagement;
 import fr.nmocs.library.business.BookManagement;
 import fr.nmocs.library.business.ReservationManagement;
-import fr.nmocs.library.model.Book;
-import fr.nmocs.library.model.BookSample;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
 import fr.nmocs.library.webservice.BookService;
 import fr.nmocs.library.webservice.dto.BookDTO;
+import fr.nmocs.library.webservice.dto.BookSampleDTO;
 import fr.nmocs.library.webservice.dto.mapper.BookMapper;
+import fr.nmocs.library.webservice.dto.mapper.BookSampleMapper;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class BookServiceImpl implements BookService {
@@ -33,20 +34,20 @@ public class BookServiceImpl implements BookService {
 	// ========= BOOKS
 
 	@Override
-	public Book createBook(Book book, String token) throws LibraryWebserviceException {
+	public BookDTO createBook(BookDTO book, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return bookMgmt.createBook(book);
+			return BookMapper.INSTANCE.toDTO(bookMgmt.createBook(BookMapper.INSTANCE.fromDTO(book)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public Book updateBook(Book book, String token) throws LibraryWebserviceException {
+	public BookDTO updateBook(BookDTO book, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return bookMgmt.updateBook(book);
+			return BookMapper.INSTANCE.toDTO(bookMgmt.updateBook(BookMapper.INSTANCE.fromDTO(book)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
@@ -55,7 +56,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public BookDTO findBookById(Integer id) {
 		try {
-			BookDTO dto = BookMapper.INSTANCE.toDto(bookMgmt.findBookById(id));
+			BookDTO dto = BookMapper.INSTANCE.toDTO(bookMgmt.findBookById(id));
 
 			dto.setReservationQueueInfos(BookMapper.INSTANCE.toDTO(reservationMgmt.getBookReservationInfos(id)));
 			return dto;
@@ -65,18 +66,20 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> findBookByAuthor(String author) {
+	public List<BookDTO> findBookByAuthor(String author) {
 		try {
-			return bookMgmt.findBookByAuthor(author);
+			return bookMgmt.findBookByAuthor(author).stream().map(BookMapper.INSTANCE::toDTO)
+					.collect(Collectors.toList());
 		} catch (LibraryException le) {
 			return new ArrayList<>();
 		}
 	}
 
 	@Override
-	public List<Book> findBookByTitle(String title) {
+	public List<BookDTO> findBookByTitle(String title) {
 		try {
-			return bookMgmt.findBookByTitle(title);
+			return bookMgmt.findBookByTitle(title).stream().map(BookMapper.INSTANCE::toDTO)
+					.collect(Collectors.toList());
 		} catch (LibraryException le) {
 			return new ArrayList<>();
 		}
@@ -85,46 +88,50 @@ public class BookServiceImpl implements BookService {
 	// ========== BOOK_SAMPLES
 
 	@Override
-	public BookSample createBookSample(BookSample bookSample, String token) throws LibraryWebserviceException {
+	public BookSampleDTO createBookSample(BookSampleDTO bookSample, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return bookMgmt.createBookSample(bookSample);
+			return BookSampleMapper.INSTANCE
+					.toDTO(bookMgmt.createBookSample(BookSampleMapper.INSTANCE.fromDTO(bookSample)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public BookSample updateBookSample(BookSample bookSample, String token) throws LibraryWebserviceException {
+	public BookSampleDTO updateBookSample(BookSampleDTO bookSample, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return bookMgmt.updateBookSample(bookSample);
+			return BookSampleMapper.INSTANCE
+					.toDTO(bookMgmt.updateBookSample(BookSampleMapper.INSTANCE.fromDTO(bookSample)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public BookSample findBookSampleById(Integer id) {
+	public BookSampleDTO findBookSampleById(Integer id) {
 		try {
-			return bookMgmt.findBookSampleById(id);
+			return BookSampleMapper.INSTANCE.toDTO(bookMgmt.findBookSampleById(id));
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
 	@Override
-	public List<BookSample> findBookSampleByBookId(Integer bookId) {
+	public List<BookSampleDTO> findBookSampleByBookId(Integer bookId) {
 		try {
-			return bookMgmt.findBookSampleByBookId(bookId);
+			return bookMgmt.findBookSampleByBookId(bookId).stream().map(BookSampleMapper.INSTANCE::toDTO)
+					.collect(Collectors.toList());
 		} catch (LibraryTechnicalException le) {
 			return new ArrayList<>();
 		}
 	}
 
 	@Override
-	public List<BookSample> findNotBorrowedBookSampleByBookId(Integer bookId) {
-		return bookMgmt.findBookSampleByBookIdNotBorrowed(bookId);
+	public List<BookSampleDTO> findNotBorrowedBookSampleByBookId(Integer bookId) {
+		return bookMgmt.findBookSampleByBookIdNotBorrowed(bookId).stream().map(BookSampleMapper.INSTANCE::toDTO)
+				.collect(Collectors.toList());
 	}
 
 	// ==== UTILS

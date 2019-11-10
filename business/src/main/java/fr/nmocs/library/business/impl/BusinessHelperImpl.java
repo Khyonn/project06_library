@@ -3,29 +3,32 @@ package fr.nmocs.library.business.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import fr.nmocs.library.business.BusinessHelper;
 import fr.nmocs.library.model.Loan;
 
+@Service
 public class BusinessHelperImpl implements BusinessHelper {
 
 	// ===== Règles métiers :
 
 	// === UN SEUL PROLONGEMENT POSSIBLE
-	@Value("${business.loans.prolongation.maxNb}")
-	private Integer MAX_PROLONGATION_NB;
+	private final Integer MAX_PROLONGATION_NB;
 
-	// === NOMBRE DE SEMAINES DE PRET
-	@Value("${business.loans.time.weeksNb}")
-	private long LOAN_BASETIME_WEEKS;
+	// === NOMBRE DE MS DE PRET
+	private final long LOAN_BASETIME_MS;
 
-	private final long LOAN_BASETIME_MS = LOAN_BASETIME_WEEKS * 7 * 24 * 3600 * 1000;
+	// === TEMPS EN MS D'UNE PROLONGATION D'UN PRET
+	private final long PROLONGATION_MS;
 
-	// === TEMPS D'UNE PROLONGATION D'UN PRET
-	@Value("${business.loans.prolongation.time.weeksNb}")
-	private long PROLONGATION_WEEKS;
-
-	private final long PROLONGATION_MS = PROLONGATION_WEEKS * 7 * 24 * 3600 * 1000;
+	public BusinessHelperImpl (@Value("${business.loans.prolongation.maxNb}") Integer maxProlongationNb, @Value(
+		"${business.loans.time.weeksNb}"
+	) long loanBasetimeWeeks, @Value("${business.loans.prolongation.time.weeksNb}") long prolongationWeeks) {
+		this.MAX_PROLONGATION_NB = maxProlongationNb;
+		this.LOAN_BASETIME_MS = loanBasetimeWeeks * 7 * 24 * 3600 * 1000;
+		this.PROLONGATION_MS = prolongationWeeks * 7 * 24 * 3600 * 1000;
+	}
 
 	/**
 	 * Returns a Date coresponding to the loan start date and the given prolongation
