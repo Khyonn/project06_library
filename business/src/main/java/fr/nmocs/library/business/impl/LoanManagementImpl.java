@@ -67,8 +67,11 @@ public class LoanManagementImpl implements LoanManagement {
 
 		// [TK1] A la création d'un pret, on supprime toute réservation référant le
 		// livre pour l'utilisateur
-		reservationRepo
-				.deleteById(new ReservationPK(loan.getBookSample().getBook().getId(), loan.getBorrower().getId()));
+		ReservationPK reservationId = new ReservationPK(loan.getBookSample().getBook().getId(),
+				loan.getBorrower().getId());
+		if (reservationRepo.existsById(reservationId)) {
+			reservationRepo.deleteById(reservationId);
+		}
 
 		return toReturn;
 	}

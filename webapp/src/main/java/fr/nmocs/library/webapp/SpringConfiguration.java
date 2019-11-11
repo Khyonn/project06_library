@@ -10,14 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import fr.nmocs.library.webapp.webservice.BookService;
-import fr.nmocs.library.webapp.webservice.BookService_Service;
-import fr.nmocs.library.webapp.webservice.LoanService;
-import fr.nmocs.library.webapp.webservice.LoanService_Service;
-import fr.nmocs.library.webapp.webservice.TokenService;
-import fr.nmocs.library.webapp.webservice.TokenServiceService;
-import fr.nmocs.library.webapp.webservice.UserService;
-import fr.nmocs.library.webapp.webservice.UserService_Service;
+import fr.nmocs.library.webapp.ws.BookService;
+import fr.nmocs.library.webapp.ws.BookService_Service;
+import fr.nmocs.library.webapp.ws.LoanService;
+import fr.nmocs.library.webapp.ws.LoanService_Service;
+import fr.nmocs.library.webapp.ws.TokenService;
+import fr.nmocs.library.webapp.ws.TokenServiceService;
+import fr.nmocs.library.webapp.ws.UserService;
+import fr.nmocs.library.webapp.ws.UserService_Service;
 
 @Configuration
 @ComponentScan("fr.nmocs.library.webapp")

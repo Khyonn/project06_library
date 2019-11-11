@@ -4,8 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.webapp.utils.UserUtils;
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
-import fr.nmocs.library.webapp.webservice.TokenService;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.TokenService;
 
 @SuppressWarnings("serial")
 public class LoginAction extends LibraryAbstractAction {

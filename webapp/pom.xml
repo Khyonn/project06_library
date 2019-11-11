@@ -68,6 +68,84 @@
                     <target>${maven.compiler.source}</target>
                 </configuration>
             </plugin>
+            <!-- Generate Java classes from WSDL during build -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <!-- which source folder the generated classes should be placed in a package -->
+                            <sourceRoot>${project.basedir}/src/main/java/</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <!-- put the wsdl file in this location -->
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/book.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>fr.nmocs.library.webapp.ws</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <!-- put the wsdl file in this location -->
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/loan.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>fr.nmocs.library.webapp.ws</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <!-- put the wsdl file in this location -->
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/token.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>fr.nmocs.library.webapp.ws</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <!-- put the wsdl file in this location -->
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/user.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>fr.nmocs.library.webapp.ws</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Add generated sources - avoids having to copy generated sources to
+                build location -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/src/main/java/fr/nmocs/library/webapp/ws</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

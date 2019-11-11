@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import fr.nmocs.library.webapp.webservice.Loan;
+import fr.nmocs.library.webapp.ws.LoanDTO;
 
 public final class LoanUtils {
 
@@ -29,7 +29,7 @@ public final class LoanUtils {
 	 * @param loan
 	 * @return
 	 */
-	private static long getEndTime(Loan loan) {
+	private static long getEndTime(LoanDTO loan) {
 		return loan.getStartDate().toGregorianCalendar().getTime().getTime() + LOAN_BASETIME_MS
 				+ (PROLONGATION_MS * loan.getProlongationNumber());
 	}
@@ -40,22 +40,22 @@ public final class LoanUtils {
 	 * @param loan
 	 * @return
 	 */
-	private static long getMaxTime(Loan loan) {
+	private static long getMaxTime(LoanDTO loan) {
 		return loan.getStartDate().toGregorianCalendar().getTime().getTime() + LOAN_BASETIME_MS
 				+ (PROLONGATION_MS * MAX_PROLONGATION_NB);
 	}
 
-	public static List<Loan> filterLateLoans(List<Loan> loans) {
+	public static List<LoanDTO> filterLateLoans(List<LoanDTO> loans) {
 		Date today = new Date();
 		return loans.stream().filter(loan -> getEndTime(loan) < today.getTime()).collect(Collectors.toList());
 	}
 
-	public static List<Loan> filterNotLateLoans(List<Loan> loans) {
+	public static List<LoanDTO> filterNotLateLoans(List<LoanDTO> loans) {
 		Date today = new Date();
 		return loans.stream().filter(loan -> getEndTime(loan) >= today.getTime()).collect(Collectors.toList());
 	}
 
-	public static Boolean isLoanExtendable(Loan loan) {
+	public static Boolean isLoanExtendable(LoanDTO loan) {
 		Date today = new Date();
 		return loan != null && loan.getReturnDate() == null && getMaxTime(loan) > today.getTime()
 				&& loan.getProlongationNumber() < MAX_PROLONGATION_NB;

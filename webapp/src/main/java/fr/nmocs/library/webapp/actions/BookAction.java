@@ -7,10 +7,10 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.webservice.Book;
-import fr.nmocs.library.webapp.webservice.BookSample;
-import fr.nmocs.library.webapp.webservice.BookService;
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.BookDTO;
+import fr.nmocs.library.webapp.ws.BookSampleDTO;
+import fr.nmocs.library.webapp.ws.BookService;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
 
 @SuppressWarnings("serial")
 public class BookAction extends LibraryAbstractAction {
@@ -28,11 +28,11 @@ public class BookAction extends LibraryAbstractAction {
 	public Integer bookId;
 
 	// ===== Outputs
-	private List<Book> bookList;
+	private List<BookDTO> bookList;
 
-	private Book book;
+	private BookDTO book;
 
-	public List<Book> getBookList() {
+	public List<BookDTO> getBookList() {
 		return bookList;
 	}
 
@@ -40,7 +40,7 @@ public class BookAction extends LibraryAbstractAction {
 		return CollectionUtils.isNotEmpty(bookList);
 	}
 
-	public Book getBook() {
+	public BookDTO getBook() {
 		return book;
 	}
 
@@ -84,7 +84,7 @@ public class BookAction extends LibraryAbstractAction {
 		if (book == null || !StringUtils.equals(book.getStatus(), AVAILABLE_STATUS)) {
 			return ERROR;
 		}
-		List<BookSample> bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
+		List<BookSampleDTO> bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
 		if (CollectionUtils.isNotEmpty(bookSampleList)) {
 			sampleNumber = bookSampleList.stream()
 					.filter(bookSample -> StringUtils.equals(bookSample.getStatus(), AVAILABLE_STATUS)).count();
