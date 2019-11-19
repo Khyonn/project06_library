@@ -1,6 +1,6 @@
 package fr.nmocs.library.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -49,6 +49,6 @@ public class User {
 	private String status;
 
 	@OneToMany(mappedBy = "reserver", fetch = FetchType.LAZY)
-	private List<Reservation> reservations;
+	private Set<Reservation> reservations;
 
 }

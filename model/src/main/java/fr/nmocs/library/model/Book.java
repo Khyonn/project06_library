@@ -1,6 +1,6 @@
 package fr.nmocs.library.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,8 +38,8 @@ public class Book {
 	private String status;
 
 	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
-	private List<Reservation> reservations;
+	private Set<Reservation> reservations;
 
 	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
-	private List<BookSample> samples;
+	private Set<BookSample> samples;
 }
