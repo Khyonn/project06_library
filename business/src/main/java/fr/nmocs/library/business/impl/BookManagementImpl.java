@@ -5,10 +5,13 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.nmocs.library.business.BookManagement;
+import fr.nmocs.library.business.BusinessHelper;
+import fr.nmocs.library.business.model.ReservationQueue;
 import fr.nmocs.library.consumer.BookRepository;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
@@ -25,6 +28,12 @@ import fr.nmocs.library.model.error.LibraryTechnicalException;
 public class BookManagementImpl implements BookManagement {
 
 	private static final Integer DATABASE_STRING_SIZE = 255;
+
+	@Value("${business.reservations.queue.sizeFactorSample}")
+	private Integer RESERVATION_QUEUE_SAMPLE_FACTOR;
+
+	@Autowired
+	private BusinessHelper businessHelper;
 
 	@Autowired
 	private BookRepository bookRepo;
@@ -71,12 +80,19 @@ public class BookManagementImpl implements BookManagement {
 	// ========== READERS
 
 	@Override
+	@Transactional
 	public Book findBookById(Integer id) throws LibraryTechnicalException {
-		try {
-			return bookRepo.findById(id).get();
-		} catch (Exception e) {
+		Book book = bookRepo.findByIdFetchReservationsAndSampleAndLoans(id);
+
+		if (book == null) {
 			throw new LibraryTechnicalException(ErrorCode.BOOK_NOT_FOUND);
 		}
+		return book;
+	}
+
+	@Override
+	public ReservationQueue getBookReservationInfos(Book book) {
+		return businessHelper.getBookReservationInfos(book);
 	}
 
 	@Override

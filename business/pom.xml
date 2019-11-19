@@ -56,6 +56,11 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- EMAIL -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+        </dependency>
         <!-- TESTS -->
         <dependency>
             <groupId>junit</groupId>

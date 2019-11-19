@@ -20,4 +20,6 @@ public interface LoanManagement {
 	List<Loan> findNotReturned() throws LibraryTechnicalException;
 
 	Date getSoonestReturnDate(List<Loan> loans);
+
+	void sendEmailToBorrowers() throws LibraryTechnicalException;
 }

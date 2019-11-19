@@ -9,14 +9,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.nmocs.library.business.BusinessHelper;
 import fr.nmocs.library.business.ReservationManagement;
-import fr.nmocs.library.business.model.ReservationQueue;
+import fr.nmocs.library.business.email.LibraryEmailUtils;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
 import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.consumer.UserRepository;
-import fr.nmocs.library.model.Loan;
 import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.constants.BookSampleStatus;
 import fr.nmocs.library.model.constants.BookStatus;
@@ -49,7 +47,7 @@ public class ReservationManagementImpl implements ReservationManagement {
 	private LoanRepository loanRepo;
 
 	@Autowired
-	private BusinessHelper businessHelper;
+	private LibraryEmailUtils emailUtils;
 
 	@Value("${business.reservations.queue.sizeFactorSample}")
 	private Integer RESERVATION_QUEUE_SAMPLE_FACTOR;
@@ -67,35 +65,12 @@ public class ReservationManagementImpl implements ReservationManagement {
 	}
 
 	@Override
-	public Reservation updateReservation(Reservation reservation) throws LibraryException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	@Transactional
-	public ReservationQueue getBookReservationInfos(Integer bookId) {
-		ReservationQueue infos = new ReservationQueue();
-		// Nombre de réservation pour ce livre
-		infos.setReservationNb(reservationRepo.countByIdBookId(bookId));
-		// Nombre de réservation max pour ce livre : X fois le nombre d'exemplaire
-		infos.setQueueSize(RESERVATION_QUEUE_SAMPLE_FACTOR * bookSampleRepo.countByStatusAndBookIdAndBookStatus(
-				BookSampleStatus.AVAILABLE.getValue(), bookId, BookStatus.AVAILABLE.getValue()));
-
-		List<Loan> loans = loanRepo.findByBookSampleBookIdAndReturnDateIsNull(bookId);
-		if (loans != null && !loans.isEmpty()) {
-			infos.setSoonestAvailabilityDate(new Date(loans.stream()
-					.map(loan -> businessHelper.getLoanActualEndDate(loan).getTime()).min(Long::compare).get()));
-			infos.setLatestAvailabilityDate(new Date(loans.stream()
-					.map(loan -> businessHelper.getLoanMaxEndDate(loan).getTime()).min(Long::compare).get()));
-		}
-		return infos;
-	}
-
-	@Override
 	public void deleteReservation(ReservationPK id) throws LibraryException {
-		// TODO Auto-generated method stub
-
+		if (!reservationRepo.existsById(id)) {
+			throw new LibraryTechnicalException(ErrorCode.RESERVATION_NOT_FOUND);
+		}
+		reservationRepo.deleteById(id);
 	}
 
 	/**
@@ -136,22 +111,41 @@ public class ReservationManagementImpl implements ReservationManagement {
 	 * @throws LibraryBusinessException
 	 */
 	private void checkBusiness(Reservation reservation) throws LibraryBusinessException {
-		// Pas plus de X fois le nombre d’exemplaires de l’ouvrage
-		int bookSampleNumber = ArrayUtils
-				.getLength(bookSampleRepo.findByBookIdAndStatusAndBookStatus(reservation.getId().getBookId(),
-						BookSampleStatus.AVAILABLE.getValue(), BookStatus.AVAILABLE.getValue()));
+		// La liste de réservation ne peut comporter qu’un maximum de personnes
+		// correspondant à 2x le nombre d’exemplaires de l’ouvrage. [AVEC ouvrage.status
+		// == DISPONIBLE et exemplaire.status == DISPONIBLE]
+		int bookSampleNumber = bookSampleRepo.countByStatusAndBookIdAndBookStatus(BookSampleStatus.AVAILABLE.getValue(),
+				reservation.getId().getBookId(), BookStatus.AVAILABLE.getValue());
 		int reservationNumber = ArrayUtils.getLength(reservationRepo.findByIdBookId(reservation.getId().getBookId()));
-
 		if (reservationNumber >= bookSampleNumber * RESERVATION_QUEUE_SAMPLE_FACTOR) {
 			throw new LibraryBusinessException(ErrorCode.RESERVATION_NB);
 		}
 
-		// L'emprunteur ne doit pas être en train de louer le livre
+		// Il n’est pas possible pour un usager de réserver un ouvrage qu’il a déjà en
+		// cours d’emprunt
 		if (loanRepo.existsByBorrowerIdAndBookSampleBookIdAndReturnDateIsNull(reservation.getId().getReserverId(),
 				reservation.getId().getBookId())) {
 			throw new LibraryBusinessException(ErrorCode.RESERVATION_RESERVER_ALREADY_BORROWING);
 		}
 
+	}
+
+	@Override
+	public List<Reservation> findMailedReservation() throws LibraryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Reservation> findByBookId(Integer bookId) throws LibraryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Reservation> findByUserId(Integer userId) throws LibraryException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
