@@ -11,6 +11,9 @@
     <packaging>war</packaging>
     <name>webservice Maven Webapp</name>
     <url>http://maven.apache.org</url>
+    <properties>
+        <m2e.apt.activation>jdt_apt</m2e.apt.activation>
+    </properties>
     
     <dependencies>
         <dependency>
