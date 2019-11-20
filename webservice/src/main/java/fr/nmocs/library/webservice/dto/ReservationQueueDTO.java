@@ -1,6 +1,7 @@
 package fr.nmocs.library.webservice.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,13 +10,18 @@ import lombok.Setter;
 @Setter
 public class ReservationQueueDTO {
 
-	private Integer reservationNb;
+	private List<UserDTO> reservers;
 
-	private Integer queueSize;
+	private List<UserDTO> borrowers;
+
+	private Boolean isAvailable;
+
+	private Integer queueMaxSize;
+
+	private Boolean isReservable;
 
 	private Date soonestAvailabilityDate;
 
 	private Date latestAvailabilityDate;
 
-	public boolean isReservable;
 }
