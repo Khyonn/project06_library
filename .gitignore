@@ -2,3 +2,4 @@
 .classpath
 .project
 .settings/
+webapp/src/main/java/fr/nmocs/library/webapp/ws/
