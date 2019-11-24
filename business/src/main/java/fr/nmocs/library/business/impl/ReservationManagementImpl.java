@@ -1,16 +1,15 @@
 package fr.nmocs.library.business.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.nmocs.library.business.ReservationManagement;
-import fr.nmocs.library.business.email.LibraryEmailUtils;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
 import fr.nmocs.library.consumer.ReservationRepository;
@@ -28,7 +27,7 @@ import fr.nmocs.library.model.pk.ReservationPK;
 /**
  * [TK1] => Faire des réservations
  * 
- * @author nathanael
+ * @author Nathanaël
  *
  */
 @Service
@@ -46,9 +45,6 @@ public class ReservationManagementImpl implements ReservationManagement {
 	@Autowired
 	private LoanRepository loanRepo;
 
-	@Autowired
-	private LibraryEmailUtils emailUtils;
-
 	@Value("${business.reservations.queue.sizeFactorSample}")
 	private Integer RESERVATION_QUEUE_SAMPLE_FACTOR;
 
@@ -59,6 +55,7 @@ public class ReservationManagementImpl implements ReservationManagement {
 		if (reservationRepo.existsById(reservation.getId())) {
 			throw new LibraryBusinessException(ErrorCode.RESERVATION_ALREADY_EXIST);
 		}
+		reservation.setMailedDate(null);
 		reservation.setReservationDate(new Date());
 		checkBusiness(reservation);
 		return reservationRepo.save(reservation);
@@ -116,7 +113,7 @@ public class ReservationManagementImpl implements ReservationManagement {
 		// == DISPONIBLE et exemplaire.status == DISPONIBLE]
 		int bookSampleNumber = bookSampleRepo.countByStatusAndBookIdAndBookStatus(BookSampleStatus.AVAILABLE.getValue(),
 				reservation.getId().getBookId(), BookStatus.AVAILABLE.getValue());
-		int reservationNumber = ArrayUtils.getLength(reservationRepo.findByIdBookId(reservation.getId().getBookId()));
+		int reservationNumber = reservationRepo.countByIdBookId(reservation.getId().getBookId());
 		if (reservationNumber >= bookSampleNumber * RESERVATION_QUEUE_SAMPLE_FACTOR) {
 			throw new LibraryBusinessException(ErrorCode.RESERVATION_NB);
 		}
@@ -131,21 +128,11 @@ public class ReservationManagementImpl implements ReservationManagement {
 	}
 
 	@Override
-	public List<Reservation> findMailedReservation() throws LibraryException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Reservation> findByBookId(Integer bookId) throws LibraryException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Reservation> findByUserId(Integer userId) throws LibraryException {
-		// TODO Auto-generated method stub
-		return null;
+		if (!reservationRepo.existsByIdReserverId(userId)) {
+			return new ArrayList<>();
+		}
+		return reservationRepo.findByIdReserverId(userId);
 	}
 
 }

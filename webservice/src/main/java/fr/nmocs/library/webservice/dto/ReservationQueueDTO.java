@@ -16,6 +16,8 @@ public class ReservationQueueDTO {
 
 	private Boolean isAvailable;
 
+	private Integer availableSamplesNumber;
+
 	private Integer queueMaxSize;
 
 	private Boolean isReservable;

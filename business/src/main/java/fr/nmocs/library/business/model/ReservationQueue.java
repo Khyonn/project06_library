@@ -18,6 +18,8 @@ public class ReservationQueue {
 
 	private Boolean isAvailable = false;
 
+	private Integer availableSamplesNumber = 0;
+
 	private Integer queueMaxSize = 0;
 
 	private Boolean isReservable = false;

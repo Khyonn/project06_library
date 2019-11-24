@@ -25,6 +25,14 @@ public interface ReservationRepository extends JpaRepository<Reservation, Reserv
 	List<Reservation> findByIdBookId(Integer bookId);
 
 	/**
+	 * Retrieving reservations by the reserver
+	 * 
+	 * @param reserverId
+	 * @return
+	 */
+	List<Reservation> findByIdReserverId(Integer reserverId);
+
+	/**
 	 * Retrieving the nb of reservations for a book
 	 * 
 	 * @param bookId
@@ -39,6 +47,14 @@ public interface ReservationRepository extends JpaRepository<Reservation, Reserv
 	 * @return
 	 */
 	boolean existsByIdBookId(Integer bookId);
+
+	/**
+	 * Returns if a reservation exists for a reserver id
+	 * 
+	 * @param reserverId
+	 * @return
+	 */
+	boolean existsByIdReserverId(Integer reserverId);
 
 	/**
 	 * Returns if a reservation exists for a book id and a reserver id

@@ -153,6 +153,12 @@ public class LoanServiceImpl implements LoanService {
 		case LOAN_USER_UNAVAILABLE:
 			reason += "referenced user is not allowed to borrow any book sample";
 			break;
+		case LOAN_BOOK_IS_CURRENTLY_RESERVED:
+			reason += "book is currently reserverd";
+			break;
+		case LOAN_SOMEONE_RESERVED_BEFORE:
+			reason += "someone reserved the book before given user";
+			break;
 		default:
 			reason += "unknown reason";
 			break;

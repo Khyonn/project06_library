@@ -12,10 +12,6 @@ public interface ReservationManagement {
 
 	void deleteReservation(ReservationPK id) throws LibraryException;
 
-	List<Reservation> findMailedReservation() throws LibraryException;
-
-	List<Reservation> findByBookId(Integer bookId) throws LibraryException;
-
 	List<Reservation> findByUserId(Integer userId) throws LibraryException;
 
 }

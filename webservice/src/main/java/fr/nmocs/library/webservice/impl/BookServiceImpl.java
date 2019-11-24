@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.business.AuthManagement;
 import fr.nmocs.library.business.BookManagement;
-import fr.nmocs.library.business.ReservationManagement;
+import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
 import fr.nmocs.library.webservice.BookService;
@@ -24,9 +24,6 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BookManagement bookMgmt;
-
-	@Autowired
-	private ReservationManagement reservationMgmt;
 
 	@Autowired
 	private AuthManagement authMgmt;
@@ -56,9 +53,10 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public BookDTO findBookById(Integer id) {
 		try {
-			BookDTO dto = BookMapper.INSTANCE.toDTO(bookMgmt.findBookById(id));
+			Book book = bookMgmt.findBookById(id);
+			BookDTO dto = BookMapper.INSTANCE.toDTO(book);
 
-			dto.setReservationQueueInfos(BookMapper.INSTANCE.toDTO(reservationMgmt.getBookReservationInfos(id)));
+			dto.setReservationQueueInfos(BookMapper.INSTANCE.toDTO(bookMgmt.getBookReservationInfos(book)));
 			return dto;
 		} catch (LibraryException le) {
 			return null;

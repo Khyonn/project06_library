@@ -127,25 +127,31 @@ public class BusinessHelperImpl implements BusinessHelper {
 									|| bs.getLoans().stream().allMatch(l -> l.getReturnDate() != null))
 							// et que personne ne l'a réservé
 							&& infos.getReservers().isEmpty());
-
-					if (!infos.getIsAvailable()) {
-						// D) On renseigne la taille max de ma fome de réservation
+					if (infos.getIsAvailable()) {
+						// D) On rensegine le nombre d'exemplaires disponibles
+						infos.setAvailableSamplesNumber(
+								(int) borrowableBookSamples.stream()
+										.filter(bs -> bs.getLoans() == null || bs.getLoans().isEmpty()
+												|| bs.getLoans().stream().allMatch(l -> l.getReturnDate() != null))
+										.count());
+					} else {
+						// E) On renseigne la taille max de ma fome de réservation
 
 						infos.setQueueMaxSize(borrowableBookSamples.size() * RESERVATION_QUEUE_SAMPLE_FACTOR);
-						// E) Le livre est réservable si le nombre d'exemplaire * X est supérieur au
+						// F) Le livre est réservable si le nombre d'exemplaire * X est supérieur au
 						// nombre
 						// de réservations
 						infos.setIsReservable(infos.getQueueMaxSize() > infos.getReservers().size());
 
 						// Enfin, on estime les date de disponibilité minimum et maximum
 						if (activeLoans != null && !activeLoans.isEmpty()) {
-							// F) Le plus tot = date min de retour prévue
+							// G) Le plus tot = date min de retour prévue
 							Date soonest = new Date(activeLoans.stream()
 									.map(loan -> getLoanActualEndDate(loan).getTime()).min(Long::compare).get());
 							if (infos.getSoonestAvailabilityDate().before(soonest)) {
 								infos.setSoonestAvailabilityDate(soonest);
 							}
-							// G) Le plus tard = date min de retour + temps prolongement
+							// H) Le plus tard = date min de retour + temps prolongement
 							Date latest = new Date(activeLoans.stream().map(loan -> getLoanMaxEndDate(loan).getTime())
 									.min(Long::compare).get());
 							if (infos.getLatestAvailabilityDate().before(latest)) {
