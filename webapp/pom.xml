@@ -117,6 +117,15 @@
                                         <extraarg>fr.nmocs.library.webapp.ws</extraarg>
                                     </extraargs>
                                 </wsdlOption>
+                                <wsdlOption>
+                                    <!-- put the wsdl file in this location -->
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/reservation.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>fr.nmocs.library.webapp.ws</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
                             </wsdlOptions>
                         </configuration>
                         <goals>

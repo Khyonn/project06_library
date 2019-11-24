@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.webapp.ws.BookDTO;
-import fr.nmocs.library.webapp.ws.BookSampleDTO;
 import fr.nmocs.library.webapp.ws.BookService;
 import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
 
@@ -31,6 +30,24 @@ public class BookAction extends LibraryAbstractAction {
 	private List<BookDTO> bookList;
 
 	private BookDTO book;
+
+	public boolean getIsReservable() {
+		// L'utilisateur ne pourra réserver le livre que s'il est connecté
+		return getIsUserConnected() && book != null && book.getReservationQueueInfos() != null &&
+		// et qu'il ne loue pas actuellement le livre (borrowers = null || borrowers
+		// empty || u /e borrowers)
+				(book.getReservationQueueInfos().getBorrowers() == null
+						|| book.getReservationQueueInfos().getBorrowers().isEmpty()
+						|| book.getReservationQueueInfos().getBorrowers().stream()
+								.allMatch(b -> b != null && b.getId() != null && !b.getId().equals(getUserId())))
+				&&
+				// et qu'il ne réserve pas le livre (reservers = null || reservers empty || u /e
+				// reservers)
+				(book.getReservationQueueInfos().getReservers() == null
+						|| book.getReservationQueueInfos().getReservers().isEmpty()
+						|| book.getReservationQueueInfos().getReservers().stream()
+								.allMatch(r -> r != null && r.getId() != null && !r.getId().equals(getUserId())));
+	}
 
 	public List<BookDTO> getBookList() {
 		return bookList;
@@ -83,13 +100,6 @@ public class BookAction extends LibraryAbstractAction {
 		}
 		if (book == null || !StringUtils.equals(book.getStatus(), AVAILABLE_STATUS)) {
 			return ERROR;
-		}
-		List<BookSampleDTO> bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
-		if (CollectionUtils.isNotEmpty(bookSampleList)) {
-			sampleNumber = bookSampleList.stream()
-					.filter(bookSample -> StringUtils.equals(bookSample.getStatus(), AVAILABLE_STATUS)).count();
-		} else {
-			sampleNumber = 0L;
 		}
 		return SUCCESS;
 	}

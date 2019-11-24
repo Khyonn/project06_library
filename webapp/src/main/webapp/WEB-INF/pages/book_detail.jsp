@@ -12,7 +12,19 @@
 	    	<p>
 	    		<s:property value="book.summary"/>
 	    	</p>
-	    	<span><s:text name="bookDetail.availableNumber"/> : <s:property value="sampleNumber"/></span>
+	    	<span><s:text name="bookDetail.availableNumber"/> : <span><s:property value="book.reservationQueueInfos.AvailableSamplesNumber"/></span>
+			<s:if test="isReservable">
+				<br><span><s:text name="bookDetail.reservationinfos.canReserve"/></span>
+				(<s:text name="bookDetail.reservationinfos.reservationNb"/> : <span><s:property value="book.reservationQueueInfos.reservers.size()"/></span> / <span><s:property value="book.reservationQueueInfos.queueMaxSize"/></span> <s:text name="bookDetail.reservationinfos.reservationMax"/>)<br>
+				<s:text name="bookDetail.reservationinfos.availability.between"/> <s:date name="book.reservationQueueInfos.soonestAvailabilityDate.toGregorianCalendar()" format="dd/MM/yyyy" /> <s:text name="bookDetail.reservationinfos.availability.and"/> <s:date name="book.reservationQueueInfos.latestAvailabilityDate.toGregorianCalendar()" format="dd/MM/yyyy" /> 
+				<s:a action="reservation-create" cssClass="float-right btn-primary">
+					<s:param name="bookId" value="book.id"/>
+					<s:text name="bookDetail.btn.reservation" />
+				</s:a>
+			</s:if>
+			<s:if test="book.reservationQueueInfos.isAvailable">
+				<s:text name="bookDetail.available"/>
+			</s:if>
 	    </main>
 	    
    		<%@ include file="../_include/bootstrap_scripts.jsp" %>

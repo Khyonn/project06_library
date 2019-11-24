@@ -14,6 +14,8 @@ import fr.nmocs.library.webapp.ws.BookService;
 import fr.nmocs.library.webapp.ws.BookService_Service;
 import fr.nmocs.library.webapp.ws.LoanService;
 import fr.nmocs.library.webapp.ws.LoanService_Service;
+import fr.nmocs.library.webapp.ws.ReservationService;
+import fr.nmocs.library.webapp.ws.ReservationService_Service;
 import fr.nmocs.library.webapp.ws.TokenService;
 import fr.nmocs.library.webapp.ws.TokenServiceService;
 import fr.nmocs.library.webapp.ws.UserService;
@@ -72,6 +74,19 @@ public class SpringConfiguration {
 		}
 		try {
 			return new TokenServiceService(new URL(webserviceUrl + "/token?wsdl")).getTokenServicePort();
+		} catch (MalformedURLException e) {
+			return null;
+		}
+	}
+
+	@Bean
+	public ReservationService getReservationService() {
+		if (StringUtils.isBlank(webserviceUrl)) {
+			return new ReservationService_Service().getReservationServicePort();
+		}
+		try {
+			return new ReservationService_Service(new URL(webserviceUrl + "/reservation?wsdl"))
+					.getReservationServicePort();
 		} catch (MalformedURLException e) {
 			return null;
 		}

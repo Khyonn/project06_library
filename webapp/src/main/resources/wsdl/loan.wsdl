@@ -47,11 +47,13 @@
   </xs:complexType>
   <xs:complexType name="reservationQueueDTO">
     <xs:sequence>
-      <xs:element name="isReservable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="availableSamplesNumber" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="borrowers" nillable="true" type="tns:userDTO"/>
+      <xs:element minOccurs="0" name="isAvailable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="isReservable" type="xs:boolean"/>
       <xs:element minOccurs="0" name="latestAvailabilityDate" type="xs:dateTime"/>
-      <xs:element minOccurs="0" name="queueSize" type="xs:int"/>
-      <xs:element name="reservable" type="xs:boolean"/>
-      <xs:element minOccurs="0" name="reservationNb" type="xs:int"/>
+      <xs:element minOccurs="0" name="queueMaxSize" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="reservers" nillable="true" type="tns:userDTO"/>
       <xs:element minOccurs="0" name="soonestAvailabilityDate" type="xs:dateTime"/>
     </xs:sequence>
   </xs:complexType>
