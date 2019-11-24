@@ -106,10 +106,10 @@
         <action name="reservation-create" 
             class="fr.nmocs.library.webapp.actions.UserReservationAction" method="doCreate">
             <result name="success" type="redirectAction">
-                <param name="actionName">book-detail</param>
+                <param name="actionName">reservation-consult</param>
             </result>
             <result name="error" type="redirectAction">
-                <param name="actionName">book-detail</param>
+                <param name="actionName">reservation-consult</param>
             </result>
             <result name="login" type="redirectAction">
                 <param name="actionName">login</param>

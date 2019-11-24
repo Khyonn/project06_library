@@ -58,7 +58,9 @@ public class ReservationManagementImpl implements ReservationManagement {
 		reservation.setMailedDate(null);
 		reservation.setReservationDate(new Date());
 		checkBusiness(reservation);
-		return reservationRepo.save(reservation);
+		// TODO: Si le livre est déjà disponible => envoyer un email !!
+		Reservation toReturn = reservationRepo.save(reservation);
+		return toReturn;
 	}
 
 	@Override

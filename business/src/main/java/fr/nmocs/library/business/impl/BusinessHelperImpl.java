@@ -90,10 +90,11 @@ public class BusinessHelperImpl implements BusinessHelper {
 	public ReservationQueue getBookReservationInfos(Book book) {
 		ReservationQueue infos = new ReservationQueue();
 
-		if (book != null) {
-			if (book.getReservations() != null) {
+		if (book != null && book.getStatus() != null && book.getStatus().equals(BookStatus.AVAILABLE.getValue())) {
+			if (book.getReservations() != null && !book.getReservations().isEmpty()) {
 				Date reservationPeremptionDate = getReservationMaxMailedDate();
 				// A) On renseigne les différents utilisateurs ayant réservé le livre
+				// afin de permettre aux FRONTS de savoir si un utilisateur le réserve
 				infos.setReservers(book.getReservations().stream()
 						// dont la notification par mail n'est pas passé de X ms
 						.filter(r -> r != null
@@ -101,7 +102,7 @@ public class BusinessHelperImpl implements BusinessHelper {
 						.map(r -> r.getReserver()).collect(Collectors.toList()));
 			}
 			if (book.getSamples() != null && !book.getSamples().isEmpty()) {
-				// ===== LISTE DES PRET EN COURS POUR LE LIVRE
+				// ===== ON LISTE LES PRETS EN COURS POUR LE LIVRE
 				List<Loan> activeLoans = book.getSamples().stream()
 						// On récupère tous les prets associés aux exemplaire du livre
 						.filter(s -> s != null && s.getLoans() != null && !s.getLoans().isEmpty())
@@ -111,56 +112,52 @@ public class BusinessHelperImpl implements BusinessHelper {
 						.stream().filter(l -> l.getReturnDate() == null).collect(Collectors.toList());
 
 				// B) On renseigne les utilisateurs qui louent actuellement un exemplaire du
-				// livre
+				// livre (afin de permettre aux FRONTS de savoir si un utilisateur le loue)
 				infos.setBorrowers(activeLoans.stream().map(l -> l.getBorrower()).collect(Collectors.toList()));
 
-				if (book.getStatus().equals(BookStatus.AVAILABLE.getValue())) {
-					// ===== LISTE DES EXEMPLAIRES DONT L'ETAT EST CORRECT (status = AVAILABLE)
-					List<BookSample> borrowableBookSamples = book.getSamples().stream()
-							.filter(s -> s != null && s.getStatus().equals(BookSampleStatus.AVAILABLE.getValue()))
-							.collect(Collectors.toList());
+				// ===== LISTE DES EXEMPLAIRES DONT L'ETAT EST CORRECT (status = AVAILABLE)
+				List<BookSample> borrowableBookSamples = book.getSamples().stream()
+						.filter(s -> s != null && s.getStatus().equals(BookSampleStatus.AVAILABLE.getValue()))
+						.collect(Collectors.toList());
 
-					// C) Le livre est disponible si
-					infos.setIsAvailable(borrowableBookSamples.stream()
-							// au moins un de ses exemplaire n'a aucun emprunt en cours (returnDate !=null)
-							.anyMatch(bs -> bs.getLoans() == null || bs.getLoans().isEmpty()
-									|| bs.getLoans().stream().allMatch(l -> l.getReturnDate() != null))
-							// et que personne ne l'a réservé
-							&& infos.getReservers().isEmpty());
-					if (infos.getIsAvailable()) {
-						// D) On rensegine le nombre d'exemplaires disponibles
-						infos.setAvailableSamplesNumber(
-								(int) borrowableBookSamples.stream()
-										.filter(bs -> bs.getLoans() == null || bs.getLoans().isEmpty()
-												|| bs.getLoans().stream().allMatch(l -> l.getReturnDate() != null))
-										.count());
-					} else {
-						// E) On renseigne la taille max de ma fome de réservation
-
-						infos.setQueueMaxSize(borrowableBookSamples.size() * RESERVATION_QUEUE_SAMPLE_FACTOR);
-						// F) Le livre est réservable si le nombre d'exemplaire * X est supérieur au
-						// nombre
-						// de réservations
-						infos.setIsReservable(infos.getQueueMaxSize() > infos.getReservers().size());
-
-						// Enfin, on estime les date de disponibilité minimum et maximum
-						if (activeLoans != null && !activeLoans.isEmpty()) {
-							// G) Le plus tot = date min de retour prévue
-							Date soonest = new Date(activeLoans.stream()
-									.map(loan -> getLoanActualEndDate(loan).getTime()).min(Long::compare).get());
-							if (infos.getSoonestAvailabilityDate().before(soonest)) {
-								infos.setSoonestAvailabilityDate(soonest);
-							}
-							// H) Le plus tard = date min de retour + temps prolongement
-							Date latest = new Date(activeLoans.stream().map(loan -> getLoanMaxEndDate(loan).getTime())
-									.min(Long::compare).get());
-							if (infos.getLatestAvailabilityDate().before(latest)) {
-								infos.setLatestAvailabilityDate(latest);
-							}
-						}
-					}
+				// C) On rensegine le nombre d'exemplaires disponibles :
+				// (ceux qui n'ont pas de pret en cours rattachés)
+				infos.setAvailableSamplesNumber((int) borrowableBookSamples.stream()
+						.filter(bs -> bs.getLoans() == null || bs.getLoans().isEmpty()
+								|| bs.getLoans().stream().allMatch(l -> l.getReturnDate() != null))
+						.count()
+						// MOINS le nombre de réservations
+						- infos.getReservers().size());
+				if (infos.getAvailableSamplesNumber() <= 0) {
+					infos.setAvailableSamplesNumber(0);
+				} else {
+					// D) S'il y a des exemplaires disponibles (non réservés et sans emprunts)
+					infos.setIsAvailable(true);
 				}
 
+				// E) On renseigne la taille max de ma file de réservation
+				infos.setQueueMaxSize(borrowableBookSamples.size() * RESERVATION_QUEUE_SAMPLE_FACTOR);
+
+				// F) Le livre est réservable si le nombre d'exemplaire * X est supérieur au
+				// nombre de réservations
+				infos.setIsReservable(infos.getQueueMaxSize() > infos.getReservers().size());
+
+				// Enfin, on estime les date de disponibilité minimum et maximum
+				if (activeLoans != null && !activeLoans.isEmpty()) {
+					// G) Le plus tot = date min de retour prévue
+					Date soonest = new Date(activeLoans.stream().map(loan -> getLoanActualEndDate(loan).getTime())
+							.min(Long::compare).get());
+					if (infos.getSoonestAvailabilityDate().before(soonest)) {
+						infos.setSoonestAvailabilityDate(soonest);
+					}
+
+					// H) Le plus tard = date min de retour + temps prolongement
+					Date latest = new Date(activeLoans.stream().map(loan -> getLoanMaxEndDate(loan).getTime())
+							.min(Long::compare).get());
+					if (infos.getLatestAvailabilityDate().before(latest)) {
+						infos.setLatestAvailabilityDate(latest);
+					}
+				}
 			}
 		}
 		return infos;

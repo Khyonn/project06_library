@@ -31,22 +31,45 @@ public class BookAction extends LibraryAbstractAction {
 
 	private BookDTO book;
 
-	public boolean getIsReservable() {
-		// L'utilisateur ne pourra réserver le livre que s'il est connecté
-		return getIsUserConnected() && book != null && book.getReservationQueueInfos() != null &&
-		// et qu'il ne loue pas actuellement le livre (borrowers = null || borrowers
-		// empty || u /e borrowers)
-				(book.getReservationQueueInfos().getBorrowers() == null
-						|| book.getReservationQueueInfos().getBorrowers().isEmpty()
-						|| book.getReservationQueueInfos().getBorrowers().stream()
-								.allMatch(b -> b != null && b.getId() != null && !b.getId().equals(getUserId())))
-				&&
-				// et qu'il ne réserve pas le livre (reservers = null || reservers empty || u /e
-				// reservers)
-				(book.getReservationQueueInfos().getReservers() == null
-						|| book.getReservationQueueInfos().getReservers().isEmpty()
-						|| book.getReservationQueueInfos().getReservers().stream()
-								.allMatch(r -> r != null && r.getId() != null && !r.getId().equals(getUserId())));
+	/**
+	 * Returns if the book is reservable => based on
+	 * reservationQueueInfos.isReservable and based on borrowers list and reservers
+	 * list
+	 * 
+	 * @return
+	 */
+	public boolean getIsBookReservable() {
+		return book != null && book.getReservationQueueInfos() != null
+				&& book.getReservationQueueInfos().isIsReservable() && !getDoesUserBorrowingBook()
+				&& !getDoesUserReservingBook();
+	}
+
+	/**
+	 * Returns if current user is currently borrowing the book based on list of
+	 * borrowers (reservationQueueInfos)
+	 * 
+	 * @return
+	 */
+	public boolean getDoesUserBorrowingBook() {
+		return getIsUserConnected() && book != null && book.getReservationQueueInfos() != null
+				&& book.getReservationQueueInfos().getBorrowers() != null
+				&& !book.getReservationQueueInfos().getBorrowers().isEmpty()
+				&& book.getReservationQueueInfos().getBorrowers().stream()
+						.anyMatch(b -> b != null && b.getId() != null && b.getId().equals(getUserId()));
+	}
+
+	/**
+	 * Returns if current user is currently reserving the book based on list of
+	 * reservers (reservationQueueInfos)
+	 * 
+	 * @return
+	 */
+	public boolean getDoesUserReservingBook() {
+		return getIsUserConnected() && book != null && book.getReservationQueueInfos() != null
+				&& book.getReservationQueueInfos().getReservers() != null
+				&& !book.getReservationQueueInfos().getReservers().isEmpty()
+				&& book.getReservationQueueInfos().getReservers().stream()
+						.anyMatch(r -> r != null && r.getId() != null && r.getId().equals(getUserId()));
 	}
 
 	public List<BookDTO> getBookList() {
