@@ -26,7 +26,10 @@
                 
 				<%-- LE LIVRE EST RESERVABLE --%>
 				<s:if test="isBookReservable">
-                    <span><s:text name="bookDetail.reservationinfos.canReserve"/></span>
+                    <span><s:text name="bookDetail.reservationinfos.canReserve"/></span><br>
+                     <s:text name="bookDetail.reservationinfos.reservationNb"/> : 
+                     <s:property value="book.reservationQueueInfos.reservers.size()"/> / 
+                     <s:property value="book.reservationQueueInfos.queueMaxSize"/> <s:text name="bookDetail.reservationinfos.reservationMax"/><br>
 				</s:if>
 				<%-- SINON --%>
 				<s:else>
@@ -40,11 +43,13 @@
                         <s:elseif test="doesUserBorrowingBook">
                             <s:text name="bookDetail.reservationinfos.userBorrowingBook" />
                         </s:elseif>
+                        <%-- L'UTILISATEUR N'EST PAS CONNECTE --%>
+                        <s:elseif test="!isUserConnected">
+                            <s:text name="bookDetail.reservationinfos.userNotConnected" />
+                        </s:elseif>
                         <%-- OU LA FILE DE RESERVATION EST PLEINE --%>
                         <s:else>
-                            <s:text name="bookDetail.reservationinfos.reservationNb"/> : 
-                            <s:property value="book.reservationQueueInfos.reservers.size()"/> / 
-                            <s:property value="book.reservationQueueInfos.queueMaxSize"/> <s:text name="bookDetail.reservationinfos.reservationMax"/>
+                        	<s:text name="bookDetail.reservationinfos.reservationQueue" />
                         </s:else>)
                     </span>
                 </s:else>
