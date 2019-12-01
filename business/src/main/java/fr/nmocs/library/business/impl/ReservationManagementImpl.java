@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.nmocs.library.business.BusinessHelper;
 import fr.nmocs.library.business.ReservationManagement;
+import fr.nmocs.library.consumer.BookRepository;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
 import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.consumer.UserRepository;
+import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.constants.BookSampleStatus;
 import fr.nmocs.library.model.constants.BookStatus;
@@ -40,10 +43,16 @@ public class ReservationManagementImpl implements ReservationManagement {
 	private UserRepository useRepo;
 
 	@Autowired
+	private BookRepository bookRepo;
+
+	@Autowired
 	private BookSampleRepository bookSampleRepo;
 
 	@Autowired
 	private LoanRepository loanRepo;
+
+	@Autowired
+	private BusinessHelper businessHelper;
 
 	@Value("${business.reservations.queue.sizeFactorSample}")
 	private Integer RESERVATION_QUEUE_SAMPLE_FACTOR;
@@ -58,8 +67,13 @@ public class ReservationManagementImpl implements ReservationManagement {
 		reservation.setMailedDate(null);
 		reservation.setReservationDate(new Date());
 		checkBusiness(reservation);
-		// TODO: Si le livre est déjà disponible => envoyer un email !!
+		Book book = bookRepo.findByIdFetchReservationsAndSampleAndLoans(reservation.getBook().getId());
+
 		Reservation toReturn = reservationRepo.save(reservation);
+		// Si le livre est déjà disponible => envoyer un email !!
+		if (businessHelper.getBookReservationInfos(book).getIsAvailable()) {
+			businessHelper.notifyFirstReserver(book);
+		}
 		return toReturn;
 	}
 

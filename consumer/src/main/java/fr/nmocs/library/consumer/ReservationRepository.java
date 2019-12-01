@@ -71,4 +71,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Reserv
 	 * @param date
 	 */
 	void deleteByMailedDateNotNullAndMailedDateLessThan(Date date);
+
+	List<Reservation> findByIdBookIdAndMailedDateIsNull(Integer id);
 }

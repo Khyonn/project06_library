@@ -16,4 +16,6 @@ public interface BusinessHelper {
 
 	Date getReservationMaxMailedDate();
 
+	void notifyFirstReserver(Book book);
+
 }

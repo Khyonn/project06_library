@@ -1,24 +1,38 @@
 package fr.nmocs.library.business.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.ListUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.nmocs.library.business.BusinessHelper;
+import fr.nmocs.library.business.email.LibraryEmailUtils;
+import fr.nmocs.library.business.model.LibraryEmail;
 import fr.nmocs.library.business.model.ReservationQueue;
+import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.BookSample;
 import fr.nmocs.library.model.Loan;
+import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.constants.BookSampleStatus;
 import fr.nmocs.library.model.constants.BookStatus;
+import fr.nmocs.library.model.error.LibraryTechnicalException;
 
 @Service
 public class BusinessHelperImpl implements BusinessHelper {
+
+	@Autowired
+	private LibraryEmailUtils emailUtils;
+
+	@Autowired
+	private ReservationRepository reservationRepo;
 
 	// ===== Règles métiers :
 
@@ -166,5 +180,32 @@ public class BusinessHelperImpl implements BusinessHelper {
 	@Override
 	public Date getReservationMaxMailedDate() {
 		return new Date((new Date()).getTime() - RESERVATION_VALIDITY_AFTERMAIL_MS);
+	}
+
+	@Override
+	@Transactional
+	public void notifyFirstReserver(Book book) {
+		Reservation firstReservation = reservationRepo.findByIdBookIdAndMailedDateIsNull(book.getId()).stream()
+				.sorted(Comparator.comparingLong(r -> r.getReservationDate().getTime())).findFirst().orElse(null);
+
+		if (firstReservation == null) {
+			return;
+		}
+		// ==== Send email
+		LibraryEmail email = new LibraryEmail();
+		email.setTo(firstReservation.getReserver().getEmail());
+		email.setSubject("Your reservation is available");
+		StringBuilder sb = new StringBuilder();
+		sb.append(book.getTitle())
+				.append(" is now available in your library\nPlease come borrow your sample within two days.\n");
+		email.setBody(sb.toString());
+		try {
+			emailUtils.sendEmail(email);
+		} catch (LibraryTechnicalException e) {
+			return;
+		}
+		// ===== Update reservation mailed date
+		firstReservation.setMailedDate(new Date());
+		reservationRepo.save(firstReservation);
 	}
 }

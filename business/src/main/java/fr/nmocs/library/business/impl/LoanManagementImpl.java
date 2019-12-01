@@ -18,7 +18,6 @@ import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
 import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.consumer.UserRepository;
-import fr.nmocs.library.model.Book;
 import fr.nmocs.library.model.Loan;
 import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.constants.BookSampleStatus;
@@ -101,35 +100,9 @@ public class LoanManagementImpl implements LoanManagement {
 		Loan toReturn = loanRepo.save(databaseLoan);
 
 		if (isReturned) {
-			notifyFirstReserver(loan.getBookSample().getBook());
+			businessHelper.notifyFirstReserver(loan.getBookSample().getBook());
 		}
 		return toReturn;
-	}
-
-	@Transactional
-	private void notifyFirstReserver(Book book) {
-		Reservation firstReservation = reservationRepo.findByIdBookId(book.getId()).stream()
-				.sorted(Comparator.comparingLong(r -> r.getReservationDate().getTime())).findFirst().orElse(null);
-
-		if (firstReservation == null) {
-			return;
-		}
-		// ==== Send email
-		LibraryEmail email = new LibraryEmail();
-		email.setTo(firstReservation.getReserver().getEmail());
-		email.setSubject("Your reservation is available");
-		StringBuilder sb = new StringBuilder();
-		sb.append(book.getTitle())
-				.append(" is now available in your library\nPlease come borrow your sample within two days.\n");
-		email.setBody(sb.toString());
-		try {
-			emailUtils.sendEmail(email);
-		} catch (LibraryTechnicalException e) {
-			return;
-		}
-		// ===== Update reservation mailed date
-		firstReservation.setMailedDate(new Date());
-		reservationRepo.save(firstReservation);
 	}
 
 	// ========== READERS
