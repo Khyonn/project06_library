@@ -203,9 +203,10 @@ public class BusinessHelperImpl implements BusinessHelper {
 			emailUtils.sendEmail(email);
 		} catch (LibraryTechnicalException e) {
 			return;
+		} finally {
+			// ===== Update reservation mailed date
+			firstReservation.setMailedDate(new Date());
+			reservationRepo.save(firstReservation);
 		}
-		// ===== Update reservation mailed date
-		firstReservation.setMailedDate(new Date());
-		reservationRepo.save(firstReservation);
 	}
 }

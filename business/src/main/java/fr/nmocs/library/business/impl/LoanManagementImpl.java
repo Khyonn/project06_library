@@ -100,7 +100,7 @@ public class LoanManagementImpl implements LoanManagement {
 		Loan toReturn = loanRepo.save(databaseLoan);
 
 		if (isReturned) {
-			businessHelper.notifyFirstReserver(loan.getBookSample().getBook());
+			businessHelper.notifyFirstReserver(toReturn.getBookSample().getBook());
 		}
 		return toReturn;
 	}
