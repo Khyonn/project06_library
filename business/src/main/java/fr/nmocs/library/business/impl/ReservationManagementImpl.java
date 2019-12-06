@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.nmocs.library.business.BusinessHelper;
 import fr.nmocs.library.business.ReservationManagement;
+import fr.nmocs.library.business.model.ReservationQueue;
 import fr.nmocs.library.consumer.BookRepository;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
@@ -67,14 +68,17 @@ public class ReservationManagementImpl implements ReservationManagement {
 		reservation.setMailedDate(null);
 		reservation.setReservationDate(new Date());
 		checkBusiness(reservation);
-		Book book = bookRepo.findByIdFetchReservationsAndSampleAndLoans(reservation.getBook().getId());
 
-		Reservation toReturn = reservationRepo.save(reservation);
+		Book book = bookRepo.findByIdFetchReservationsAndSampleAndLoans(reservation.getBook().getId());
+		ReservationQueue infos = businessHelper.getBookReservationInfos(book);
+
+		Reservation createdReservation = reservationRepo.save(reservation);
+
 		// Si le livre est déjà disponible => envoyer un email !!
-		if (businessHelper.getBookReservationInfos(book).getIsAvailable()) {
+		if (infos.getIsAvailable()) {
 			businessHelper.notifyFirstReserver(book);
 		}
-		return toReturn;
+		return reservationRepo.findById(createdReservation.getId()).orElse(null);
 	}
 
 	@Override
@@ -83,7 +87,18 @@ public class ReservationManagementImpl implements ReservationManagement {
 		if (!reservationRepo.existsById(id)) {
 			throw new LibraryTechnicalException(ErrorCode.RESERVATION_NOT_FOUND);
 		}
+
+		// Si la réservation ne correspond à aucun pret en cours mais que le reserveur a
+		// déjà été notifié, on peut notifier le prochain reserveur
+		Reservation reservation = reservationRepo.findById(id).orElse(null);
+		Boolean shouldNotify = reservation.getMailedDate() != null
+				&& !loanRepo.existsByBorrowerIdAndBookSampleBookIdAndReturnDateIsNull(reservation.getReserver().getId(),
+						reservation.getBook().getId());
+
 		reservationRepo.deleteById(id);
+		if (shouldNotify) {
+			businessHelper.notifyFirstReserver(reservation.getBook());
+		}
 	}
 
 	/**

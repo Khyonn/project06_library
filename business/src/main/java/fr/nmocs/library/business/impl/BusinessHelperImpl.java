@@ -112,7 +112,7 @@ public class BusinessHelperImpl implements BusinessHelper {
 				infos.setReservers(book.getReservations().stream()
 						// dont la notification par mail n'est pas passé de X ms
 						.filter(r -> r != null
-								&& (r.getMailedDate() == null || r.getMailedDate().before(reservationPeremptionDate)))
+								&& (r.getMailedDate() == null || r.getMailedDate().after(reservationPeremptionDate)))
 						.map(r -> r.getReserver()).collect(Collectors.toList()));
 			}
 			if (book.getSamples() != null && !book.getSamples().isEmpty()) {
@@ -144,10 +144,11 @@ public class BusinessHelperImpl implements BusinessHelper {
 						- infos.getReservers().size());
 				if (infos.getAvailableSamplesNumber() <= 0) {
 					infos.setAvailableSamplesNumber(0);
-				} else {
-					// D) S'il y a des exemplaires disponibles (non réservés et sans emprunts)
-					infos.setIsAvailable(true);
 				}
+
+				// D) S'il y a des exemplaires disponibles (non réservés et sans emprunts)
+				infos.setIsAvailable(infos.getAvailableSamplesNumber() - infos.getReservers().size()
+						- infos.getBorrowers().size() > 0);
 
 				// E) On renseigne la taille max de ma file de réservation
 				infos.setQueueMaxSize(borrowableBookSamples.size() * RESERVATION_QUEUE_SAMPLE_FACTOR);
