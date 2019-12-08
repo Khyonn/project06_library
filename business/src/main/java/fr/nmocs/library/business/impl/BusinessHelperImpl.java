@@ -113,6 +113,7 @@ public class BusinessHelperImpl implements BusinessHelper {
 						// dont la notification par mail n'est pas passé de X ms
 						.filter(r -> r != null
 								&& (r.getMailedDate() == null || r.getMailedDate().after(reservationPeremptionDate)))
+						.sorted(Comparator.comparingLong(r -> r.getReservationDate().getTime()))
 						.map(r -> r.getReserver()).collect(Collectors.toList()));
 			}
 			if (book.getSamples() != null && !book.getSamples().isEmpty()) {

@@ -19,9 +19,12 @@
 					</div>
 					
 					<ul class="list-group list-group-flush text-info">
-						<s:iterator value="reservations">	           			
+						<s:iterator value="reservations" var="reservation">	           			
 							<li class="list-group-item">
 								<span class="font-weight-bold"><s:property value="book.title"/> _ <s:property value="book.author"/></span>
+								(<s:text name="reservations.nextAvailability" /> :
+								<s:date name="getReservationNextReturnDate(getBookReservationsInfos(#reservation))" format="dd/MM/yyyy" />,
+								<s:text name="reservations.position" /> : <s:property value="getReservationPosition(getBookReservationsInfos(#reservation))"/>)
 								<s:form action="reservation-delete" cssClass="text-right" theme="simple">
 									<input type="hidden" name="bookId" value="<s:property value="book.id"/>">
 									<s:submit cssClass="btn btn-danger" key="reservations.btn.delete"></s:submit>
