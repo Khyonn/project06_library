@@ -1,5 +1,6 @@
 package fr.nmocs.library.business;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.nmocs.library.model.Loan;
@@ -17,4 +18,8 @@ public interface LoanManagement {
 	List<Loan> findByUserId(Integer userId) throws LibraryTechnicalException;
 
 	List<Loan> findNotReturned() throws LibraryTechnicalException;
+
+	Date getSoonestReturnDate(List<Loan> loans);
+
+	void sendEmailToBorrowers() throws LibraryTechnicalException;
 }

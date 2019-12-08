@@ -1,5 +1,6 @@
 package fr.nmocs.library.business.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -9,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.nmocs.library.business.UserManagement;
 import fr.nmocs.library.consumer.AdminRepository;
+import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.consumer.UserRepository;
 import fr.nmocs.library.model.Admin;
+import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.constants.UserStatus;
 import fr.nmocs.library.model.constants.UserType;
@@ -18,6 +21,7 @@ import fr.nmocs.library.model.error.ErrorCode;
 import fr.nmocs.library.model.error.LibraryBusinessException;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
+import fr.nmocs.library.model.pk.ReservationPK;
 
 @Service
 public class UserManagementImpl implements UserManagement {
@@ -29,6 +33,9 @@ public class UserManagementImpl implements UserManagement {
 
 	@Autowired
 	private AdminRepository adminRepo;
+
+	@Autowired
+	private ReservationRepository reservationRepo;
 
 	// ========== CREATES AND UPDATES
 
@@ -109,6 +116,23 @@ public class UserManagementImpl implements UserManagement {
 		} catch (Exception e) {
 			throw new LibraryTechnicalException(ErrorCode.USER_NOT_FOUND);
 		}
+	}
+
+	@Transactional
+	public Reservation findReservation(ReservationPK id) {
+		return reservationRepo.findById(id).get();
+	}
+
+	@Override
+	@Transactional
+	public Reservation create(Reservation reservation) {
+		reservation.setReservationDate(new Date());
+		reservationRepo.save(reservation);
+
+		ReservationPK id = new ReservationPK();
+		id.setBookId(reservation.getId().getBookId());
+		id.setReserverId(reservation.getId().getReserverId());
+		return findReservation(id);
 	}
 
 	// ===== UTILS

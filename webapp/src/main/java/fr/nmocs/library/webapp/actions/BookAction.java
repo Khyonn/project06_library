@@ -7,10 +7,9 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.webservice.Book;
-import fr.nmocs.library.webapp.webservice.BookSample;
-import fr.nmocs.library.webapp.webservice.BookService;
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.BookDTO;
+import fr.nmocs.library.webapp.ws.BookService;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
 
 @SuppressWarnings("serial")
 public class BookAction extends LibraryAbstractAction {
@@ -28,11 +27,52 @@ public class BookAction extends LibraryAbstractAction {
 	public Integer bookId;
 
 	// ===== Outputs
-	private List<Book> bookList;
+	private List<BookDTO> bookList;
 
-	private Book book;
+	private BookDTO book;
 
-	public List<Book> getBookList() {
+	/**
+	 * Returns if the book is reservable => based on
+	 * reservationQueueInfos.isReservable and based on borrowers list and reservers
+	 * list
+	 * 
+	 * @return
+	 */
+	public boolean getIsBookReservable() {
+		return book != null && book.getReservationQueueInfos() != null
+				&& book.getReservationQueueInfos().isIsReservable() && !getDoesUserBorrowingBook()
+				&& !getDoesUserReservingBook();
+	}
+
+	/**
+	 * Returns if current user is currently borrowing the book based on list of
+	 * borrowers (reservationQueueInfos)
+	 * 
+	 * @return
+	 */
+	public boolean getDoesUserBorrowingBook() {
+		return getIsUserConnected() && book != null && book.getReservationQueueInfos() != null
+				&& book.getReservationQueueInfos().getBorrowers() != null
+				&& !book.getReservationQueueInfos().getBorrowers().isEmpty()
+				&& book.getReservationQueueInfos().getBorrowers().stream()
+						.anyMatch(b -> b != null && b.getId() != null && b.getId().equals(getUserId()));
+	}
+
+	/**
+	 * Returns if current user is currently reserving the book based on list of
+	 * reservers (reservationQueueInfos)
+	 * 
+	 * @return
+	 */
+	public boolean getDoesUserReservingBook() {
+		return getIsUserConnected() && book != null && book.getReservationQueueInfos() != null
+				&& book.getReservationQueueInfos().getReservers() != null
+				&& !book.getReservationQueueInfos().getReservers().isEmpty()
+				&& book.getReservationQueueInfos().getReservers().stream()
+						.anyMatch(r -> r != null && r.getId() != null && r.getId().equals(getUserId()));
+	}
+
+	public List<BookDTO> getBookList() {
 		return bookList;
 	}
 
@@ -40,7 +80,7 @@ public class BookAction extends LibraryAbstractAction {
 		return CollectionUtils.isNotEmpty(bookList);
 	}
 
-	public Book getBook() {
+	public BookDTO getBook() {
 		return book;
 	}
 
@@ -81,12 +121,8 @@ public class BookAction extends LibraryAbstractAction {
 		} catch (LibraryWebserviceException_Exception e) {
 			return ERROR;
 		}
-		List<BookSample> bookSampleList = bookService.findNotBorrowedBookSampleByBookId(bookId);
-		if (CollectionUtils.isNotEmpty(bookSampleList)) {
-			sampleNumber = bookSampleList.stream()
-					.filter(bookSample -> StringUtils.equals(bookSample.getStatus(), AVAILABLE_STATUS)).count();
-		} else {
-			sampleNumber = 0L;
+		if (book == null || !StringUtils.equals(book.getStatus(), AVAILABLE_STATUS)) {
+			return ERROR;
 		}
 		return SUCCESS;
 	}

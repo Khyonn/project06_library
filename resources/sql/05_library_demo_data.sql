@@ -12,6 +12,6 @@ INSERT INTO BookSamples(bookId, bookSampleStatus) VALUES (4, 'A'), (4, 'A');
 
 -- Affectation à 'Florian Plop' des exemplaire avec le deuxième en retard
 INSERT INTO Loans(bookSampleId, borrowerId, startDate, returnDate, prolongationNumber) VALUES
-(11, 3, '2019-01-01 17:29:00', NULL, 0),
-(12, 3, '2018-01-01 00:00:00', NULL, 0);
+(11, 3, '2019-09-01 17:29:00', NULL, 0),
+(12, 3, '2018-09-01 00:00:00', NULL, 0);
 

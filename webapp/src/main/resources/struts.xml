@@ -82,6 +82,40 @@
             </result>
         </action>
         
+        <!-- RESERVATIONS -->
+        
+        <action name="reservation-consult" 
+            class="fr.nmocs.library.webapp.actions.UserReservationAction" method="doConsult">
+            <result name="success">WEB-INF/pages/user_reservations.jsp</result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">login</param>
+            </result>
+        </action>
+        
+        <action name="reservation-delete" 
+            class="fr.nmocs.library.webapp.actions.UserReservationAction" method="doDelete">
+            <result name="success" type="redirectAction">
+                <param name="actionName">reservation-consult</param>
+            </result>
+            <result name="error">WEB-INF/pages/user_reservations.jsp</result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">login</param>
+            </result>
+        </action>
+        
+        <action name="reservation-create" 
+            class="fr.nmocs.library.webapp.actions.UserReservationAction" method="doCreate">
+            <result name="success" type="redirectAction">
+                <param name="actionName">reservation-consult</param>
+            </result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">reservation-consult</param>
+            </result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">login</param>
+            </result>
+        </action>
+        
         <!-- BOOKS -->
         
         <action name="book-search" 

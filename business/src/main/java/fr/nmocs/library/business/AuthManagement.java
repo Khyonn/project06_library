@@ -6,11 +6,13 @@ import fr.nmocs.library.model.error.LibraryException;
 
 public interface AuthManagement {
 
-    Boolean isAdmin(String token);
+	Boolean isAdmin(String token);
 
-    User getUser(String token);
+	User getUser(String token);
 
-    void verifyToken(String token) throws LibraryBusinessException;
+	Integer getUserId(String token);
 
-    String getToken(String userEmail, String userPassword) throws LibraryException;
+	void verifyToken(String token) throws LibraryBusinessException;
+
+	String getToken(String userEmail, String userPassword) throws LibraryException;
 }

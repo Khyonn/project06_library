@@ -36,6 +36,7 @@
 					<s:if test="isUserConnected">
 			        	<s:a action="account-consult" cssClass="dropdown-item"><s:text name="common.nav.userProfileLink"/></s:a>
 			        	<s:a action="loan-consult" cssClass="dropdown-item"><s:text name="common.nav.userLoanLink"/></s:a>
+			        	<s:a action="reservation-consult" cssClass="dropdown-item"><s:text name="common.nav.userReservationLink"/></s:a>
 			        	<div class="dropdown-divider"></div>
 			        	<s:a action="logout" cssClass="dropdown-item"><s:text name="common.nav.logoutLink"/></s:a>
 					</s:if>

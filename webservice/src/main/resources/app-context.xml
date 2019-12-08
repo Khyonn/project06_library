@@ -40,11 +40,16 @@
         serviceClass="fr.nmocs.library.webservice.TokenService" address="/token"
         serviceBean="#loginservice">
     </jaxws:server>
+    <jaxws:server 
+        serviceClass="fr.nmocs.library.webservice.ReservationService" address="/reservation"
+        serviceBean="#reservationservice">
+    </jaxws:server>
     
     <bean id="bookservice" class="fr.nmocs.library.webservice.impl.BookServiceImpl" />
     <bean id="loanservice" class="fr.nmocs.library.webservice.impl.LoanServiceImpl"/>
     <bean id="userservice" class="fr.nmocs.library.webservice.impl.UserServiceImpl" />
     <bean id="loginservice" class="fr.nmocs.library.webservice.impl.TokenServiceImpl" />
+    <bean id="reservationservice" class="fr.nmocs.library.webservice.impl.ReservationServiceImpl" />
     
     
 
@@ -80,4 +85,5 @@
     <tx:annotation-driven />
 
     <jpa:repositories base-package="fr.nmocs.library" />
+    
 </beans>

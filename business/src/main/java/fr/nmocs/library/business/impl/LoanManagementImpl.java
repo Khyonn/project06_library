@@ -1,18 +1,25 @@
 package fr.nmocs.library.business.impl;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.nmocs.library.business.BusinessHelper;
 import fr.nmocs.library.business.LoanManagement;
+import fr.nmocs.library.business.email.LibraryEmailUtils;
+import fr.nmocs.library.business.model.LibraryEmail;
 import fr.nmocs.library.consumer.BookSampleRepository;
 import fr.nmocs.library.consumer.LoanRepository;
+import fr.nmocs.library.consumer.ReservationRepository;
 import fr.nmocs.library.consumer.UserRepository;
 import fr.nmocs.library.model.Loan;
+import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.constants.BookSampleStatus;
 import fr.nmocs.library.model.constants.BookStatus;
 import fr.nmocs.library.model.constants.UserStatus;
@@ -20,6 +27,7 @@ import fr.nmocs.library.model.error.ErrorCode;
 import fr.nmocs.library.model.error.LibraryBusinessException;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.model.error.LibraryTechnicalException;
+import fr.nmocs.library.model.pk.ReservationPK;
 
 @Service
 public class LoanManagementImpl implements LoanManagement {
@@ -29,17 +37,8 @@ public class LoanManagementImpl implements LoanManagement {
 	private static final Integer MIN_PROLONGATION_NB = 0;
 
 	// === UN SEUL PROLONGEMENT POSSIBLE
-	private static final Integer MAX_PROLONGATION_NB = 1;
-
-	// === NOMBRE DE SEMAINES DE PRET
-	private static final long LOAN_BASETIME_WEEKS = 4;
-
-	private static final long LOAN_BASETIME_MS = LOAN_BASETIME_WEEKS * 7 * 24 * 3600 * 1000;
-
-	// === TEMPS D'UNE PROLONGATION D'UN PRET
-	private static final long PROLONGATION_WEEKS = 4;
-
-	private static final long PROLONGATION_MS = PROLONGATION_WEEKS * 7 * 24 * 3600 * 1000;
+	@Value("${business.loans.prolongation.maxNb}")
+	private Integer MAX_PROLONGATION_NB;
 
 	// === DEPENDENCIES
 
@@ -52,6 +51,15 @@ public class LoanManagementImpl implements LoanManagement {
 	@Autowired
 	private UserRepository userRepo;
 
+	@Autowired
+	private ReservationRepository reservationRepo;
+
+	@Autowired
+	private BusinessHelper businessHelper;
+
+	@Autowired
+	private LibraryEmailUtils emailUtils;
+
 	// ========== CREATE AND UPDATE
 
 	@Override
@@ -62,7 +70,18 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 		formatFieldsForCreate(loan);
 		checkFields(loan);
-		return loanRepo.save(loan);
+		checkCreationBusinessRules(loan);
+		Loan toReturn = loanRepo.save(loan);
+
+		// [TK1] A la création d'un pret, on supprime toute réservation référant le
+		// livre pour l'utilisateur
+		ReservationPK reservationId = new ReservationPK(loan.getBookSample().getBook().getId(),
+				loan.getBorrower().getId());
+		if (reservationRepo.existsById(reservationId)) {
+			reservationRepo.deleteById(reservationId);
+		}
+
+		return toReturn;
 	}
 
 	@Override
@@ -75,9 +94,15 @@ public class LoanManagementImpl implements LoanManagement {
 			throw new LibraryBusinessException(ErrorCode.LOAN_DOESNT_EXIST);
 		}
 		Loan databaseLoan = loanRepo.findById(loan.getId()).orElse(null);
+		boolean isReturned = databaseLoan.getReturnDate() == null && loan.getReturnDate() != null;
 		mergeLoan(databaseLoan, loan);
 		checkFields(databaseLoan);
-		return loanRepo.save(databaseLoan);
+		Loan toReturn = loanRepo.save(databaseLoan);
+
+		if (isReturned) {
+			businessHelper.notifyFirstReserver(toReturn.getBookSample().getBook());
+		}
+		return toReturn;
 	}
 
 	// ========== READERS
@@ -104,11 +129,33 @@ public class LoanManagementImpl implements LoanManagement {
 	public List<Loan> findNotReturned() throws LibraryTechnicalException {
 		Date today = new Date();
 		try {
-			return loanRepo.findByReturnDateIsNull().stream().filter(loan -> getMaxTime(loan) < today.getTime())
+			return loanRepo.findByReturnDateIsNull().stream()
+					.filter(loan -> businessHelper.getLoanActualEndDate(loan).getTime() < today.getTime())
 					.collect(Collectors.toList());
 		} catch (Exception e) {
 			throw new LibraryTechnicalException(ErrorCode.LOAN_NOT_FOUND);
 		}
+	}
+
+	@Override
+	public void sendEmailToBorrowers() throws LibraryTechnicalException {
+		Date today = new Date();
+		List<LibraryEmail> emails = loanRepo.findByReturnDateIsNull().stream()
+				.filter(loan -> businessHelper.getLoanActualEndDate(loan).getTime() < today.getTime()).map(l -> {
+					StringBuilder sb = new StringBuilder();
+					LibraryEmail email = new LibraryEmail();
+
+					sb.append("Hello ").append(l.getBorrower().getFirstName())
+							.append(",\nWe are waiting for you to return ")
+							.append(l.getBookSample().getBook().getTitle()).append(" (borrowed on ")
+							.append(l.getStartDate().toString()).append(")");
+
+					email.setTo(l.getBorrower().getEmail());
+					email.setSubject("BOOK NOT RETURNED");
+					email.setBody(sb.toString());
+					return email;
+				}).collect(Collectors.toList());
+		emailUtils.sendEmails(emails);
 	}
 
 	// ========== UTILS
@@ -186,6 +233,59 @@ public class LoanManagementImpl implements LoanManagement {
 
 	}
 
+	@Transactional
+	private void cleanReservations() {
+		reservationRepo.deleteByMailedDateNotNullAndMailedDateLessThan(businessHelper.getReservationMaxMailedDate());
+	}
+
+	/**
+	 * Throws an exception if business rules are not respected
+	 * 
+	 * @param loan
+	 * @throws LibraryBusinessException
+	 */
+	private void checkCreationBusinessRules(Loan loan) throws LibraryBusinessException {
+		cleanReservations();
+		// TK1 => Création d'un prêt, on vérifie que l'emprunt est possible en
+		// fonction des réservations
+
+		// S'il le livre est réservé
+		if (reservationRepo.existsByIdBookId(loan.getBookSample().getBook().getId())) {
+			// Et que l'utilisateur ne l'a pas réservé => on throw
+			if (!reservationRepo.existsByIdBookIdAndIdReserverId(loan.getBookSample().getBook().getId(),
+					loan.getBorrower().getId())) {
+				throw new LibraryBusinessException(ErrorCode.LOAN_BOOK_IS_CURRENTLY_RESERVED);
+			}
+
+			// Ou que l'utilisateur n'est pas prioritaire dans la location
+			List<Reservation> bookReservations = reservationRepo.findByIdBookId(loan.getBookSample().getBook().getId())
+					// On tri les reservations par date croissante
+					.stream().sorted(Comparator.comparingLong(r -> r.getReservationDate().getTime()))
+					.collect(Collectors.toList());
+			Reservation userReservation = bookReservations.stream()
+					.filter(r -> r.getReserver().getId().equals(loan.getBorrower().getId())).findFirst().orElse(null);
+
+			int userPosition = bookReservations.indexOf(userReservation) + 1;
+			long availableBookSampleNb = bookSampleRepo
+					// On récupère tous les exemplaires en état pour être empruntés
+					.findByBookIdAndBookStatusAndBookSampleStatusFecthLoans(loan.getBookSample().getBook().getId(),
+							BookStatus.AVAILABLE.getValue(), BookSampleStatus.AVAILABLE.getValue())
+					// On ne conserve que ceux qui n'ont pas de prets en cours (returnDate non null)
+					.stream()
+					.filter(bs -> bs.getLoans() == null || bs.getLoans().isEmpty()
+							|| bs.getLoans().stream().allMatch(l -> l.getReturnDate() != null))
+					// On les compte
+					.count();
+
+			// Si le nombre d'exemplaires disponibles est inférieur à la position de
+			// l'utilisateur dans la file de réservation, il n'est pas prioritaire : on
+			// throw
+			if (availableBookSampleNb < userPosition) {
+				throw new LibraryBusinessException(ErrorCode.LOAN_SOMEONE_RESERVED_BEFORE);
+			}
+		}
+	}
+
 	/**
 	 * Merge new data on database loan
 	 * 
@@ -203,14 +303,10 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 	}
 
-	/**
-	 * For a given loan, returns max return time
-	 * 
-	 * @param loan
-	 * @return
-	 */
-	private long getMaxTime(Loan loan) {
-		return loan.getStartDate().getTime() + LOAN_BASETIME_MS + (PROLONGATION_MS * loan.getProlongationNumber());
+	@Override
+	public Date getSoonestReturnDate(List<Loan> loans) {
+		return new Date(loans.stream().map(loan -> businessHelper.getLoanActualEndDate(loan).getTime())
+				.min(Long::compare).get());
 	}
 
 }

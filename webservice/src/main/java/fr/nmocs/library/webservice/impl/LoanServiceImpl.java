@@ -2,6 +2,7 @@ package fr.nmocs.library.webservice.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,6 +12,8 @@ import fr.nmocs.library.model.Loan;
 import fr.nmocs.library.model.User;
 import fr.nmocs.library.model.error.LibraryException;
 import fr.nmocs.library.webservice.LoanService;
+import fr.nmocs.library.webservice.dto.LoanDTO;
+import fr.nmocs.library.webservice.dto.mapper.LoanMapper;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 public class LoanServiceImpl implements LoanService {
@@ -24,10 +27,10 @@ public class LoanServiceImpl implements LoanService {
 	private AuthManagement authMgmt;
 
 	@Override
-	public Loan createLoan(Loan loan, String token) throws LibraryWebserviceException {
+	public LoanDTO createLoan(LoanDTO loan, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return loanMgmt.createLoan(loan);
+			return LoanMapper.INSTANCE.toDTO(loanMgmt.createLoan(LoanMapper.INSTANCE.fromDTO(loan)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
@@ -35,18 +38,18 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
-	public Loan updateLoan(Loan loan, String token) throws LibraryWebserviceException {
+	public LoanDTO updateLoan(LoanDTO loan, String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 
 		try {
-			return loanMgmt.updateLoan(loan);
+			return LoanMapper.INSTANCE.toDTO(loanMgmt.updateLoan(LoanMapper.INSTANCE.fromDTO(loan)));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public Loan findLoanById(Integer id, String token) throws LibraryWebserviceException {
+	public LoanDTO findLoanById(Integer id, String token) throws LibraryWebserviceException {
 		User userFromToken = authMgmt.getUser(token);
 		try {
 			Loan loan = loanMgmt.findLoanById(id);
@@ -55,14 +58,14 @@ public class LoanServiceImpl implements LoanService {
 					|| (!userFromToken.getId().equals(loan.getBorrower().getId()) && !authMgmt.isAdmin(token))) {
 				throw new LibraryWebserviceException(NOT_ALLOWED);
 			}
-			return loan;
+			return LoanMapper.INSTANCE.toDTO(loan);
 		} catch (LibraryException le) {
 			return null;
 		}
 	}
 
 	@Override
-	public Loan extendLoan(Integer id, String token) throws LibraryWebserviceException {
+	public LoanDTO extendLoan(Integer id, String token) throws LibraryWebserviceException {
 		User userFromToken = authMgmt.getUser(token);
 		try {
 			Loan loan = loanMgmt.findLoanById(id);
@@ -72,29 +75,29 @@ public class LoanServiceImpl implements LoanService {
 				throw new LibraryWebserviceException(NOT_ALLOWED);
 			}
 			loan.setProlongationNumber(loan.getProlongationNumber() + 1);
-			return loanMgmt.updateLoan(loan);
+			return LoanMapper.INSTANCE.toDTO(loanMgmt.updateLoan(loan));
 		} catch (LibraryException le) {
 			throw new LibraryWebserviceException(getExceptionReason(le));
 		}
 	}
 
 	@Override
-	public List<Loan> findByUserId(Integer userId, String token) throws LibraryWebserviceException {
+	public List<LoanDTO> findByUserId(Integer userId, String token) throws LibraryWebserviceException {
 		if (userId == null || (!authMgmt.getUser(token).getId().equals(userId) && !authMgmt.isAdmin(token))) {
 			throw new LibraryWebserviceException(NOT_ALLOWED);
 		}
 		try {
-			return loanMgmt.findByUserId(userId);
+			return loanMgmt.findByUserId(userId).stream().map(LoanMapper.INSTANCE::toDTO).collect(Collectors.toList());
 		} catch (LibraryException le) {
 			return new ArrayList<>();
 		}
 	}
 
 	@Override
-	public List<Loan> findNotReturned(String token) throws LibraryWebserviceException {
+	public List<LoanDTO> findNotReturned(String token) throws LibraryWebserviceException {
 		checkAdmin(token);
 		try {
-			return loanMgmt.findNotReturned();
+			return loanMgmt.findNotReturned().stream().map(LoanMapper.INSTANCE::toDTO).collect(Collectors.toList());
 		} catch (LibraryException le) {
 			return new ArrayList<>();
 		}
@@ -149,6 +152,12 @@ public class LoanServiceImpl implements LoanService {
 			break;
 		case LOAN_USER_UNAVAILABLE:
 			reason += "referenced user is not allowed to borrow any book sample";
+			break;
+		case LOAN_BOOK_IS_CURRENTLY_RESERVED:
+			reason += "book is currently reserverd";
+			break;
+		case LOAN_SOMEONE_RESERVED_BEFORE:
+			reason += "someone reserved the book before given user";
 			break;
 		default:
 			reason += "unknown reason";

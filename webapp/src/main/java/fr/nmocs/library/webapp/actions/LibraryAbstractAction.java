@@ -10,9 +10,9 @@ import com.auth0.jwt.JWT;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.nmocs.library.webapp.utils.UserUtils;
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
-import fr.nmocs.library.webapp.webservice.TokenService;
-import fr.nmocs.library.webapp.webservice.User;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.TokenService;
+import fr.nmocs.library.webapp.ws.UserDTO;
 
 @SuppressWarnings("serial")
 public abstract class LibraryAbstractAction extends ActionSupport implements SessionAware {
@@ -72,7 +72,7 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 		return "";
 	}
 
-	protected void setUserInfos(User infos) {
+	protected void setUserInfos(UserDTO infos) {
 		if (session != null) {
 			session.put(USER_CONNEXION_INFOS, infos);
 		}
@@ -87,15 +87,15 @@ public abstract class LibraryAbstractAction extends ActionSupport implements Ses
 
 	// ===== UTILS
 
-	private User getUserInfos() {
+	private UserDTO getUserInfos() {
 		if (session != null) {
-			return (User) session.get(USER_CONNEXION_INFOS);
+			return (UserDTO) session.get(USER_CONNEXION_INFOS);
 		}
 		return null;
 	}
 
 	protected void doReconnectIfNecessary() {
-		User userInfos = getUserInfos();
+		UserDTO userInfos = getUserInfos();
 		if (userInfos != null && !getIsUserConnected()) {
 			try {
 				setUserToken(tokenService.getLoginToken(userInfos.getEmail(), userInfos.getPassword()));
