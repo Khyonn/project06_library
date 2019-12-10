@@ -103,6 +103,17 @@ public class LoanServiceImpl implements LoanService {
 		}
 	}
 
+	@Override
+	public List<LoanDTO> findAlmostPeremptedLoans(String token) throws LibraryWebserviceException {
+		checkAdmin(token);
+		try {
+			return loanMgmt.findAlmostPeremptedLoans().stream().map(LoanMapper.INSTANCE::toDTO)
+					.collect(Collectors.toList());
+		} catch (LibraryException le) {
+			return new ArrayList<>();
+		}
+	}
+
 	// ===== GESTION DES EXCEPTION
 
 	/**
@@ -168,5 +179,4 @@ public class LoanServiceImpl implements LoanService {
 		}
 		return reason;
 	}
-
 }
