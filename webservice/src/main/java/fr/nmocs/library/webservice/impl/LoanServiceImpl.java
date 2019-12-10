@@ -159,6 +159,9 @@ public class LoanServiceImpl implements LoanService {
 		case LOAN_SOMEONE_RESERVED_BEFORE:
 			reason += "someone reserved the book before given user";
 			break;
+		case LOAN_CANNOT_EDIT_OUTDATED:
+			reason += "the loan is outdated, cannot add any prolongations";
+			break;
 		default:
 			reason += "unknown reason";
 			break;
