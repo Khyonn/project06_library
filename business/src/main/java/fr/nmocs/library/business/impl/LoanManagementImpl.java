@@ -95,6 +95,8 @@ public class LoanManagementImpl implements LoanManagement {
 		}
 		Loan databaseLoan = loanRepo.findById(loan.getId()).orElse(null);
 		boolean isReturned = databaseLoan.getReturnDate() == null && loan.getReturnDate() != null;
+
+		checkUpdateBusinessRules(loan, databaseLoan);
 		mergeLoan(databaseLoan, loan);
 		checkFields(databaseLoan);
 		Loan toReturn = loanRepo.save(databaseLoan);
@@ -103,6 +105,16 @@ public class LoanManagementImpl implements LoanManagement {
 			businessHelper.notifyFirstReserver(toReturn.getBookSample().getBook());
 		}
 		return toReturn;
+	}
+
+	private void checkUpdateBusinessRules(Loan loan, Loan databaseLoan) throws LibraryBusinessException {
+		// [TK_2] : On ne peut pronlonger le pret si celui-ci est déjà dépassé
+		if (loan != null && databaseLoan != null && loan.getProlongationNumber() != null
+				&& databaseLoan.getProlongationNumber() < loan.getProlongationNumber()
+				&& businessHelper.getLoanActualEndDate(databaseLoan).before(new Date())) {
+			throw new LibraryBusinessException(ErrorCode.LOAN_CANNOT_EDIT_OUTDATED);
+		}
+
 	}
 
 	// ========== READERS
