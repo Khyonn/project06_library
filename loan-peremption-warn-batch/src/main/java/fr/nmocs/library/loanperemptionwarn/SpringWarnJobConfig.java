@@ -10,9 +10,11 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import fr.nmocs.library.loanperemptionwarn.jobs.items.LoanReader;
 import fr.nmocs.library.loanperemptionwarn.jobs.items.LoanToMessageProcesor;
@@ -24,6 +26,15 @@ import fr.nmocs.library.loanperemptionwarn.ws.TokenService;
 @Configuration
 @EnableBatchProcessing
 public class SpringWarnJobConfig extends DefaultBatchConfigurer {
+
+	@Value("${email.address}")
+	private String fromEmail;
+
+	@Value("${webservice.authentication.email}")
+	private String wsEmail;
+
+	@Value("${webservice.authentication.password}")
+	private String wsPassword;
 
 	@Override
 	public void setDataSource(DataSource dataSource) {
@@ -37,6 +48,9 @@ public class SpringWarnJobConfig extends DefaultBatchConfigurer {
 	private TokenService tokenService;
 
 	@Autowired
+	private JavaMailSender emailSender;
+
+	@Autowired
 	private JobBuilderFactory jobBuilderFactory;
 
 	@Autowired
@@ -46,17 +60,17 @@ public class SpringWarnJobConfig extends DefaultBatchConfigurer {
 
 	@Bean
 	public LoanReader reader() {
-		return new LoanReader(loanService, tokenService);
+		return new LoanReader(loanService, tokenService, wsEmail, wsPassword);
 	}
 
 	@Bean
 	public LoanToMessageProcesor processor() {
-		return new LoanToMessageProcesor();
+		return new LoanToMessageProcesor(fromEmail);
 	}
 
 	@Bean
 	public MessageWriter writer() {
-		return new MessageWriter();
+		return new MessageWriter(emailSender);
 	}
 
 	// ===== JOB

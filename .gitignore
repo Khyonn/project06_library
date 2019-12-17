@@ -3,3 +3,5 @@
 .project
 .settings/
 webapp/src/main/java/fr/nmocs/library/webapp/ws/
+resources/sql/999_my_demo.sql
+loan-peremption-warn-batch/src/main/resources/hidden-email.properties

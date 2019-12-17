@@ -3,14 +3,10 @@ package fr.nmocs.library.loanperemptionwarn.jobs.items;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.batch.core.StepContribution;
-import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
-import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.beans.factory.annotation.Value;
 
 import fr.nmocs.library.loanperemptionwarn.ws.FindAlmostPeremptedLoans;
 import fr.nmocs.library.loanperemptionwarn.ws.LibraryWebserviceException_Exception;
@@ -20,20 +16,6 @@ import fr.nmocs.library.loanperemptionwarn.ws.TokenService;
 
 public class LoanReader implements ItemReader<LoanDTO> {
 
-	// ===== Properties
-	@Value("${webservice.authentication.email}")
-	private String wsEmail;
-
-	@Value("${webservice.authentication.password}")
-	private String wsPassword;
-
-	// ===== Services
-//	@Autowired
-//	private LoanService loanService;
-//
-//	@Autowired
-//	private TokenService tokenService;
-
 	// ===== Lecture des prets
 
 	private List<LoanDTO> loans;
@@ -42,7 +24,7 @@ public class LoanReader implements ItemReader<LoanDTO> {
 
 	// ===== Méthodes
 
-	public LoanReader (LoanService loanService, TokenService tokenService) {
+	public LoanReader (LoanService loanService, TokenService tokenService, String wsEmail, String wsPassword) {
 		FindAlmostPeremptedLoans params = new FindAlmostPeremptedLoans();
 		try {
 			String wsToken = tokenService.getLoginToken(wsEmail, wsPassword);
@@ -52,12 +34,8 @@ public class LoanReader implements ItemReader<LoanDTO> {
 		}
 	}
 
-	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		return RepeatStatus.FINISHED;
-	}
-
 	public LoanDTO read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-		return loans.isEmpty() ? null : loans.get(loanIndex++);
+		return loans.isEmpty() || loans.size() <= loanIndex ? null : loans.get(loanIndex++);
 	}
 
 }

@@ -7,6 +7,12 @@ import fr.nmocs.library.loanperemptionwarn.ws.LoanDTO;
 
 public class LoanToMessageProcesor implements ItemProcessor<LoanDTO, SimpleMailMessage> {
 
+	private String fromEmail;
+
+	public LoanToMessageProcesor (String pFromEmail) {
+		fromEmail = pFromEmail;
+	}
+
 	public SimpleMailMessage process(LoanDTO item) throws Exception {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		StringBuilder sb = new StringBuilder("");
@@ -27,6 +33,7 @@ public class LoanToMessageProcesor implements ItemProcessor<LoanDTO, SimpleMailM
 		mail.setTo(item.getBorrower().getEmail());
 		mail.setSubject("[Library] : Your loan is about to expire");
 		mail.setText(sb.toString());
+		mail.setFrom(fromEmail);
 		return mail;
 	}
 
