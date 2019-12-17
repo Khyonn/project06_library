@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservice.library.nmocs.fr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/">
+  <xs:element name="createLoan" type="tns:createLoan"/>
+  <xs:element name="createLoanResponse" type="tns:createLoanResponse"/>
+  <xs:element name="extendLoan" type="tns:extendLoan"/>
+  <xs:element name="extendLoanResponse" type="tns:extendLoanResponse"/>
+  <xs:element name="findAlmostPeremptedLoans" type="tns:findAlmostPeremptedLoans"/>
+  <xs:element name="findAlmostPeremptedLoansResponse" type="tns:findAlmostPeremptedLoansResponse"/>
+  <xs:element name="findByUserId" type="tns:findByUserId"/>
+  <xs:element name="findByUserIdResponse" type="tns:findByUserIdResponse"/>
+  <xs:element name="findLoanById" type="tns:findLoanById"/>
+  <xs:element name="findLoanByIdResponse" type="tns:findLoanByIdResponse"/>
+  <xs:element name="findNotReturned" type="tns:findNotReturned"/>
+  <xs:element name="findNotReturnedResponse" type="tns:findNotReturnedResponse"/>
+  <xs:element name="updateLoan" type="tns:updateLoan"/>
+  <xs:element name="updateLoanResponse" type="tns:updateLoanResponse"/>
+  <xs:complexType name="createLoan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="loan" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loanDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookSample" type="tns:bookSampleDTO"/>
+      <xs:element minOccurs="0" name="borrower" type="tns:userDTO"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="prolongationNumber" type="xs:int"/>
+      <xs:element minOccurs="0" name="returnDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookSampleDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="book" type="tns:bookDTO"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="author" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="reservationQueueInfos" type="tns:reservationQueueDTO"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="summary" type="xs:string"/>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reservationQueueDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="availableSamplesNumber" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="borrowers" nillable="true" type="tns:userDTO"/>
+      <xs:element minOccurs="0" name="isAvailable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="isReservable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="latestAvailabilityDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="queueMaxSize" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="reservers" nillable="true" type="tns:userDTO"/>
+      <xs:element minOccurs="0" name="soonestAvailabilityDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createLoanResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findNotReturned">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findNotReturnedResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateLoan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="loan" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateLoanResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extendLoan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extendLoanResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findAlmostPeremptedLoans">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findAlmostPeremptedLoansResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findLoanById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findLoanByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findByUserId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findByUserIdResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
+  <xs:complexType name="LibraryWebserviceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="token" nillable="true" type="xs:string"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createLoan">
+    <wsdl:part element="tns:createLoan" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findByUserIdResponse">
+    <wsdl:part element="tns:findByUserIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findLoanById">
+    <wsdl:part element="tns:findLoanById" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findByUserId">
+    <wsdl:part element="tns:findByUserId" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findNotReturned">
+    <wsdl:part element="tns:findNotReturned" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateLoanResponse">
+    <wsdl:part element="tns:updateLoanResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAlmostPeremptedLoansResponse">
+    <wsdl:part element="tns:findAlmostPeremptedLoansResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LibraryWebserviceException">
+    <wsdl:part element="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateLoan">
+    <wsdl:part element="tns:updateLoan" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createLoanResponse">
+    <wsdl:part element="tns:createLoanResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendLoan">
+    <wsdl:part element="tns:extendLoan" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAlmostPeremptedLoans">
+    <wsdl:part element="tns:findAlmostPeremptedLoans" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendLoanResponse">
+    <wsdl:part element="tns:extendLoanResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findLoanByIdResponse">
+    <wsdl:part element="tns:findLoanByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findNotReturnedResponse">
+    <wsdl:part element="tns:findNotReturnedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LoanService">
+    <wsdl:operation name="createLoan">
+      <wsdl:input message="tns:createLoan" name="createLoan">
+    </wsdl:input>
+      <wsdl:output message="tns:createLoanResponse" name="createLoanResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findNotReturned">
+      <wsdl:input message="tns:findNotReturned" name="findNotReturned">
+    </wsdl:input>
+      <wsdl:output message="tns:findNotReturnedResponse" name="findNotReturnedResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateLoan">
+      <wsdl:input message="tns:updateLoan" name="updateLoan">
+    </wsdl:input>
+      <wsdl:output message="tns:updateLoanResponse" name="updateLoanResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extendLoan">
+      <wsdl:input message="tns:extendLoan" name="extendLoan">
+    </wsdl:input>
+      <wsdl:output message="tns:extendLoanResponse" name="extendLoanResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAlmostPeremptedLoans">
+      <wsdl:input message="tns:findAlmostPeremptedLoans" name="findAlmostPeremptedLoans">
+    </wsdl:input>
+      <wsdl:output message="tns:findAlmostPeremptedLoansResponse" name="findAlmostPeremptedLoansResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findLoanById">
+      <wsdl:input message="tns:findLoanById" name="findLoanById">
+    </wsdl:input>
+      <wsdl:output message="tns:findLoanByIdResponse" name="findLoanByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findByUserId">
+      <wsdl:input message="tns:findByUserId" name="findByUserId">
+    </wsdl:input>
+      <wsdl:output message="tns:findByUserIdResponse" name="findByUserIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoanServiceSoapBinding" type="tns:LoanService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createLoan">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createLoan">
+        <soap:header message="tns:createLoan" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findNotReturned">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findNotReturned">
+        <soap:header message="tns:findNotReturned" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findNotReturnedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateLoan">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateLoan">
+        <soap:header message="tns:updateLoan" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extendLoan">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extendLoan">
+        <soap:header message="tns:extendLoan" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extendLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAlmostPeremptedLoans">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAlmostPeremptedLoans">
+        <soap:header message="tns:findAlmostPeremptedLoans" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAlmostPeremptedLoansResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findLoanById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findLoanById">
+        <soap:header message="tns:findLoanById" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findLoanByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findByUserId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findByUserId">
+        <soap:header message="tns:findByUserId" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findByUserIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoanService">
+    <wsdl:port binding="tns:LoanServiceSoapBinding" name="LoanServicePort">
+      <soap:address location="http://192.168.1.84:8080/Library_webservice/services/loan"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
