@@ -183,7 +183,7 @@ public class LoanManagementImpl implements LoanManagement {
 				Date actualEndTime = businessHelper.getLoanActualEndDate(loan);
 
 				return actualEndTime.before(inXDaysPlusOne) && actualEndTime.after(inXDays)
-						&& loan.getBorrower().getOptions().isWarnedBeforeLoanPeremption();
+						&& loan.getBorrower().getOptions().getWarnedBeforeLoanPeremption();
 			}).collect(Collectors.toList());
 		} catch (Exception e) {
 			throw new LibraryTechnicalException(ErrorCode.LOAN_NOT_FOUND);

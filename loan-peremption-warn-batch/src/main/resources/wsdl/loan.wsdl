@@ -65,8 +65,14 @@
       <xs:element minOccurs="0" name="firstName" type="xs:string"/>
       <xs:element minOccurs="0" name="id" type="xs:int"/>
       <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
       <xs:element minOccurs="0" name="password" type="xs:string"/>
       <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userOptionsDTO">
+    <xs:sequence>
+      <xs:element name="warnedBeforeLoanPeremption" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="createLoanResponse">
@@ -374,7 +380,7 @@
   </wsdl:binding>
   <wsdl:service name="LoanService">
     <wsdl:port binding="tns:LoanServiceSoapBinding" name="LoanServicePort">
-      <soap:address location="http://192.168.1.84:8080/Library_webservice/services/loan"/>
+      <soap:address location="http://localhost:8080/Library_webservice/services/loan"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
