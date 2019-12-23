@@ -65,6 +65,17 @@
 				        <s:password cssClass="form-control" id="passwordconfirm" name="verifPassword" requiredLabel="true" />
 					</div>
 				</div>
+				<hr>
+				<h2 class="h3 mb-3 font-weight-normal"><s:text name="account.options" /></h2>
+				<div class="row">
+					<div class="col-12">
+				        <!-- WARNED BEFORE LOAN PEREMPTION -->
+				        <div class="custom-control custom-checkbox">
+							<s:checkbox cssClass="custom-control-input" id="warnedBeforeLoanPeremption" name="user.options.warnedBeforeLoanPeremption"></s:checkbox>
+					        <s:label cssClass="custom-control-label" for="warnedBeforeLoanPeremption" key="account.options.warnedBeforeLoanPeremption" />
+				      	</div>
+					</div>
+				</div>
 		        <!-- BOUTON -->
 				<div class="row">
 					<div class="offset-md-6 col-md-6 offset-lg-8 col-lg-4">
@@ -78,6 +89,7 @@
 		<script>
 	   		<%-- Afin de rendre visuellement les champs 'required' --%>
 			$("form input").attr("required", "required");
+			$("#warnedBeforeLoanPeremption").attr("required", null);
 		</script>
     </body>
 </html>

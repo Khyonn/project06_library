@@ -5,6 +5,8 @@
   <xs:element name="createLoanResponse" type="tns:createLoanResponse"/>
   <xs:element name="extendLoan" type="tns:extendLoan"/>
   <xs:element name="extendLoanResponse" type="tns:extendLoanResponse"/>
+  <xs:element name="findAlmostPeremptedLoans" type="tns:findAlmostPeremptedLoans"/>
+  <xs:element name="findAlmostPeremptedLoansResponse" type="tns:findAlmostPeremptedLoansResponse"/>
   <xs:element name="findByUserId" type="tns:findByUserId"/>
   <xs:element name="findByUserIdResponse" type="tns:findByUserIdResponse"/>
   <xs:element name="findLoanById" type="tns:findLoanById"/>
@@ -63,8 +65,14 @@
       <xs:element minOccurs="0" name="firstName" type="xs:string"/>
       <xs:element minOccurs="0" name="id" type="xs:int"/>
       <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
       <xs:element minOccurs="0" name="password" type="xs:string"/>
       <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userOptionsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="createLoanResponse">
@@ -98,6 +106,14 @@
   <xs:complexType name="extendLoanResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findAlmostPeremptedLoans">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findAlmostPeremptedLoansResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="findLoanById">
@@ -161,6 +177,10 @@
     <wsdl:part element="tns:updateLoanResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findAlmostPeremptedLoansResponse">
+    <wsdl:part element="tns:findAlmostPeremptedLoansResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="LibraryWebserviceException">
     <wsdl:part element="tns:LibraryWebserviceException" name="LibraryWebserviceException">
     </wsdl:part>
@@ -177,6 +197,12 @@
   </wsdl:message>
   <wsdl:message name="extendLoan">
     <wsdl:part element="tns:extendLoan" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:token" name="token">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAlmostPeremptedLoans">
+    <wsdl:part element="tns:findAlmostPeremptedLoans" name="parameters">
     </wsdl:part>
     <wsdl:part element="tns:token" name="token">
     </wsdl:part>
@@ -222,6 +248,14 @@
       <wsdl:input message="tns:extendLoan" name="extendLoan">
     </wsdl:input>
       <wsdl:output message="tns:extendLoanResponse" name="extendLoanResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAlmostPeremptedLoans">
+      <wsdl:input message="tns:findAlmostPeremptedLoans" name="findAlmostPeremptedLoans">
+    </wsdl:input>
+      <wsdl:output message="tns:findAlmostPeremptedLoansResponse" name="findAlmostPeremptedLoansResponse">
     </wsdl:output>
       <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
     </wsdl:fault>
@@ -295,6 +329,20 @@
         <soap:body parts="parameters" use="literal"/>
       </wsdl:input>
       <wsdl:output name="extendLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAlmostPeremptedLoans">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAlmostPeremptedLoans">
+        <soap:header message="tns:findAlmostPeremptedLoans" part="token" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAlmostPeremptedLoansResponse">
         <soap:body use="literal"/>
       </wsdl:output>
       <wsdl:fault name="LibraryWebserviceException">
