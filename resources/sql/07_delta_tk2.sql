@@ -16,5 +16,5 @@ INSERT INTO BookSamples(id, bookId, bookSampleStatus) VALUES
 (-3, -3, 'A');
 
 INSERT INTO Loans(id, bookSampleId, borrowerId, startDate, returnDate, prolongationNumber) VALUES
-(-2, -2, -5, '2019-10-01 17:29:00', NULL, 0), -- Ce pret est en retard
-(-3, -3, -5, '2019-12-10 17:29:00', NULL, 0); -- Celui-ci non !
+(-2, -2, -5, '2019-10-13 17:29:00', NULL, 0), -- Ce pret est en retard
+(-3, -3, -5, '2019-12-22 17:29:00', NULL, 0); -- Celui-ci non !

@@ -15,6 +15,7 @@ import fr.nmocs.library.consumer.UserRepository;
 import fr.nmocs.library.model.Admin;
 import fr.nmocs.library.model.Reservation;
 import fr.nmocs.library.model.User;
+import fr.nmocs.library.model.UserOptions;
 import fr.nmocs.library.model.constants.UserStatus;
 import fr.nmocs.library.model.constants.UserType;
 import fr.nmocs.library.model.error.ErrorCode;
@@ -54,6 +55,8 @@ public class UserManagementImpl implements UserManagement {
 		if (user != null) {
 			user.setId(null);
 			user.setStatus(UserStatus.ACTIVE.getValue());
+			user.setOptions(new UserOptions());
+			user.getOptions().setUser(user);
 		} else {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED);
 		}
@@ -211,6 +214,9 @@ public class UserManagementImpl implements UserManagement {
 		}
 		if (!StringUtils.isBlank(user.getEmail())) {
 			databaseUser.setEmail(user.getEmail());
+		}
+		if (user.getOptions() != null && user.getOptions().getWarnedBeforeLoanPeremption() != null) {
+			databaseUser.getOptions().setWarnedBeforeLoanPeremption(user.getOptions().getWarnedBeforeLoanPeremption());
 		}
 		if (user.getStatus() != null && (user.getStatus().equals(UserStatus.ACTIVE.getValue())
 				|| user.getStatus().equals(UserStatus.UNACTIVE.getValue()))) {

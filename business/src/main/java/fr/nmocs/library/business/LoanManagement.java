@@ -22,4 +22,6 @@ public interface LoanManagement {
 	Date getSoonestReturnDate(List<Loan> loans);
 
 	void sendEmailToBorrowers() throws LibraryTechnicalException;
+
+	List<Loan> findAlmostPeremptedLoans() throws LibraryTechnicalException;
 }

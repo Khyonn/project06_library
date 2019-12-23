@@ -2,6 +2,7 @@ package fr.nmocs.library.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -14,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -50,5 +53,9 @@ public class User {
 
 	@OneToMany(mappedBy = "reserver", fetch = FetchType.LAZY)
 	private Set<Reservation> reservations;
+
+	@PrimaryKeyJoinColumn
+	@OneToOne(cascade = CascadeType.ALL)
+	private UserOptions options;
 
 }

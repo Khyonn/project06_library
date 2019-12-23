@@ -12,3 +12,5 @@ echo "insertion du delta TK1"
 sudo mysql -u root < 06_delta_tk1.sql
 echo "insertion du delta TK2"
 sudo mysql -u root < 07_delta_tk2.sql
+echo "insertion du delta TK3"
+sudo mysql -u root < 08_delta_tk3.sql

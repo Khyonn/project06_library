@@ -72,7 +72,7 @@
   </xs:complexType>
   <xs:complexType name="userOptionsDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
+      <xs:element name="warnedBeforeLoanPeremption" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="createLoanResponse">

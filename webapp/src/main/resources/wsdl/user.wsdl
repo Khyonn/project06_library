@@ -31,8 +31,14 @@
       <xs:element minOccurs="0" name="firstName" type="xs:string"/>
       <xs:element minOccurs="0" name="id" type="xs:int"/>
       <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
       <xs:element minOccurs="0" name="password" type="xs:string"/>
       <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userOptionsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="downgradeAdminToBasicUser">

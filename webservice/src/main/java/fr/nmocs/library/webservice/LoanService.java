@@ -28,4 +28,7 @@ public interface LoanService {
 
 	List<LoanDTO> findNotReturned(@WebParam(name = "token", header = true) String token)
 			throws LibraryWebserviceException;
+
+	List<LoanDTO> findAlmostPeremptedLoans(@WebParam(name = "token", header = true) String token)
+			throws LibraryWebserviceException;
 }

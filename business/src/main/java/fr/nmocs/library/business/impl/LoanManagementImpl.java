@@ -40,6 +40,9 @@ public class LoanManagementImpl implements LoanManagement {
 	@Value("${business.loans.prolongation.maxNb}")
 	private Integer MAX_PROLONGATION_NB;
 
+	@Value("${business.loans.peremption.warn.dayBefore}")
+	private Integer warnDayBefore;
+
 	// === DEPENDENCIES
 
 	@Autowired
@@ -168,6 +171,23 @@ public class LoanManagementImpl implements LoanManagement {
 					return email;
 				}).collect(Collectors.toList());
 		emailUtils.sendEmails(emails);
+	}
+
+	@Override
+	public List<Loan> findAlmostPeremptedLoans() throws LibraryTechnicalException {
+		Date today = new Date();
+		Date inXDays = new Date(today.getTime() + (1000L * 3600 * 24 * warnDayBefore));
+		Date inXDaysPlusOne = new Date(today.getTime() + (1000L * 3600 * 24 * (warnDayBefore + 1)));
+		try {
+			return loanRepo.findByReturnDateIsNull().stream().filter(loan -> {
+				Date actualEndTime = businessHelper.getLoanActualEndDate(loan);
+
+				return actualEndTime.before(inXDaysPlusOne) && actualEndTime.after(inXDays)
+						&& loan.getBorrower().getOptions().getWarnedBeforeLoanPeremption();
+			}).collect(Collectors.toList());
+		} catch (Exception e) {
+			throw new LibraryTechnicalException(ErrorCode.LOAN_NOT_FOUND);
+		}
 	}
 
 	// ========== UTILS
