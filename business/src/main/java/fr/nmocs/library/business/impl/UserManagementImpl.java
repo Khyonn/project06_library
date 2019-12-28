@@ -57,6 +57,7 @@ public class UserManagementImpl implements UserManagement {
 			user.setStatus(UserStatus.ACTIVE.getValue());
 			user.setOptions(new UserOptions());
 			user.getOptions().setUser(user);
+			user.getOptions().setWarnedBeforeLoanPeremption(true);
 		} else {
 			throw new LibraryBusinessException(ErrorCode.USER_UNSETTED);
 		}

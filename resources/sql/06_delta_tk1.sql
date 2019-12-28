@@ -40,4 +40,4 @@ INSERT INTO BookSamples(id, bookId, bookSampleStatus) VALUES
 (-1, -1, 'A');
 
 INSERT INTO Loans(id, bookSampleId, borrowerId, startDate, returnDate, prolongationNumber) VALUES
-(-1, -1, -2, '2019-11-30 17:29:00', NULL, 0);
+(-1, -1, -2, '2019-12-10 17:29:00', NULL, 0);
