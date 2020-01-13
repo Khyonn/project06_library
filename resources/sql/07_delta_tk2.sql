@@ -1,8 +1,8 @@
 USE library;
 
----
+--
 -- Pour les tests TK2 :
----
+--
 INSERT INTO Users(id, firstName, lastName, password, email, userStatus, userType) VALUES
 (-5, 'TK1_user5', 'user5', 'user5', 'user5', 'A', 'BASIC');
 

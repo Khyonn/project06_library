@@ -24,9 +24,10 @@ ADD CONSTRAINT `Reservations_Users_FK`
 FOREIGN KEY (`userId`) REFERENCES `Users` (`id`);
 
 
----
+--
 -- Pour les tests TK1 :
----
+--
+
 INSERT INTO Users(id, firstName, lastName, password, email, userStatus, userType) VALUES
 (-1, 'TK1_user1', 'user1', 'user1', 'user1', 'A', 'BASIC'),
 (-2, 'TK1_user2', 'user2', 'user2', 'user2', 'A', 'BASIC'),
