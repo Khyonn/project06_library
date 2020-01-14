@@ -24,8 +24,8 @@ INSERT INTO BookSamples(bookId, bookSampleStatus) VALUES
 (2, 'A');
 
 INSERT INTO Loans(bookSampleId, borrowerId, startDate, returnDate, prolongationNumber) VALUES 
-(7, 3, '2019-12-09 17:29:00', NULL, 0),
-(8, 3, '2019-12-09 17:29:00', '2019-12-10 17:29:00', 0),
-(9, 1, '2019-12-09 17:29:00', NULL, 0),
-(10, 3, '2019-12-09 17:29:00', NULL, 0);
+(7, 3, '2019-12-20 17:29:00', NULL, 0),
+(8, 3, '2019-12-20 17:29:00', '2019-12-20 17:29:00', 0),
+(9, 1, '2019-12-20 17:29:00', NULL, 0),
+(10, 3, '2019-12-20 17:29:00', NULL, 0);
 
