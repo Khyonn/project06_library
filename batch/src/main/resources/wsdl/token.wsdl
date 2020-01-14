@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="TokenServiceService" targetNamespace="http://webservice.library.nmocs.fr/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservice.library.nmocs.fr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/">
+  <xs:element name="getLoginToken" type="tns:getLoginToken"/>
+  <xs:element name="getLoginTokenResponse" type="tns:getLoginTokenResponse"/>
+  <xs:complexType name="getLoginToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLoginTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
+  <xs:complexType name="LibraryWebserviceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="LibraryWebserviceException">
+    <wsdl:part element="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoginToken">
+    <wsdl:part element="tns:getLoginToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoginTokenResponse">
+    <wsdl:part element="tns:getLoginTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TokenService">
+    <wsdl:operation name="getLoginToken">
+      <wsdl:input message="tns:getLoginToken" name="getLoginToken">
+    </wsdl:input>
+      <wsdl:output message="tns:getLoginTokenResponse" name="getLoginTokenResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TokenServiceServiceSoapBinding" type="tns:TokenService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getLoginToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLoginToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLoginTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TokenServiceService">
+    <wsdl:port binding="tns:TokenServiceServiceSoapBinding" name="TokenServicePort">
+      <soap:address location="http://localhost:8080/Library_webservice/services/token"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -6,7 +6,7 @@ import java.util.Properties;
 
 import fr.nmocs.library.batch.webservice.FindNotReturned;
 import fr.nmocs.library.batch.webservice.LibraryWebserviceException_Exception;
-import fr.nmocs.library.batch.webservice.Loan;
+import fr.nmocs.library.batch.webservice.LoanDTO;
 import fr.nmocs.library.batch.webservice.LoanService;
 import fr.nmocs.library.batch.webservice.LoanService_Service;
 import fr.nmocs.library.batch.webservice.TokenService;
@@ -16,7 +16,7 @@ public class App {
 
 	private static final String SUBJECT = "BOOK NOT RETURNED";
 
-	private static void sendEmail(List<Loan> loans) {
+	private static void sendEmail(List<LoanDTO> loans) {
 		loans.stream().forEach(loan -> {
 			StringBuilder sb = new StringBuilder();
 			sb.append("Hello ").append(loan.getBorrower().getFirstName()).append(",\nWe are waiting for you to return ")
@@ -40,7 +40,7 @@ public class App {
 		TokenService tokenService = new TokenServiceService(WSUtils.getUrl("/token?wsdl")).getTokenServicePort();
 		LoanService loanService = new LoanService_Service(WSUtils.getUrl("/loan?wsdl")).getLoanServicePort();
 
-		List<Loan> notReturnedLoans = null;
+		List<LoanDTO> notReturnedLoans = null;
 		try {
 			// Récupération du token admin
 			String token = tokenService.getLoginToken(webserviceProps.getProperty("webservice.admin.email"),
