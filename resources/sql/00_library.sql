@@ -1,3 +1,3 @@
-DROP SCHEMA library;
+DROP SCHEMA IF EXISTS library;
 
 CREATE SCHEMA library;

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import fr.nmocs.library.model.Book;
-import fr.nmocs.library.model.BookSample;
+import fr.nmocs.library.webservice.dto.BookDTO;
+import fr.nmocs.library.webservice.dto.BookSampleDTO;
 import fr.nmocs.library.webservice.error.LibraryWebserviceException;
 
 @WebService(name = "BookService", serviceName = "BookService")
@@ -14,30 +14,30 @@ public interface BookService {
 
 	// ===== Book
 
-	Book createBook(@WebParam(name = "book") Book book, @WebParam(name = "token", header = true) String token)
+	BookDTO createBook(@WebParam(name = "book") BookDTO book, @WebParam(name = "token", header = true) String token)
 			throws LibraryWebserviceException;
 
-	Book updateBook(@WebParam(name = "book") Book book, @WebParam(name = "token", header = true) String token)
+	BookDTO updateBook(@WebParam(name = "book") BookDTO book, @WebParam(name = "token", header = true) String token)
 			throws LibraryWebserviceException;
 
-	Book findBookById(@WebParam(name = "id") Integer id) throws LibraryWebserviceException;
+	BookDTO findBookById(@WebParam(name = "id") Integer id) throws LibraryWebserviceException;
 
-	List<Book> findBookByAuthor(@WebParam(name = "author") String author);
+	List<BookDTO> findBookByAuthor(@WebParam(name = "author") String author);
 
-	List<Book> findBookByTitle(@WebParam(name = "title") String title);
+	List<BookDTO> findBookByTitle(@WebParam(name = "title") String title);
 
 	// ===== BookSample
 
-	BookSample createBookSample(@WebParam(name = "bookSample") BookSample bookSample,
+	BookSampleDTO createBookSample(@WebParam(name = "bookSample") BookSampleDTO bookSample,
 			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
-	BookSample updateBookSample(@WebParam(name = "bookSample") BookSample bookSample,
+	BookSampleDTO updateBookSample(@WebParam(name = "bookSample") BookSampleDTO bookSample,
 			@WebParam(name = "token", header = true) String token) throws LibraryWebserviceException;
 
-	BookSample findBookSampleById(@WebParam(name = "id") Integer id);
+	BookSampleDTO findBookSampleById(@WebParam(name = "id") Integer id);
 
-	List<BookSample> findBookSampleByBookId(@WebParam(name = "bookId") Integer bookId);
+	List<BookSampleDTO> findBookSampleByBookId(@WebParam(name = "bookId") Integer bookId);
 
-	List<BookSample> findNotBorrowedBookSampleByBookId(@WebParam(name = "bookId") Integer bookId);
+	List<BookSampleDTO> findNotBorrowedBookSampleByBookId(@WebParam(name = "bookId") Integer bookId);
 
 }

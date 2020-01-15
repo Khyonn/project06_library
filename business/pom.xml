@@ -5,7 +5,7 @@
     <parent>
         <groupId>fr.nathanaelmorel.occourses</groupId>
         <artifactId>library</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>2.0.1</version>
     </parent>
     <artifactId>business</artifactId>
     <name>business</name>
@@ -50,7 +50,17 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <!-- GETTER SETTER -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
+        <!-- EMAIL -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+        </dependency>
         <!-- TESTS -->
         <dependency>
             <groupId>junit</groupId>
@@ -58,4 +68,26 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

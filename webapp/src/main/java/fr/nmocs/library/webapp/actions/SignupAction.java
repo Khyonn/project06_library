@@ -3,9 +3,9 @@ package fr.nmocs.library.webapp.actions;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
-import fr.nmocs.library.webapp.webservice.User;
-import fr.nmocs.library.webapp.webservice.UserService;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.UserDTO;
+import fr.nmocs.library.webapp.ws.UserService;
 
 @SuppressWarnings("serial")
 public class SignupAction extends LibraryAbstractAction {
@@ -13,15 +13,15 @@ public class SignupAction extends LibraryAbstractAction {
 	@Autowired
 	private UserService userService;
 
-	private User user;
+	private UserDTO user;
 
 	// ===== OUTPUTS
-	public User getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 
 	// ===== INPUTS
-	public void setUser(User user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 

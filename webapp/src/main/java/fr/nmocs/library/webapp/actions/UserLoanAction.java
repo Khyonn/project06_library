@@ -7,11 +7,11 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.webapp.utils.LoanUtils;
-import fr.nmocs.library.webapp.webservice.ExtendLoan;
-import fr.nmocs.library.webapp.webservice.FindByUserId;
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
-import fr.nmocs.library.webapp.webservice.Loan;
-import fr.nmocs.library.webapp.webservice.LoanService;
+import fr.nmocs.library.webapp.ws.ExtendLoan;
+import fr.nmocs.library.webapp.ws.FindByUserId;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.LoanDTO;
+import fr.nmocs.library.webapp.ws.LoanService;
 
 @SuppressWarnings("serial")
 public class UserLoanAction extends LibraryAbstractAction {
@@ -23,21 +23,21 @@ public class UserLoanAction extends LibraryAbstractAction {
 	public Integer loanToExtendId;
 
 	// ===== OUTPUT
-	private List<Loan> returnedLoans;
+	private List<LoanDTO> returnedLoans;
 
-	private List<Loan> inProgressLoans;
+	private List<LoanDTO> inProgressLoans;
 
-	private List<Loan> lateLoans;
+	private List<LoanDTO> lateLoans;
 
-	public List<Loan> getReturnedLoans() {
+	public List<LoanDTO> getReturnedLoans() {
 		return returnedLoans;
 	}
 
-	public List<Loan> getInProgressLoans() {
+	public List<LoanDTO> getInProgressLoans() {
 		return inProgressLoans;
 	}
 
-	public List<Loan> getLateLoans() {
+	public List<LoanDTO> getLateLoans() {
 		return lateLoans;
 	}
 
@@ -59,7 +59,7 @@ public class UserLoanAction extends LibraryAbstractAction {
 				&& CollectionUtils.isEmpty(lateLoans);
 	}
 
-	public Boolean isLoanExtendable(Loan loan) {
+	public Boolean isLoanExtendable(LoanDTO loan) {
 		return LoanUtils.isLoanExtendable(loan);
 	}
 
@@ -73,7 +73,7 @@ public class UserLoanAction extends LibraryAbstractAction {
 		FindByUserId params = new FindByUserId();
 		params.setUserId(getUserId());
 		try {
-			List<Loan> loanList = loanService.findByUserId(params, getUserToken()).getReturn();
+			List<LoanDTO> loanList = loanService.findByUserId(params, getUserToken()).getReturn();
 			if (CollectionUtils.isNotEmpty(loanList)) {
 				// Set returned
 				returnedLoans = loanList.stream().filter(loan -> loan.getReturnDate() != null)

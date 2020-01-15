@@ -10,14 +10,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import fr.nmocs.library.webapp.webservice.BookService;
-import fr.nmocs.library.webapp.webservice.BookService_Service;
-import fr.nmocs.library.webapp.webservice.LoanService;
-import fr.nmocs.library.webapp.webservice.LoanService_Service;
-import fr.nmocs.library.webapp.webservice.TokenService;
-import fr.nmocs.library.webapp.webservice.TokenServiceService;
-import fr.nmocs.library.webapp.webservice.UserService;
-import fr.nmocs.library.webapp.webservice.UserService_Service;
+import fr.nmocs.library.webapp.ws.BookService;
+import fr.nmocs.library.webapp.ws.BookService_Service;
+import fr.nmocs.library.webapp.ws.LoanService;
+import fr.nmocs.library.webapp.ws.LoanService_Service;
+import fr.nmocs.library.webapp.ws.ReservationService;
+import fr.nmocs.library.webapp.ws.ReservationService_Service;
+import fr.nmocs.library.webapp.ws.TokenService;
+import fr.nmocs.library.webapp.ws.TokenServiceService;
+import fr.nmocs.library.webapp.ws.UserService;
+import fr.nmocs.library.webapp.ws.UserService_Service;
 
 @Configuration
 @ComponentScan("fr.nmocs.library.webapp")
@@ -72,6 +74,19 @@ public class SpringConfiguration {
 		}
 		try {
 			return new TokenServiceService(new URL(webserviceUrl + "/token?wsdl")).getTokenServicePort();
+		} catch (MalformedURLException e) {
+			return null;
+		}
+	}
+
+	@Bean
+	public ReservationService getReservationService() {
+		if (StringUtils.isBlank(webserviceUrl)) {
+			return new ReservationService_Service().getReservationServicePort();
+		}
+		try {
+			return new ReservationService_Service(new URL(webserviceUrl + "/reservation?wsdl"))
+					.getReservationServicePort();
 		} catch (MalformedURLException e) {
 			return null;
 		}

@@ -4,11 +4,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.nmocs.library.webapp.utils.UserUtils;
-import fr.nmocs.library.webapp.webservice.FindById;
-import fr.nmocs.library.webapp.webservice.LibraryWebserviceException_Exception;
-import fr.nmocs.library.webapp.webservice.UpdateUser;
-import fr.nmocs.library.webapp.webservice.User;
-import fr.nmocs.library.webapp.webservice.UserService;
+import fr.nmocs.library.webapp.ws.FindById;
+import fr.nmocs.library.webapp.ws.LibraryWebserviceException_Exception;
+import fr.nmocs.library.webapp.ws.UpdateUser;
+import fr.nmocs.library.webapp.ws.UserDTO;
+import fr.nmocs.library.webapp.ws.UserService;
 
 @SuppressWarnings("serial")
 public class UserProfileAction extends LibraryAbstractAction {
@@ -16,19 +16,19 @@ public class UserProfileAction extends LibraryAbstractAction {
 	@Autowired
 	private UserService userService;
 
-	private User user;
+	private UserDTO user;
 
 	// ===== INPUT
 	public String verifPassword;
 
 	public String verifEmail;
 
-	public void setUser(User user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 
 	// ===== OUTPUT
-	public User getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 

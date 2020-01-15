@@ -24,19 +24,6 @@
 							<li class="list-group-item">
 								<span class="font-weight-bold">[<s:text name="loan.startDate"/> : <s:date name="startDate.toGregorianCalendar()" format="dd/MM/yyyy" />]</span>
 								<s:property value="bookSample.book.title"/> _ <span class="font-italic"><s:property value="bookSample.book.author"/></span>
-								<s:if test="isLoanExtendable(#loan)">
-									<s:a action="loan-extend" cssClass="float-right">
-										<s:param name="loanToExtendId" value="id" />
-										<s:text name="loans.extend"/>
-									</s:a>
-								</s:if>
-								<s:else>
-									<br>
-									<span class="font-weight-bold float-right">
-										!! <s:text name="loans.cannotExtend"/> !!
-										[<s:text name="loans.loanNumber"/> #<s:property value="id"/>]
-									</span>
-								</s:else>
 							</li>
 						</s:iterator>
 					</ul>

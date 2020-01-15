@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="0d238fc4-64da-4fd3-afaa-b3b9d59f2ba3" activeEnvironment="Default" name="Library" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="66d51ef9-76bf-440a-82b1-9cd6909e90b6" wsaVersion="NONE" name="TokenServiceServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}TokenServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/token?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="${#Project#servicesUrl}/token?wsdl"><con:part><con:url>${#Project#servicesUrl}/token?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="TokenServiceService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+<con:soapui-project id="0d238fc4-64da-4fd3-afaa-b3b9d59f2ba3" activeEnvironment="Default" name="Library" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="66d51ef9-76bf-440a-82b1-9cd6909e90b6" wsaVersion="NONE" name="TokenServiceServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}TokenServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/token?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/token?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/token?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="TokenServiceService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="getLoginToken" type="tns:getLoginToken"/>
@@ -56,7 +56,7 @@
   </wsdl:binding>
   <wsdl:service name="TokenServiceService">
     <wsdl:port binding="tns:TokenServiceServiceSoapBinding" name="TokenServicePort">
-      <soap:address location="${#Project#servicesUrl}/token"/>
+      <soap:address location="http://localhost:8080/Library_webservice/services/token"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>${#Project#servicesUrl}/token</con:endpoint></con:endpoints><con:operation id="4830670e-c0a0-41b0-b95d-0dc81e5b7902" isOneWay="false" action="" name="getLoginToken" bindingOperationName="getLoginToken" type="Request-Response" outputName="getLoginTokenResponse" inputName="getLoginToken" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3486443c-47bc-4eb9-b1ff-06c21350f079" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
@@ -69,7 +69,7 @@
          <password>?</password>
       </web:getLoginToken>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/TokenService/getLoginToken"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="bf94c40f-b841-4dd1-bb31-5807cc8a202d" wsaVersion="NONE" name="UserServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}UserServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/user?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="${#Project#servicesUrl}/user?wsdl"><con:part><con:url>${#Project#servicesUrl}/user?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UserService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/TokenService/getLoginToken"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="bf94c40f-b841-4dd1-bb31-5807cc8a202d" wsaVersion="NONE" name="UserServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}UserServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/user?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/user?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/user?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UserService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="createUser" type="tns:createUser"/>
@@ -93,17 +93,23 @@
       </xs:complexType>
       <xs:complexType name="findByIdResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:user"/>
+          <xs:element minOccurs="0" name="return" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="user">
+      <xs:complexType name="userDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="email" type="xs:string"/>
           <xs:element minOccurs="0" name="firstName" type="xs:string"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
           <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
           <xs:element minOccurs="0" name="password" type="xs:string"/>
           <xs:element minOccurs="0" name="status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userOptionsDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="downgradeAdminToBasicUser">
@@ -113,7 +119,7 @@
       </xs:complexType>
       <xs:complexType name="downgradeAdminToBasicUserResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:user"/>
+          <xs:element minOccurs="0" name="return" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findByEmail">
@@ -123,17 +129,17 @@
       </xs:complexType>
       <xs:complexType name="findByEmailResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:user"/>
+          <xs:element minOccurs="0" name="return" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="createUser">
         <xs:sequence>
-          <xs:element minOccurs="0" name="user" type="tns:user"/>
+          <xs:element minOccurs="0" name="user" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="createUserResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:user"/>
+          <xs:element minOccurs="0" name="return" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findByName">
@@ -143,7 +149,7 @@
       </xs:complexType>
       <xs:complexType name="findByNameResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:user"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="grantAdminRightsToUser">
@@ -153,24 +159,24 @@
       </xs:complexType>
       <xs:complexType name="grantAdminRightsToUserResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:admin"/>
+          <xs:element minOccurs="0" name="return" type="tns:adminDTO"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="admin">
+      <xs:complexType name="adminDTO">
         <xs:complexContent>
-          <xs:extension base="tns:user">
+          <xs:extension base="tns:userDTO">
             <xs:sequence/>
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
       <xs:complexType name="updateUser">
         <xs:sequence>
-          <xs:element minOccurs="0" name="user" type="tns:user"/>
+          <xs:element minOccurs="0" name="user" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateUserResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:user"/>
+          <xs:element minOccurs="0" name="return" type="tns:userDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
@@ -365,7 +371,7 @@
   </wsdl:binding>
   <wsdl:service name="UserService">
     <wsdl:port binding="tns:UserServiceSoapBinding" name="UserServicePort">
-      <soap:address location="${#Project#servicesUrl}/user"/>
+      <soap:address location="http://localhost:8080/Library_webservice/services/user"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>${#Project#servicesUrl}/user</con:endpoint></con:endpoints><con:operation id="ca4c285c-e9cd-429f-9dfc-4febde4c0d9f" isOneWay="false" action="" name="createUser" bindingOperationName="createUser" type="Request-Response" outputName="createUserResponse" inputName="createUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="496c19c7-5518-47ea-9141-3e5c1e9d48e9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/user</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
@@ -462,7 +468,7 @@
          </user>
       </web:updateUser>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/UserService/updateUser"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="b603ec79-0e65-4a92-9ede-f3f5f3f56b35" wsaVersion="NONE" name="BookServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}BookServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/book?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="${#Project#servicesUrl}/book?wsdl"><con:part><con:url>${#Project#servicesUrl}/book?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BookService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/UserService/updateUser"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="b603ec79-0e65-4a92-9ede-f3f5f3f56b35" wsaVersion="NONE" name="BookServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}BookServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/book?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/book?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/book?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BookService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="createBook" type="tns:createBook"/>
@@ -492,26 +498,55 @@
       </xs:complexType>
       <xs:complexType name="findBookByAuthorResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="book">
+      <xs:complexType name="bookDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="author" type="xs:string"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="reservationQueueInfos" type="tns:reservationQueueDTO"/>
           <xs:element minOccurs="0" name="status" type="xs:string"/>
           <xs:element minOccurs="0" name="summary" type="xs:string"/>
           <xs:element minOccurs="0" name="title" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="reservationQueueDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availableSamplesNumber" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="borrowers" nillable="true" type="tns:userDTO"/>
+          <xs:element minOccurs="0" name="isAvailable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isReservable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="latestAvailabilityDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="queueMaxSize" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reservers" nillable="true" type="tns:userDTO"/>
+          <xs:element minOccurs="0" name="soonestAvailabilityDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userOptionsDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="updateBook">
         <xs:sequence>
-          <xs:element minOccurs="0" name="book" type="tns:book"/>
+          <xs:element minOccurs="0" name="book" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateBookResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:book"/>
+          <xs:element minOccurs="0" name="return" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findBookSampleByBookId">
@@ -521,12 +556,12 @@
       </xs:complexType>
       <xs:complexType name="findBookSampleByBookIdResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSample"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="bookSample">
+      <xs:complexType name="bookSampleDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="book" type="tns:book"/>
+          <xs:element minOccurs="0" name="book" type="tns:bookDTO"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
           <xs:element minOccurs="0" name="status" type="xs:string"/>
         </xs:sequence>
@@ -538,7 +573,7 @@
       </xs:complexType>
       <xs:complexType name="findBookSampleByIdResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+          <xs:element minOccurs="0" name="return" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findNotBorrowedBookSampleByBookId">
@@ -548,37 +583,37 @@
       </xs:complexType>
       <xs:complexType name="findNotBorrowedBookSampleByBookIdResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSample"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateBookSample">
         <xs:sequence>
-          <xs:element minOccurs="0" name="bookSample" type="tns:bookSample"/>
+          <xs:element minOccurs="0" name="bookSample" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateBookSampleResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+          <xs:element minOccurs="0" name="return" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="createBook">
         <xs:sequence>
-          <xs:element minOccurs="0" name="book" type="tns:book"/>
+          <xs:element minOccurs="0" name="book" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="createBookResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:book"/>
+          <xs:element minOccurs="0" name="return" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="createBookSample">
         <xs:sequence>
-          <xs:element minOccurs="0" name="bookSample" type="tns:bookSample"/>
+          <xs:element minOccurs="0" name="bookSample" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="createBookSampleResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:bookSample"/>
+          <xs:element minOccurs="0" name="return" type="tns:bookSampleDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findBookByTitle">
@@ -588,7 +623,7 @@
       </xs:complexType>
       <xs:complexType name="findBookByTitleResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findBookById">
@@ -598,7 +633,7 @@
       </xs:complexType>
       <xs:complexType name="findBookByIdResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:book"/>
+          <xs:element minOccurs="0" name="return" type="tns:bookDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
@@ -838,7 +873,7 @@
   </wsdl:binding>
   <wsdl:service name="BookService">
     <wsdl:port binding="tns:BookServiceSoapBinding" name="BookServicePort">
-      <soap:address location="${#Project#servicesUrl}/book"/>
+      <soap:address location="http://localhost:8080/Library_webservice/services/book"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>${#Project#servicesUrl}/book</con:endpoint></con:endpoints><con:operation id="f4fc437f-f874-4608-be32-6ce42eec81ec" isOneWay="false" action="" name="createBook" bindingOperationName="createBook" type="Request-Response" outputName="createBookResponse" inputName="createBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="22e08407-9f07-470c-8307-23a29fe73b3f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
@@ -850,7 +885,54 @@
          <!--Optional:-->
          <book>
             <!--Optional:-->
-            <author></author>
+            <author/>
+            <!--Optional:-->
+            <id>?</id>
+            <!--Optional:-->
+            <reservationQueueInfos>
+               <!--Optional:-->
+               <availableSamplesNumber>?</availableSamplesNumber>
+               <!--Zero or more repetitions:-->
+               <borrowers>
+                  <!--Optional:-->
+                  <email>?</email>
+                  <!--Optional:-->
+                  <firstName>?</firstName>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <!--Optional:-->
+                  <lastName>?</lastName>
+                  <!--Optional:-->
+                  <password>?</password>
+                  <!--Optional:-->
+                  <status>?</status>
+               </borrowers>
+               <!--Optional:-->
+               <isAvailable>?</isAvailable>
+               <!--Optional:-->
+               <isReservable>?</isReservable>
+               <!--Optional:-->
+               <latestAvailabilityDate>?</latestAvailabilityDate>
+               <!--Optional:-->
+               <queueMaxSize>?</queueMaxSize>
+               <!--Zero or more repetitions:-->
+               <reservers>
+                  <!--Optional:-->
+                  <email>?</email>
+                  <!--Optional:-->
+                  <firstName>?</firstName>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <!--Optional:-->
+                  <lastName>?</lastName>
+                  <!--Optional:-->
+                  <password>?</password>
+                  <!--Optional:-->
+                  <status>?</status>
+               </reservers>
+               <!--Optional:-->
+               <soonestAvailabilityDate>?</soonestAvailabilityDate>
+            </reservationQueueInfos>
             <!--Optional:-->
             <status>?</status>
             <!--Optional:-->
@@ -874,6 +956,51 @@
                <author>?</author>
                <!--Optional:-->
                <id>?</id>
+               <!--Optional:-->
+               <reservationQueueInfos>
+                  <!--Optional:-->
+                  <availableSamplesNumber>?</availableSamplesNumber>
+                  <!--Zero or more repetitions:-->
+                  <borrowers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </borrowers>
+                  <!--Optional:-->
+                  <isAvailable>?</isAvailable>
+                  <!--Optional:-->
+                  <isReservable>?</isReservable>
+                  <!--Optional:-->
+                  <latestAvailabilityDate>?</latestAvailabilityDate>
+                  <!--Optional:-->
+                  <queueMaxSize>?</queueMaxSize>
+                  <!--Zero or more repetitions:-->
+                  <reservers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </reservers>
+                  <!--Optional:-->
+                  <soonestAvailabilityDate>?</soonestAvailabilityDate>
+               </reservationQueueInfos>
                <!--Optional:-->
                <status>?</status>
                <!--Optional:-->
@@ -941,6 +1068,51 @@
             <!--Optional:-->
             <id>?</id>
             <!--Optional:-->
+            <reservationQueueInfos>
+               <!--Optional:-->
+               <availableSamplesNumber>?</availableSamplesNumber>
+               <!--Zero or more repetitions:-->
+               <borrowers>
+                  <!--Optional:-->
+                  <email>?</email>
+                  <!--Optional:-->
+                  <firstName>?</firstName>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <!--Optional:-->
+                  <lastName>?</lastName>
+                  <!--Optional:-->
+                  <password>?</password>
+                  <!--Optional:-->
+                  <status>?</status>
+               </borrowers>
+               <!--Optional:-->
+               <isAvailable>?</isAvailable>
+               <!--Optional:-->
+               <isReservable>?</isReservable>
+               <!--Optional:-->
+               <latestAvailabilityDate>?</latestAvailabilityDate>
+               <!--Optional:-->
+               <queueMaxSize>?</queueMaxSize>
+               <!--Zero or more repetitions:-->
+               <reservers>
+                  <!--Optional:-->
+                  <email>?</email>
+                  <!--Optional:-->
+                  <firstName>?</firstName>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <!--Optional:-->
+                  <lastName>?</lastName>
+                  <!--Optional:-->
+                  <password>?</password>
+                  <!--Optional:-->
+                  <status>?</status>
+               </reservers>
+               <!--Optional:-->
+               <soonestAvailabilityDate>?</soonestAvailabilityDate>
+            </reservationQueueInfos>
+            <!--Optional:-->
             <status>?</status>
             <!--Optional:-->
             <summary>?</summary>
@@ -958,6 +1130,64 @@
          <!--Optional:-->
          <bookSample>
             <!--Optional:-->
+            <book>
+               <!--Optional:-->
+               <author>?</author>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <reservationQueueInfos>
+                  <!--Optional:-->
+                  <availableSamplesNumber>?</availableSamplesNumber>
+                  <!--Zero or more repetitions:-->
+                  <borrowers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </borrowers>
+                  <!--Optional:-->
+                  <isAvailable>?</isAvailable>
+                  <!--Optional:-->
+                  <isReservable>?</isReservable>
+                  <!--Optional:-->
+                  <latestAvailabilityDate>?</latestAvailabilityDate>
+                  <!--Optional:-->
+                  <queueMaxSize>?</queueMaxSize>
+                  <!--Zero or more repetitions:-->
+                  <reservers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </reservers>
+                  <!--Optional:-->
+                  <soonestAvailabilityDate>?</soonestAvailabilityDate>
+               </reservationQueueInfos>
+               <!--Optional:-->
+               <status>?</status>
+               <!--Optional:-->
+               <summary>?</summary>
+               <!--Optional:-->
+               <title>?</title>
+            </book>
+            <!--Optional:-->
             <id>${#Project#fakeBookSampleId}</id>
             <!--Optional:-->
             <status>U</status>
@@ -972,13 +1202,15 @@
          <bookId>?</bookId>
       </web:findNotBorrowedBookSampleByBookId>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findNotBorrowedBookSampleByBookId"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="78501caf-98d3-4361-b6ca-e5e99da90641" wsaVersion="NONE" name="LoanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}LoanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/loan?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="${#Project#servicesUrl}/loan?wsdl"><con:part><con:url>${#Project#servicesUrl}/loan?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/findNotBorrowedBookSampleByBookId"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="78501caf-98d3-4361-b6ca-e5e99da90641" wsaVersion="NONE" name="LoanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}LoanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="${#Project#servicesUrl}/loan?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/loan?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/loan?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LoanService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="createLoan" type="tns:createLoan"/>
       <xs:element name="createLoanResponse" type="tns:createLoanResponse"/>
       <xs:element name="extendLoan" type="tns:extendLoan"/>
       <xs:element name="extendLoanResponse" type="tns:extendLoanResponse"/>
+      <xs:element name="findAlmostPeremptedLoans" type="tns:findAlmostPeremptedLoans"/>
+      <xs:element name="findAlmostPeremptedLoansResponse" type="tns:findAlmostPeremptedLoansResponse"/>
       <xs:element name="findByUserId" type="tns:findByUserId"/>
       <xs:element name="findByUserIdResponse" type="tns:findByUserIdResponse"/>
       <xs:element name="findLoanById" type="tns:findLoanById"/>
@@ -989,48 +1221,67 @@
       <xs:element name="updateLoanResponse" type="tns:updateLoanResponse"/>
       <xs:complexType name="createLoan">
         <xs:sequence>
-          <xs:element minOccurs="0" name="loan" type="tns:loan"/>
+          <xs:element minOccurs="0" name="loan" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="loan">
+      <xs:complexType name="loanDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="bookSample" type="tns:bookSample"/>
-          <xs:element minOccurs="0" name="borrower" type="tns:user"/>
+          <xs:element minOccurs="0" name="bookSample" type="tns:bookSampleDTO"/>
+          <xs:element minOccurs="0" name="borrower" type="tns:userDTO"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
           <xs:element minOccurs="0" name="prolongationNumber" type="xs:int"/>
           <xs:element minOccurs="0" name="returnDate" type="xs:dateTime"/>
           <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="bookSample">
+      <xs:complexType name="bookSampleDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="book" type="tns:book"/>
+          <xs:element minOccurs="0" name="book" type="tns:bookDTO"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
           <xs:element minOccurs="0" name="status" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="book">
+      <xs:complexType name="bookDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="author" type="xs:string"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="reservationQueueInfos" type="tns:reservationQueueDTO"/>
           <xs:element minOccurs="0" name="status" type="xs:string"/>
           <xs:element minOccurs="0" name="summary" type="xs:string"/>
           <xs:element minOccurs="0" name="title" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="user">
+      <xs:complexType name="reservationQueueDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availableSamplesNumber" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="borrowers" nillable="true" type="tns:userDTO"/>
+          <xs:element minOccurs="0" name="isAvailable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isReservable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="latestAvailabilityDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="queueMaxSize" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reservers" nillable="true" type="tns:userDTO"/>
+          <xs:element minOccurs="0" name="soonestAvailabilityDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="email" type="xs:string"/>
           <xs:element minOccurs="0" name="firstName" type="xs:string"/>
           <xs:element minOccurs="0" name="id" type="xs:int"/>
           <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
           <xs:element minOccurs="0" name="password" type="xs:string"/>
           <xs:element minOccurs="0" name="status" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="userOptionsDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="createLoanResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:loan"/>
+          <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findNotReturned">
@@ -1038,17 +1289,17 @@
       </xs:complexType>
       <xs:complexType name="findNotReturnedResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loan"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateLoan">
         <xs:sequence>
-          <xs:element minOccurs="0" name="loan" type="tns:loan"/>
+          <xs:element minOccurs="0" name="loan" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="updateLoanResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:loan"/>
+          <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="extendLoan">
@@ -1058,7 +1309,15 @@
       </xs:complexType>
       <xs:complexType name="extendLoanResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:loan"/>
+          <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAlmostPeremptedLoans">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findAlmostPeremptedLoansResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findLoanById">
@@ -1068,7 +1327,7 @@
       </xs:complexType>
       <xs:complexType name="findLoanByIdResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:loan"/>
+          <xs:element minOccurs="0" name="return" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="findByUserId">
@@ -1078,7 +1337,7 @@
       </xs:complexType>
       <xs:complexType name="findByUserIdResponse">
         <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loan"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:loanDTO"/>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
@@ -1112,6 +1371,9 @@
   <wsdl:message name="updateLoanResponse">
     <wsdl:part element="tns:updateLoanResponse" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findAlmostPeremptedLoansResponse">
+    <wsdl:part element="tns:findAlmostPeremptedLoansResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="LibraryWebserviceException">
     <wsdl:part element="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:part>
   </wsdl:message>
@@ -1124,6 +1386,10 @@
   </wsdl:message>
   <wsdl:message name="extendLoan">
     <wsdl:part element="tns:extendLoan" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAlmostPeremptedLoans">
+    <wsdl:part element="tns:findAlmostPeremptedLoans" name="parameters"></wsdl:part>
     <wsdl:part element="tns:token" name="token"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="extendLoanResponse">
@@ -1154,6 +1420,11 @@
     <wsdl:operation name="extendLoan">
       <wsdl:input message="tns:extendLoan" name="extendLoan"></wsdl:input>
       <wsdl:output message="tns:extendLoanResponse" name="extendLoanResponse"></wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAlmostPeremptedLoans">
+      <wsdl:input message="tns:findAlmostPeremptedLoans" name="findAlmostPeremptedLoans"></wsdl:input>
+      <wsdl:output message="tns:findAlmostPeremptedLoansResponse" name="findAlmostPeremptedLoansResponse"></wsdl:output>
       <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="findLoanById">
@@ -1221,6 +1492,19 @@
         <soap:fault name="LibraryWebserviceException" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="findAlmostPeremptedLoans">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAlmostPeremptedLoans">
+        <soap:header message="tns:findAlmostPeremptedLoans" part="token" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAlmostPeremptedLoansResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="findLoanById">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findLoanById">
@@ -1250,7 +1534,7 @@
   </wsdl:binding>
   <wsdl:service name="LoanService">
     <wsdl:port binding="tns:LoanServiceSoapBinding" name="LoanServicePort">
-      <soap:address location="${#Project#servicesUrl}/loan"/>
+      <soap:address location="http://localhost:8080/Library_webservice/services/loan"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint></con:endpoints><con:operation id="d651056f-74cb-41ef-91c0-b7a8e97f9c6b" isOneWay="false" action="" name="createLoan" bindingOperationName="createLoan" type="Request-Response" outputName="createLoanResponse" inputName="createLoan" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a9ed380-6587-4cf6-98f0-1b762a02fcae" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
@@ -1264,13 +1548,91 @@
             <!--Optional:-->
             <bookSample>
                <!--Optional:-->
+               <book>
+                  <!--Optional:-->
+                  <author>?</author>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <!--Optional:-->
+                  <reservationQueueInfos>
+                     <!--Optional:-->
+                     <availableSamplesNumber>?</availableSamplesNumber>
+                     <!--Zero or more repetitions:-->
+                     <borrowers>
+                        <!--Optional:-->
+                        <email>?</email>
+                        <!--Optional:-->
+                        <firstName>?</firstName>
+                        <!--Optional:-->
+                        <id>?</id>
+                        <!--Optional:-->
+                        <lastName>?</lastName>
+                        <!--Optional:-->
+                        <password>?</password>
+                        <!--Optional:-->
+                        <status>?</status>
+                     </borrowers>
+                     <!--Optional:-->
+                     <isAvailable>?</isAvailable>
+                     <!--Optional:-->
+                     <isReservable>?</isReservable>
+                     <!--Optional:-->
+                     <latestAvailabilityDate>?</latestAvailabilityDate>
+                     <!--Optional:-->
+                     <queueMaxSize>?</queueMaxSize>
+                     <!--Zero or more repetitions:-->
+                     <reservers>
+                        <!--Optional:-->
+                        <email>?</email>
+                        <!--Optional:-->
+                        <firstName>?</firstName>
+                        <!--Optional:-->
+                        <id>?</id>
+                        <!--Optional:-->
+                        <lastName>?</lastName>
+                        <!--Optional:-->
+                        <password>?</password>
+                        <!--Optional:-->
+                        <status>?</status>
+                     </reservers>
+                     <!--Optional:-->
+                     <soonestAvailabilityDate>?</soonestAvailabilityDate>
+                  </reservationQueueInfos>
+                  <!--Optional:-->
+                  <status>?</status>
+                  <!--Optional:-->
+                  <summary>?</summary>
+                  <!--Optional:-->
+                  <title>?</title>
+               </book>
+               <!--Optional:-->
                <id>${#Project#bookAvailableBookSampleAvailableId}</id>
+               <!--Optional:-->
+               <status>?</status>
             </bookSample>
             <!--Optional:-->
             <borrower>
                <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
                <id>${#Project#classicActiveId}</id>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <password>?</password>
+               <!--Optional:-->
+               <status>?</status>
             </borrower>
+            <!--Optional:-->
+            <id>?</id>
+            <!--Optional:-->
+            <prolongationNumber>?</prolongationNumber>
+            <!--Optional:-->
+            <returnDate>?</returnDate>
+            <!--Optional:-->
+            <startDate>?</startDate>
          </loan>
       </web:createLoan>
    </soapenv:Body>
@@ -1317,6 +1679,51 @@
                   <author>?</author>
                   <!--Optional:-->
                   <id>?</id>
+                  <!--Optional:-->
+                  <reservationQueueInfos>
+                     <!--Optional:-->
+                     <availableSamplesNumber>?</availableSamplesNumber>
+                     <!--Zero or more repetitions:-->
+                     <borrowers>
+                        <!--Optional:-->
+                        <email>?</email>
+                        <!--Optional:-->
+                        <firstName>?</firstName>
+                        <!--Optional:-->
+                        <id>?</id>
+                        <!--Optional:-->
+                        <lastName>?</lastName>
+                        <!--Optional:-->
+                        <password>?</password>
+                        <!--Optional:-->
+                        <status>?</status>
+                     </borrowers>
+                     <!--Optional:-->
+                     <isAvailable>?</isAvailable>
+                     <!--Optional:-->
+                     <isReservable>?</isReservable>
+                     <!--Optional:-->
+                     <latestAvailabilityDate>?</latestAvailabilityDate>
+                     <!--Optional:-->
+                     <queueMaxSize>?</queueMaxSize>
+                     <!--Zero or more repetitions:-->
+                     <reservers>
+                        <!--Optional:-->
+                        <email>?</email>
+                        <!--Optional:-->
+                        <firstName>?</firstName>
+                        <!--Optional:-->
+                        <id>?</id>
+                        <!--Optional:-->
+                        <lastName>?</lastName>
+                        <!--Optional:-->
+                        <password>?</password>
+                        <!--Optional:-->
+                        <status>?</status>
+                     </reservers>
+                     <!--Optional:-->
+                     <soonestAvailabilityDate>?</soonestAvailabilityDate>
+                  </reservationQueueInfos>
                   <!--Optional:-->
                   <status>?</status>
                   <!--Optional:-->
@@ -1365,7 +1772,380 @@
          <id>?</id>
       </web:extendLoan>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="7e39ed95-f584-449f-8061-98ce22830a05" name="Test TokenService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e856db88-9622-457b-a5a1-68455440678a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLoginToken" searchProperties="true"><con:settings/><con:testStep type="request" id="099115ec-68f6-40b7-b1c6-1b76f505093f" name="getLoginTokenOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="getLoginTokenOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9227c30-cb0d-4f7e-806f-7e0cd562cbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f4265e4b-a345-48eb-a394-adac8ef76b40" isOneWay="false" action="" name="findAlmostPeremptedLoans" bindingOperationName="findAlmostPeremptedLoans" type="Request-Response" outputName="findAlmostPeremptedLoansResponse" inputName="findAlmostPeremptedLoans" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="14576c7b-5353-4671-8c89-5b0ed9af3675" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findAlmostPeremptedLoans/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findAlmostPeremptedLoans"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="bbce263e-577b-4878-bd56-c96800a5622e" wsaVersion="NONE" name="ReservationServiceSoapBinding" type="wsdl" bindingName="{http://webservice.library.nmocs.fr/}ReservationServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/Library_webservice/services/reservation?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Library_webservice/services/reservation?wsdl"><con:part><con:url>http://localhost:8080/Library_webservice/services/reservation?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ReservationService" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.library.nmocs.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.library.nmocs.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="createReservation" type="tns:createReservation"/>
+      <xs:element name="createReservationResponse" type="tns:createReservationResponse"/>
+      <xs:element name="deleteReservation" type="tns:deleteReservation"/>
+      <xs:element name="deleteReservationResponse" type="tns:deleteReservationResponse"/>
+      <xs:element name="findReservationsByUserId" type="tns:findReservationsByUserId"/>
+      <xs:element name="findReservationsByUserIdResponse" type="tns:findReservationsByUserIdResponse"/>
+      <xs:complexType name="findReservationsByUserId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findReservationsByUserIdResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:reservationDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reservationDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:bookDTO"/>
+          <xs:element minOccurs="0" name="mailedDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="reservationDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="reserver" type="tns:userDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bookDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="author" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="reservationQueueInfos" type="tns:reservationQueueDTO"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+          <xs:element minOccurs="0" name="summary" type="xs:string"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reservationQueueDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availableSamplesNumber" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="borrowers" nillable="true" type="tns:userDTO"/>
+          <xs:element minOccurs="0" name="isAvailable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isReservable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="latestAvailabilityDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="queueMaxSize" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reservers" nillable="true" type="tns:userDTO"/>
+          <xs:element minOccurs="0" name="soonestAvailabilityDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="options" type="tns:userOptionsDTO"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userOptionsDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="warnedBeforeLoanPeremption" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createReservation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="reservation" type="tns:reservationDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createReservationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:reservationDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteReservation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="reservation" type="tns:reservationDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteReservationResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:element name="LibraryWebserviceException" type="tns:LibraryWebserviceException"/>
+      <xs:complexType name="LibraryWebserviceException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="token" nillable="true" type="xs:string"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findReservationsByUserId">
+    <wsdl:part element="tns:findReservationsByUserId" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createReservation">
+    <wsdl:part element="tns:createReservation" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createReservationResponse">
+    <wsdl:part element="tns:createReservationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findReservationsByUserIdResponse">
+    <wsdl:part element="tns:findReservationsByUserIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LibraryWebserviceException">
+    <wsdl:part element="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteReservationResponse">
+    <wsdl:part element="tns:deleteReservationResponse" name="result"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteReservation">
+    <wsdl:part element="tns:deleteReservation" name="parameters"></wsdl:part>
+    <wsdl:part element="tns:token" name="token"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ReservationService">
+    <wsdl:operation name="findReservationsByUserId">
+      <wsdl:input message="tns:findReservationsByUserId" name="findReservationsByUserId"></wsdl:input>
+      <wsdl:output message="tns:findReservationsByUserIdResponse" name="findReservationsByUserIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createReservation">
+      <wsdl:input message="tns:createReservation" name="createReservation"></wsdl:input>
+      <wsdl:output message="tns:createReservationResponse" name="createReservationResponse"></wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <wsdl:input message="tns:deleteReservation" name="deleteReservation"></wsdl:input>
+      <wsdl:output message="tns:deleteReservationResponse" name="deleteReservationResponse"></wsdl:output>
+      <wsdl:fault message="tns:LibraryWebserviceException" name="LibraryWebserviceException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReservationServiceSoapBinding" type="tns:ReservationService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findReservationsByUserId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findReservationsByUserId">
+        <soap:header message="tns:findReservationsByUserId" part="token" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findReservationsByUserIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createReservation">
+        <soap:header message="tns:createReservation" part="token" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteReservation">
+        <soap:header message="tns:deleteReservation" part="token" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LibraryWebserviceException">
+        <soap:fault name="LibraryWebserviceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservationService">
+    <wsdl:port binding="tns:ReservationServiceSoapBinding" name="ReservationServicePort">
+      <soap:address location="http://localhost:8080/Library_webservice/services/reservation"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint></con:endpoints><con:operation id="683cb55e-3dd2-48cd-889f-14d2d6c7fc93" isOneWay="false" action="" name="createReservation" bindingOperationName="createReservation" type="Request-Response" outputName="createReservationResponse" inputName="createReservation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="97ade16d-ccda-474d-96fa-391703421a3f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU3NDU3NjY3NiwiaWF0IjoxNTc0NTU1MDc2LCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.JqDxPeef1joOFpl0XokEn0ruG6j7i5m90OyK6ba4wtI</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+               <!--Optional:-->
+               <author>?</author>
+               <!--Optional:-->
+               <id>4</id>
+               <!--Optional:-->
+               <reservationQueueInfos>
+                  <!--Optional:-->
+                  <availableSamplesNumber>?</availableSamplesNumber>
+                  <!--Zero or more repetitions:-->
+                  <borrowers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </borrowers>
+                  <!--Optional:-->
+                  <isAvailable>?</isAvailable>
+                  <!--Optional:-->
+                  <isReservable>?</isReservable>
+                  <!--Optional:-->
+                  <latestAvailabilityDate>?</latestAvailabilityDate>
+                  <!--Optional:-->
+                  <queueMaxSize>?</queueMaxSize>
+                  <!--Zero or more repetitions:-->
+                  <reservers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </reservers>
+                  <!--Optional:-->
+                  <soonestAvailabilityDate>?</soonestAvailabilityDate>
+               </reservationQueueInfos>
+               <!--Optional:-->
+               <status>?</status>
+               <!--Optional:-->
+               <summary>?</summary>
+               <!--Optional:-->
+               <title>?</title>
+            </book>
+            <!--Optional:-->
+            <mailedDate>?</mailedDate>
+            <!--Optional:-->
+            <reservationDate>?</reservationDate>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <id>5</id>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <password>?</password>
+               <!--Optional:-->
+               <status>?</status>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/ReservationService/createReservation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ff873309-9bba-4441-ae9b-660a9fc29e96" isOneWay="false" action="" name="deleteReservation" bindingOperationName="deleteReservation" type="Request-Response" outputName="deleteReservationResponse" inputName="deleteReservation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c13d7e93-f703-47ba-9733-dc194e36726f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>?</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:deleteReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+               <!--Optional:-->
+               <author>?</author>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <reservationQueueInfos>
+                  <!--Optional:-->
+                  <availableSamplesNumber>?</availableSamplesNumber>
+                  <!--Zero or more repetitions:-->
+                  <borrowers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </borrowers>
+                  <!--Optional:-->
+                  <isAvailable>?</isAvailable>
+                  <!--Optional:-->
+                  <isReservable>?</isReservable>
+                  <!--Optional:-->
+                  <latestAvailabilityDate>?</latestAvailabilityDate>
+                  <!--Optional:-->
+                  <queueMaxSize>?</queueMaxSize>
+                  <!--Zero or more repetitions:-->
+                  <reservers>
+                     <!--Optional:-->
+                     <email>?</email>
+                     <!--Optional:-->
+                     <firstName>?</firstName>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <!--Optional:-->
+                     <lastName>?</lastName>
+                     <!--Optional:-->
+                     <password>?</password>
+                     <!--Optional:-->
+                     <status>?</status>
+                  </reservers>
+                  <!--Optional:-->
+                  <soonestAvailabilityDate>?</soonestAvailabilityDate>
+               </reservationQueueInfos>
+               <!--Optional:-->
+               <status>?</status>
+               <!--Optional:-->
+               <summary>?</summary>
+               <!--Optional:-->
+               <title>?</title>
+            </book>
+            <!--Optional:-->
+            <mailedDate>?</mailedDate>
+            <!--Optional:-->
+            <reservationDate>?</reservationDate>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <password>?</password>
+               <!--Optional:-->
+               <status>?</status>
+            </reserver>
+         </reservation>
+      </web:deleteReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/ReservationService/deleteReservation"/></con:call></con:operation><con:operation id="85b0fb9f-e5ba-4045-a53b-2ef2ba15eec0" isOneWay="false" action="" name="findReservationsByUserId" bindingOperationName="findReservationsByUserId" type="Request-Response" outputName="findReservationsByUserIdResponse" inputName="findReservationsByUserId" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1d857625-2a97-4688-a730-75bc2c2b6baa" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>?</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findReservationsByUserId>
+         <!--Optional:-->
+         <userId>?</userId>
+      </web:findReservationsByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/ReservationService/findReservationsByUserId"/></con:call></con:operation></con:interface><con:testSuite id="7e39ed95-f584-449f-8061-98ce22830a05" name="Test TokenService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e856db88-9622-457b-a5a1-68455440678a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLoginToken" searchProperties="true"><con:settings/><con:testStep type="request" id="099115ec-68f6-40b7-b1c6-1b76f505093f" name="getLoginTokenOK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="getLoginTokenOK" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9227c30-cb0d-4f7e-806f-7e0cd562cbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:getLoginToken>
@@ -1428,9 +2208,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1451,9 +2235,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1468,9 +2256,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1485,9 +2277,13 @@
             <!--Optional:-->
             <firstName>  </firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1502,9 +2298,13 @@
             <!--Optional:-->
             <firstName>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1519,9 +2319,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>   </lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1536,9 +2340,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</lastName>
             <!--Optional:-->
             <password>unmotdepasse</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1553,9 +2361,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>   </password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1570,9 +2382,13 @@
             <!--Optional:-->
             <firstName>Pierre</firstName>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <lastName>Durant</lastName>
             <!--Optional:-->
             <password>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</password>
+            <!--Optional:-->
+            <status></status>
          </user>
       </web:createUser>
    </soapenv:Body>
@@ -1585,9 +2401,17 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
-            <id>${#Project#classicActiveId}</id>
+            <email>?</email>
             <!--Optional:-->
             <firstName>Nouveau prénom</firstName>
+            <!--Optional:-->
+            <id>${#Project#classicActiveId}</id>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <status>?</status>
          </user>
       </web:updateUser>
    </soapenv:Body>
@@ -1600,7 +2424,15 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
+            <email>?</email>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
             <id>${#Project#classicActiveId}</id>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
             <!--Optional:-->
             <status>U</status>
          </user>
@@ -1615,7 +2447,15 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
+            <email>?</email>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
             <id>${#Project#classicActiveId}</id>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
             <!--Optional:-->
             <status>A</status>
          </user>
@@ -1630,9 +2470,17 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
-            <id>${#Project#classicUnactiveId}</id>
+            <email>?</email>
             <!--Optional:-->
             <firstName>Nouveau prénom</firstName>
+            <!--Optional:-->
+            <id>${#Project#classicUnactiveId}</id>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <status>?</status>
          </user>
       </web:updateUser>
    </soapenv:Body>
@@ -1645,7 +2493,15 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
+            <email>?</email>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
             <id>9999</id>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
             <!--Optional:-->
             <status>U</status>
          </user>
@@ -1660,9 +2516,17 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
-            <id>${#Project#classicActiveId}</id>
+            <email>?</email>
             <!--Optional:-->
             <firstName>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</firstName>
+            <!--Optional:-->
+            <id>${#Project#classicActiveId}</id>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <status>?</status>
          </user>
       </web:updateUser>
    </soapenv:Body>
@@ -1675,9 +2539,17 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
+            <email>?</email>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
             <id>${#Project#classicActiveId}</id>
             <!--Optional:-->
             <lastName>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</lastName>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <status>?</status>
          </user>
       </web:updateUser>
    </soapenv:Body>
@@ -1690,9 +2562,17 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
+            <email>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</email>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
             <id>${#Project#classicActiveId}</id>
             <!--Optional:-->
-            <email>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</email>
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <status>?</status>
          </user>
       </web:updateUser>
    </soapenv:Body>
@@ -1705,9 +2585,17 @@
          <!--Optional:-->
          <user>
             <!--Optional:-->
+            <email>?</email>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
             <id>${#Project#classicActiveId}</id>
             <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
             <password>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</password>
+            <!--Optional:-->
+            <status>?</status>
          </user>
       </web:updateUser>
    </soapenv:Body>
@@ -1852,6 +2740,8 @@
             <!--Optional:-->
             <author>Victor Hugo</author>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
             <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
@@ -1870,6 +2760,8 @@
          <book>
             <!--Optional:-->
             <author>Victor Hugo</author>
+            <!--Optional:-->
+            <id></id>
             <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
@@ -1896,6 +2788,10 @@
          <!--Optional:-->
          <book>
             <!--Optional:-->
+            <author></author>
+            <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
             <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
@@ -1914,6 +2810,8 @@
          <book>
             <!--Optional:-->
             <author>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</author>
+            <!--Optional:-->
+            <id></id>
             <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
@@ -1934,9 +2832,13 @@
             <!--Optional:-->
             <author>Victor Hugo</author>
             <!--Optional:-->
+            <id></id>
+            <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
             <summary>Les Misérables Le destin de Jean Valjean, forçat échappé du bagne, est bouleversé par sa rencontre avec Fantine. Mourante et sans le sou, celle-ci lui demande de prendre soin de sa fille Cosette, confiée à un couple d'aubergistes malhonnêtes et sans scrupules. Jean Valjean tient sa promesse et adopte la fillette. Dès lors, Cosette devient sa raison de vivre. Mais son passé rattrape Jean Valjean, que l'inspecteur Javert traque. À partir de 13 ans</summary>
+            <!--Optional:-->
+            <title></title>
          </book>
       </web:createBook>
    </soapenv:Body>
@@ -1950,6 +2852,8 @@
          <book>
             <!--Optional:-->
             <author>Victor Hugo</author>
+            <!--Optional:-->
+            <id></id>
             <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
@@ -1967,6 +2871,7 @@
       <web:updateBook>
          <!--Optional:-->
          <book>
+            <!--Optional:-->
             <id>1</id>
             <!--Optional:-->
             <status>U</status>
@@ -1981,6 +2886,7 @@
       <web:updateBook>
          <!--Optional:-->
          <book>
+            <!--Optional:-->
             <id>1</id>
             <!--Optional:-->
             <status>U</status>
@@ -2001,8 +2907,11 @@
    </soapenv:Header>
    <soapenv:Body>
       <web:updateBook>
-      	<book>
-      	</book>
+      	<!--Optional:-->
+         <book>
+            <!--Optional:-->
+            <title>?</title>
+         </book>
       </web:updateBook>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1614202c-e838-43d3-bfa4-17227650c9fe" name="SOAP Response"/><con:assertion type="Schema Compliance" id="49010496-aee3-48d2-ae6f-240268b08f5a" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="29e22ce9-eac1-404b-9b3b-64508637ce1c" name="Contains"><con:configuration><token>LBE0013</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/BookService/updateBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="e5391926-94c1-4d01-a435-38f9fe715951" name="updateBookKO : author too long"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>updateBook</con:operation><con:request name="updateBookKO : author too long" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="535f9ec0-efc3-401e-bc5e-0465b61f67d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
@@ -2014,9 +2923,9 @@
          <!--Optional:-->
          <book>
             <!--Optional:-->
-            <id>1</id>
-            <!--Optional:-->
             <author>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</author>
+            <!--Optional:-->
+            <id>1</id>
             <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
@@ -2035,8 +2944,9 @@
          <!--Optional:-->
          <book>
             <!--Optional:-->
-            <id>1</id><!--Optional:-->
             <author>Victor Hugo</author>
+            <!--Optional:-->
+            <id>1</id>
             <!--Optional:-->
             <status>A</status>
             <!--Optional:-->
@@ -2120,6 +3030,7 @@
          <bookSample>
             <!--Optional:-->
             <book>
+               <!--Optional:-->
                <id>${#Project#availableBookId}</id>
             </book>
             <!--Optional:-->
@@ -2137,6 +3048,7 @@
          <bookSample>
             <!--Optional:-->
             <book>
+               <!--Optional:-->
                <id>${#Project#availableBookId}</id>
             </book>
             <!--Optional:-->
@@ -2167,6 +3079,8 @@
          <bookSample>
             <!--Optional:-->
             <book>
+               <!--Optional:-->
+               <id></id>
             </book>
             <!--Optional:-->
             <status>A</status>
@@ -2183,7 +3097,8 @@
          <bookSample>
             <!--Optional:-->
             <book>
-            	<id>99999</id>
+               <!--Optional:-->
+               <id>99999</id>
             </book>
             <!--Optional:-->
             <status>A</status>
@@ -2525,7 +3440,7 @@
             <!--Optional:-->
             <prolongationNumber>1</prolongationNumber>
             <!--Optional:-->
-            <returnDate>2019-02-19T00:00:00</returnDate>
+            <returnDate>2019-12-21T00:00:00</returnDate>
          </loan>
       </web:updateLoan>
    </soapenv:Body>
@@ -2687,4 +3602,466 @@
          <id>${#Project#loanToExtend}</id>
       </web:extendLoan>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1c5e10c8-8883-49df-a000-69a1b3a0f5c5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="864aae44-ca05-4c22-b37a-48f63dc1afa2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="23030cba-dd4d-4b9c-b1e7-1eba4398d669" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NDkxMzY4NzAsImlhdCI6MTU0OTExNTI3MCwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.sktP6CSWYv_8B2VEbrAhsgFe4DH2QEAAQcObAzU6CBc</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU0OTEzNjg3MCwiaWF0IjoxNTQ5MTE1MjcwLCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.L2A-kWehXEUVMGACCJZyBHfsbleUsttc30rG1UmqcO0</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property><con:property><con:name>loanToExtend</con:name><con:value>4</con:value></con:property><con:property><con:name>servicesUrl</con:name><con:value>http://localhost:8080/Library_webservice/services</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1c5e10c8-8883-49df-a000-69a1b3a0f5c5" name="SOAP Response"/><con:assertion type="Schema Compliance" id="864aae44-ca05-4c22-b37a-48f63dc1afa2" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="23030cba-dd4d-4b9c-b1e7-1eba4398d669" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/extendLoan"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="5b4a0258-1f08-4281-8466-a7b7f31afd36" name="Test [TK1]"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="995b827c-1fc9-4237-b194-f8d7e84837f1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test creation reservation" searchProperties="true"><con:settings/><con:testStep type="request" name="Retrieving token" id="30a52870-4b59-406c-b391-8eeb58992b7f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="Retrieving token" id="15486de6-4460-4774-8578-065f986fa445"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getLoginToken>
+         <!--Optional:-->
+         <email>${#TestSuite#userEmail}</email>
+         <!--Optional:-->
+         <password>${#TestSuite#userPassword}</password>
+      </web:getLoginToken>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:assertion type="SOAP Response" id="30c5cf6b-9dd2-437c-a54e-268593b30988"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Update properties token" id="55fb607e-3ddd-4f7c-b37c-0ffccc144f6d"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>token</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Retrieving token</con:sourceStep><con:sourcePath>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:getLoginTokenResponse[1]/return</con:sourcePath><con:targetType>userToken</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="Checking reservation queue" id="17fdb5a8-1a7b-488f-80a3-0dcc770e307c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="Checking reservation queue" id="af8cc854-fc6a-4fdf-9544-67e82855d17a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>${#TestSuite#bookId}</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6cb32de9-0000-4535-a1b0-21cc5e8efba5"/><con:assertion type="XPath Match" id="60364a21-b5bd-4790-a655-d2213e05aea9" name="Nombre d'exemplaires disponibles"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/availableSamplesNumber=0</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="65665f32-373d-497e-943f-e6d9f9045a81" name="Nombre d'emprunts = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/borrowers)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="befd384f-53b1-4ca8-8021-11869beb4584" name="Nombre de réservations = 0"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/reservers)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="53b7182c-5b21-4bfd-9aad-46de7ae4145e" name="Le livre est réservable"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/isReservable</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Creating reservation" id="be3c64eb-5fe0-4753-9eba-c4bde503c569"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="Creating reservation" id="a16ee113-957e-4dd9-89f6-9081128d9f84"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8dc9b80a-dd7f-485f-813a-6aab2c0e7ed8"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ERROR : Attempting to recreate the reservation" id="9fef566b-a73f-4b03-aeee-e32562884f0b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="ERROR : Attempting to recreate the reservation" id="a16ee113-957e-4dd9-89f6-9081128d9f84"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8dc9b80a-dd7f-485f-813a-6aab2c0e7ed8"/><con:assertion type="Not SOAP Fault Assertion" id="194a4ced-faa8-4010-b6f6-cdf061de1050" name="SOAP Fault"/><con:assertion type="Simple Contains" id="0ed1cdf9-41eb-41a7-b399-ea3fc38f0185" name="ERREUR : La réservation existe déjà"><con:configuration><token>LBE0033</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Retrieving borrower token" id="598c4f3d-b12f-497b-a8e6-f022bc225ecd"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="Retrieving borrower token" id="15486de6-4460-4774-8578-065f986fa445"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getLoginToken>
+         <!--Optional:-->
+         <email>${#TestSuite#borrowerEmail}</email>
+         <!--Optional:-->
+         <password>${#TestSuite#borrowerPassword}</password>
+      </web:getLoginToken>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="30c5cf6b-9dd2-437c-a54e-268593b30988"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Update properties borrower token" id="099ef538-9a8f-451d-986a-49a39eeb8bcc"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>token</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Retrieving borrower token</con:sourceStep><con:sourcePath>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:getLoginTokenResponse[1]/return</con:sourcePath><con:targetType>borrowerToken</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="ERROR : Attempting to create the reservation for the borrower" id="bae08feb-b8f6-4cc8-9df8-06c5fba44d8f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="ERROR : Attempting to create the reservation for the borrower" id="a16ee113-957e-4dd9-89f6-9081128d9f84"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#borrowerToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#borrowerId}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8dc9b80a-dd7f-485f-813a-6aab2c0e7ed8"/><con:assertion type="Not SOAP Fault Assertion" id="194a4ced-faa8-4010-b6f6-cdf061de1050" name="SOAP Fault"/><con:assertion type="Simple Contains" id="0ed1cdf9-41eb-41a7-b399-ea3fc38f0185" name="ERREUR : Le réseveur emprunte actuellement un exemplaire du livre"><con:configuration><token>LBE0035</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking reservation queue after reservation" id="13e100ff-2797-41ab-a28c-fc474cf7f926"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="Checking reservation queue after reservation" id="af8cc854-fc6a-4fdf-9544-67e82855d17a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>${#TestSuite#bookId}</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6cb32de9-0000-4535-a1b0-21cc5e8efba5"/><con:assertion type="XPath Match" id="60364a21-b5bd-4790-a655-d2213e05aea9" name="Nombre d'exemplaires disponibles"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/availableSamplesNumber=0</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="65665f32-373d-497e-943f-e6d9f9045a81" name="Nombre d'emprunts = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/borrowers)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="befd384f-53b1-4ca8-8021-11869beb4584" name="Nombre de reservation = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/reservers)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Un-reserving" id="2578aa67-077d-4d7d-80fd-cd1d63cc7cfa"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>deleteReservation</con:operation><con:request name="Un-reserving" id="7cd0b564-cf30-4201-9a73-b8491207ab23"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>?</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:deleteReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </reserver>
+         </reservation>
+      </web:deleteReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="650c4225-3c18-4101-832f-c871feccf0b1"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking reservation queue after un-reservation" id="d5cc1011-afd2-4e46-808e-8e2255a658ab"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="Checking reservation queue after un-reservation" id="af8cc854-fc6a-4fdf-9544-67e82855d17a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>${#TestSuite#bookId}</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6cb32de9-0000-4535-a1b0-21cc5e8efba5"/><con:assertion type="XPath Match" id="60364a21-b5bd-4790-a655-d2213e05aea9" name="Nombre d'exemplaires disponibles"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/availableSamplesNumber=0</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="65665f32-373d-497e-943f-e6d9f9045a81" name="Nombre d'emprunts = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/borrowers)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="befd384f-53b1-4ca8-8021-11869beb4584" name="Nombre de réservations = 0"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/reservers)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Recreating reservation" id="ac1f5ab7-e4f1-444b-a65f-8f27597a5040"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="Recreating reservation" id="a16ee113-957e-4dd9-89f6-9081128d9f84"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8dc9b80a-dd7f-485f-813a-6aab2c0e7ed8"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Retrieving token for 2nd reserver" id="e6ecae7c-8e03-4a69-90d9-abb31a4c0bed"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="Retrieving token for 2nd reserver" id="15486de6-4460-4774-8578-065f986fa445"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getLoginToken>
+         <!--Optional:-->
+         <email>${#TestSuite#user2Email}</email>
+         <!--Optional:-->
+         <password>${#TestSuite#user2Password}</password>
+      </web:getLoginToken>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="30c5cf6b-9dd2-437c-a54e-268593b30988"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Update properties 2nd reserver token" id="91deb364-c6e5-4c8c-98a4-e1ed91ab63bb"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>token</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Retrieving token for 2nd reserver</con:sourceStep><con:sourcePath>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:getLoginTokenResponse[1]/return</con:sourcePath><con:targetType>user2Token</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="delay" name="1 sec delay" id="0412073b-ba29-4831-8417-a44baa72c79b"><con:settings/><con:config><delay>1000</delay></con:config></con:testStep><con:testStep type="request" name="Creating reservation for 2nd reserver" id="dc44ea4a-883f-4a55-bf1a-4221c1776607"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="Creating reservation for 2nd reserver" id="a16ee113-957e-4dd9-89f6-9081128d9f84"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#user2Token}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#user2Id}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8dc9b80a-dd7f-485f-813a-6aab2c0e7ed8"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking that book is not reservable anymore" id="63d27c4d-c948-46ee-9a67-eda61d7fe0d4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="Checking that book is not reservable anymore" id="af8cc854-fc6a-4fdf-9544-67e82855d17a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>${#TestSuite#bookId}</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6cb32de9-0000-4535-a1b0-21cc5e8efba5"/><con:assertion type="XPath Match" id="60364a21-b5bd-4790-a655-d2213e05aea9" name="Nombre d'exemplaires disponibles"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/availableSamplesNumber=0</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="65665f32-373d-497e-943f-e6d9f9045a81" name="Nombre d'emprunts = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/borrowers)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="befd384f-53b1-4ca8-8021-11869beb4584" name="Nombre de réservations = 2"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/reservers)</path><content>2</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="1edf94fb-cb9c-4273-b00a-f15096295765" name="Le livre n'est plus réservable"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/isReservable</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Retrieving token for 3rd reserver" id="dae03515-375d-44cd-b4e6-5b03406986a1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="Retrieving token for 3rd reserver" id="15486de6-4460-4774-8578-065f986fa445"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getLoginToken>
+         <!--Optional:-->
+         <email>${#TestSuite#user3Email}</email>
+         <!--Optional:-->
+         <password>${#TestSuite#user3Password}</password>
+      </web:getLoginToken>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="30c5cf6b-9dd2-437c-a54e-268593b30988"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Update properties 3rd reserver token" id="980be47b-461a-4db0-82d7-7d3d909a9dda"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>token</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Retrieving token for 3rd reserver</con:sourceStep><con:sourcePath>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:getLoginTokenResponse[1]/return</con:sourcePath><con:targetType>user3Token</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="ERROR : Attempting to create a reservation without space" id="4e0199da-cf6f-45ea-b498-3b5e7c72f4b5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="ERROR : Attempting to create a reservation without space" id="a16ee113-957e-4dd9-89f6-9081128d9f84"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#user3Token}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#user3Id}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8dc9b80a-dd7f-485f-813a-6aab2c0e7ed8"/><con:assertion type="Not SOAP Fault Assertion" id="194a4ced-faa8-4010-b6f6-cdf061de1050" name="SOAP Fault"/><con:assertion type="Simple Contains" id="0ed1cdf9-41eb-41a7-b399-ea3fc38f0185" name="ERREUR : La file de réservation est pleine"><con:configuration><token>LBE0034</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a5a8ed77-76bd-4461-97f5-6df50c77b566" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test mailing" searchProperties="true"><con:settings/><con:testStep type="request" name="Checking reservations for user1" id="25c0f738-0ce1-40ae-be3a-651875eb3c41"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>findReservationsByUserId</con:operation><con:request name="Checking reservations for user1" id="3fc0e6e5-65ae-484a-b3b6-8a0aeeb5edbc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findReservationsByUserId>
+         <!--Optional:-->
+         <userId>${#TestSuite#userId}</userId>
+      </web:findReservationsByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f4b8b1d1-df62-46c2-9c6d-d1c491d635e4"/><con:assertion type="SOAP Fault Assertion" id="3fc07ac2-8639-4ca9-a834-ac8efe66da91" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="57193c62-2af9-42d9-9da2-72c9d3e4b3df" name="User reservation is not mailed"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+boolean(//ns2:findReservationsByUserIdResponse[1]/return/mailedDate)</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking reservations for user2" id="d438690e-8361-4df1-af01-b77575d24a72"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>findReservationsByUserId</con:operation><con:request name="Checking reservations for user2" id="3fc0e6e5-65ae-484a-b3b6-8a0aeeb5edbc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#user2Token}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findReservationsByUserId>
+         <!--Optional:-->
+         <userId>${#TestSuite#user2Id}</userId>
+      </web:findReservationsByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f4b8b1d1-df62-46c2-9c6d-d1c491d635e4"/><con:assertion type="SOAP Fault Assertion" id="3fc07ac2-8639-4ca9-a834-ac8efe66da91" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="57193c62-2af9-42d9-9da2-72c9d3e4b3df" name="User reservation is not mailed"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+boolean(//ns2:findReservationsByUserIdResponse[1]/return/mailedDate)</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Loan updated => return book sample" id="04f83204-9812-4bc6-8a40-ba0bad56e262"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>updateLoan</con:operation><con:request name="Loan updated => return book sample" id="015480da-7e19-44cb-8d58-85700aaa8e24"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:updateLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <id>${#TestSuite#loanId}</id>
+            <!--Optional:-->
+            <returnDate>2019-12-22T00:00:00</returnDate>
+         </loan>
+      </web:updateLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b126ba16-96db-497f-abb1-0fe22cef95a4"/><con:assertion type="SOAP Fault Assertion" id="67f4d0cd-9cb2-4feb-9ecc-93fd6c26c52f" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking user 1 has been mailed" id="dc31eec7-308c-4c26-b6f4-23781eb942ce"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>findReservationsByUserId</con:operation><con:request name="Checking user 1 has been mailed" id="3fc0e6e5-65ae-484a-b3b6-8a0aeeb5edbc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findReservationsByUserId>
+         <!--Optional:-->
+         <userId>${#TestSuite#userId}</userId>
+      </web:findReservationsByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f4b8b1d1-df62-46c2-9c6d-d1c491d635e4"/><con:assertion type="SOAP Fault Assertion" id="3fc07ac2-8639-4ca9-a834-ac8efe66da91" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="57193c62-2af9-42d9-9da2-72c9d3e4b3df" name="User reservation is mailed"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+boolean(//ns2:findReservationsByUserIdResponse[1]/return/mailedDate)</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="User delete his reservation" id="258dbfe6-567b-4f9e-af30-e845cafcabe4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>deleteReservation</con:operation><con:request name="User delete his reservation" id="ff1e0dc1-0dc4-4cc0-bd07-072ddb9d9d7b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:deleteReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+               <!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </reserver>
+         </reservation>
+      </web:deleteReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b4a029c7-8ca3-4993-a5d5-b3a854b4d2d5"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="User 2 has been mailed" id="57231b43-f30e-48ab-b48a-20c8c455edf9"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>findReservationsByUserId</con:operation><con:request name="User 2 has been mailed" id="3fc0e6e5-65ae-484a-b3b6-8a0aeeb5edbc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#user2Token}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findReservationsByUserId>
+         <!--Optional:-->
+         <userId>${#TestSuite#user2Id}</userId>
+      </web:findReservationsByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f4b8b1d1-df62-46c2-9c6d-d1c491d635e4"/><con:assertion type="SOAP Fault Assertion" id="3fc07ac2-8639-4ca9-a834-ac8efe66da91" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="57193c62-2af9-42d9-9da2-72c9d3e4b3df" name="User reservation is mailed"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+boolean(//ns2:findReservationsByUserIdResponse[1]/return/mailedDate)</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking user1 has no reservation" id="65a2b3bb-942c-4452-a025-1b2faead90ac"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>findReservationsByUserId</con:operation><con:request name="Checking user1 has no reservation" id="3fc0e6e5-65ae-484a-b3b6-8a0aeeb5edbc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findReservationsByUserId>
+         <!--Optional:-->
+         <userId>${#TestSuite#userId}</userId>
+      </web:findReservationsByUserId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f4b8b1d1-df62-46c2-9c6d-d1c491d635e4"/><con:assertion type="SOAP Fault Assertion" id="3fc07ac2-8639-4ca9-a834-ac8efe66da91" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="57193c62-2af9-42d9-9da2-72c9d3e4b3df" name="User 1 has no reservation"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+boolean(//ns2:findReservationsByUserIdResponse[1]/return)</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c67ad5ba-0488-4b81-bbca-46d108340449" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test borrowing" searchProperties="true"><con:settings/><con:testStep type="request" name="Attempting to create loan for user1" id="7021c4f3-2d4f-4580-9950-19eb16f988a4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="Attempting to create loan for user1" id="62e29388-ea10-4179-97fb-1b50b4f3e620"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#TestSuite#bookSampleId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="09ac3243-0137-4898-8fe2-f162677e2adb"/><con:assertion type="Not SOAP Fault Assertion" id="2598b043-cf6b-4cba-a726-a09d7b386471" name="SOAP ERROR"/><con:assertion type="Simple Contains" id="132bfe75-a59e-4f6b-840a-ae798c0ce58d" name="Erreur : le livre est actuellement réservé"><con:configuration><token>LBE0036</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Reserving as user 1" id="98b4a0ab-de27-4036-b76d-e1ef29164aca"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ReservationServiceSoapBinding</con:interface><con:operation>createReservation</con:operation><con:request name="Reserving as user 1" id="b01ef66d-aaec-4bc3-a318-3015475d7b26"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Library_webservice/services/reservation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createReservation>
+         <!--Optional:-->
+         <reservation>
+            <!--Optional:-->
+            <book>
+            	<!--Optional:-->
+               <id>${#TestSuite#bookId}</id>
+            </book>
+            <!--Optional:-->
+            <reserver>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </reserver>
+         </reservation>
+      </web:createReservation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="933ca5ba-14a4-4af3-a0bd-1a4122e070d6"/><con:assertion type="SOAP Fault Assertion" id="3fcbe0d8-a32f-43a9-831c-212c143b15f0" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Attempting to create loan for user1 after reserving" id="b0ffb6b9-a672-4d96-94ed-ba031acf1425"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="Attempting to create loan for user1 after reserving" id="62e29388-ea10-4179-97fb-1b50b4f3e620"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#TestSuite#bookSampleId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#TestSuite#userId}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="09ac3243-0137-4898-8fe2-f162677e2adb"/><con:assertion type="Not SOAP Fault Assertion" id="2598b043-cf6b-4cba-a726-a09d7b386471" name="SOAP ERROR"/><con:assertion type="Simple Contains" id="132bfe75-a59e-4f6b-840a-ae798c0ce58d" name="Erreur : quelqu'un est devant sur la file d'attente"><con:configuration><token>LBE0037</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Create loan for user2" id="9a5ac57e-1405-47b9-853c-039a00edf027"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>createLoan</con:operation><con:request name="Create loan for user2" id="62e29388-ea10-4179-97fb-1b50b4f3e620"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:createLoan>
+         <!--Optional:-->
+         <loan>
+            <!--Optional:-->
+            <bookSample>
+               <!--Optional:-->
+               <id>${#TestSuite#bookSampleId}</id>
+            </bookSample>
+            <!--Optional:-->
+            <borrower>
+               <!--Optional:-->
+               <id>${#TestSuite#user2Id}</id>
+            </borrower>
+         </loan>
+      </web:createLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="09ac3243-0137-4898-8fe2-f162677e2adb"/><con:assertion type="SOAP Fault Assertion" id="bc60ac62-6cc8-456e-8931-d9f671162ffb" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Checking reservations nb for book" id="368aee4c-2b33-4118-a223-8c48f4c0bb8f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>findBookById</con:operation><con:request name="Checking reservations nb for book" id="d80d37c0-0a77-4034-96bf-b224adfeee67"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/book</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:findBookById>
+         <!--Optional:-->
+         <id>${#TestSuite#bookId}</id>
+      </web:findBookById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="947c58bb-8764-4ab5-be18-551ef04da161"/><con:assertion type="XPath Match" id="23f6ddd0-fe1a-4729-82da-9f6707a10484" name="Nombre de reservations = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+count(//ns2:findBookByIdResponse[1]/return/reservationQueueInfos/reservers)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="SOAP Fault Assertion" id="4682167b-6967-4dc0-8bdf-b5783580d279" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>userEmail</con:name><con:value>user1</con:value></con:property><con:property><con:name>userPassword</con:name><con:value>user1</con:value></con:property><con:property><con:name>userId</con:name><con:value>-1</con:value></con:property><con:property><con:name>userToken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMSIsImlzcyI6IkxpYnJhcnkiLCJpc0FkbWluIjpmYWxzZSwiZXhwIjoxNTc5MDI5NTYxLCJpYXQiOjE1NzkwMDc5NjEsInVzZXIiOiJUSzFfdXNlcjEgdXNlcjEifQ.NSPVj_4bgvdnmovLHgAJ3EO3z9p4M9SrmwphdnMIgGA</con:value></con:property><con:property><con:name>bookId</con:name><con:value>-1</con:value></con:property><con:property><con:name>user2Email</con:name><con:value>user3</con:value></con:property><con:property><con:name>user2Password</con:name><con:value>user3</con:value></con:property><con:property><con:name>user2Token</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMyIsImlzcyI6IkxpYnJhcnkiLCJpc0FkbWluIjpmYWxzZSwiZXhwIjoxNTc5MDI5NTYxLCJpYXQiOjE1NzkwMDc5NjEsInVzZXIiOiJUSzFfdXNlcjMgdXNlcjMifQ.0pqtlzm-0rL8os6QfYyjBE-Xr6_8X9ooVDmI9wNjGAI</con:value></con:property><con:property><con:name>user2Id</con:name><con:value>-3</con:value></con:property><con:property><con:name>borrowerEmail</con:name><con:value>user2</con:value></con:property><con:property><con:name>borrowerId</con:name><con:value>-2</con:value></con:property><con:property><con:name>borrowerPassword</con:name><con:value>user2</con:value></con:property><con:property><con:name>borrowerToken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMiIsImlzcyI6IkxpYnJhcnkiLCJpc0FkbWluIjpmYWxzZSwiZXhwIjoxNTc5MDI5NTYxLCJpYXQiOjE1NzkwMDc5NjEsInVzZXIiOiJUSzFfdXNlcjIgdXNlcjIifQ.nGt_mYl80T3h5jKdiN8RBGatalkoRACMStLYGIt6Xo8</con:value></con:property><con:property><con:name>user3Email</con:name><con:value>user4</con:value></con:property><con:property><con:name>user3Password</con:name><con:value>user3</con:value></con:property><con:property><con:name>user3Token</con:name><con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:property><con:property><con:name>user3Id</con:name><con:value>-4</con:value></con:property><con:property><con:name>bookSampleId</con:name><con:value>-1</con:value></con:property><con:property><con:name>loanId</con:name><con:value>-1</con:value></con:property></con:properties></con:testSuite><con:testSuite id="d37cd99c-8b7a-4e33-9370-034f2de431d1" name="Test [TK2]"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="0ab9b81b-dc7e-4407-b8bd-c96a4bd91715" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test loan returns" searchProperties="true"><con:settings/><con:testStep type="request" name="Retrieving token" id="7234503b-d9f0-4990-9a32-224ebc6341e6"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TokenServiceServiceSoapBinding</con:interface><con:operation>getLoginToken</con:operation><con:request name="Retrieving token" id="57793265-f7ea-416a-aba0-d8886ea0ab15"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/token</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getLoginToken>
+         <!--Optional:-->
+         <email>${#TestSuite#userEmail}</email>
+         <!--Optional:-->
+         <password>${#TestSuite#userPassword}</password>
+      </web:getLoginToken>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:assertion type="SOAP Response" id="e29b5b52-5cd0-40c5-8a8b-c967f2c96e53"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Update testsuite token" id="53dc1400-ec3f-4f19-a2a3-e3b06ad31f5a"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>token</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Retrieving token</con:sourceStep><con:sourcePath>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:getLoginTokenResponse[1]/return</con:sourcePath><con:targetType>userToken</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="Attempting to extend loan" id="c5c475d4-7f8b-4373-ac32-5bbda5d6d79d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>extendLoan</con:operation><con:request name="Attempting to extend loan" id="e074eb33-fb71-4c36-b46d-71a1407006aa"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:extendLoan>
+         <!--Optional:-->
+         <id>${#TestSuite#lateLoanId}</id>
+      </web:extendLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="30b3dd04-654c-4f99-bd23-7212ea6c2317"/><con:assertion type="Not SOAP Fault Assertion" id="03c81d0b-44a4-4283-89fa-fb677ecd6908" name="SOAP Fault"/><con:assertion type="Simple Contains" id="a17ed64c-5ea6-4b23-936d-6f89a1f85aec" name="Loan is outdated"><con:configuration><token>LBE0038</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Extend loan" id="42ffcd44-323c-437b-afb1-0a93d767375b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>extendLoan</con:operation><con:request name="Extend loan" id="eda9dfe3-3152-4a7c-ae99-dee9892d089a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#TestSuite#userToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:extendLoan>
+         <!--Optional:-->
+         <id>${#TestSuite#notLateLoanId}</id>
+      </web:extendLoan>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dca6019e-5afc-4062-b08c-53c039584dcc"/><con:assertion type="XPath Match" id="a19c1a1b-dc70-47da-96ed-382909c6253b" name="Prolongation = 1"><con:configuration><path>declare namespace ns2="http://webservice.library.nmocs.fr/";
+//ns2:extendLoanResponse[1]/return/prolongationNumber</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="SOAP Fault Assertion" id="178c9b09-784d-440e-a809-13da26e73ba0" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>userEmail</con:name><con:value>user5</con:value></con:property><con:property><con:name>userPassword</con:name><con:value>user5</con:value></con:property><con:property><con:name>userId</con:name><con:value>-5</con:value></con:property><con:property><con:name>userToken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItNSIsImlzcyI6IkxpYnJhcnkiLCJpc0FkbWluIjpmYWxzZSwiZXhwIjoxNTc5MDI5NTYzLCJpYXQiOjE1NzkwMDc5NjMsInVzZXIiOiJUSzFfdXNlcjUgdXNlcjUifQ.q5qr0SnkvDPw97VENy7H5UrSywpsTAEau4Ct09sh45M</con:value></con:property><con:property><con:name>notLateLoanId</con:name><con:value>-3</con:value></con:property><con:property><con:name>lateLoanId</con:name><con:value>-2</con:value></con:property></con:properties></con:testSuite><con:testSuite id="6cdb4ac1-0663-4f1d-8791-e0fe28955294" name="Test [TK3]"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="790ee145-ac13-4a5e-aee0-b19b38a780c4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Find almost perempted loans" searchProperties="true"><con:settings/><con:testStep type="request" id="e7950765-839f-4618-9ca0-3c3445b1bc81" name="findAlmostPeremptedLoans - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanServiceSoapBinding</con:interface><con:operation>findAlmostPeremptedLoans</con:operation><con:request name="findAlmostPeremptedLoans - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="4cbe9d00-7306-48cb-b414-635c82cfc397"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#servicesUrl}/loan</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.library.nmocs.fr/">
+   <soapenv:Header>
+      <web:token>${#Project#adminToken}</web:token>
+   </soapenv:Header>
+   <soapenv:Body>
+      <web:findAlmostPeremptedLoans/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9dbf63ea-f436-4eb6-a960-e468a60d34ae" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.library.nmocs.fr/LoanService/findAlmostPeremptedLoans"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>classictoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOmZhbHNlLCJleHAiOjE1NzkwMjk1NTQsImlhdCI6MTU3OTAwNzk1NCwidXNlciI6IkZsb3JpYW4gUGxvcCJ9.T7kykMsoM3sNPM2y6PU0x0N4wGSMhscx69gOm_V567w</con:value></con:property><con:property><con:name>admintoken</con:name><con:value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiTGlicmFyeSIsImlzQWRtaW4iOnRydWUsImV4cCI6MTU3OTAyOTU1NiwiaWF0IjoxNTc5MDA3OTU2LCJ1c2VyIjoiTmF0aGFuYcOrbCBNb3JlbCJ9.yxhvSsQukFGvSFNuM2txx9iRgD18gJZRmC3hRWEzVhg</con:value></con:property><con:property><con:name>adminActiveId</con:name><con:value>1</con:value></con:property><con:property><con:name>adminActiveEmail</con:name><con:value>contact@contact.fr</con:value></con:property><con:property><con:name>adminActivePassword</con:name><con:value>lws1234</con:value></con:property><con:property><con:name>adminUnactiveId</con:name><con:value>2</con:value></con:property><con:property><con:name>adminUnactiveEmail</con:name><con:value>kevin.martin@contact.fr</con:value></con:property><con:property><con:name>classicActiveId</con:name><con:value>3</con:value></con:property><con:property><con:name>classicActiveEmail</con:name><con:value>florian.plop@contact.fr</con:value></con:property><con:property><con:name>classicUnactiveId</con:name><con:value>4</con:value></con:property><con:property><con:name>classicUnactiveEmail</con:name><con:value>desact@contact.fr</con:value></con:property><con:property><con:name>basicPassword</con:name><con:value>password</con:value></con:property><con:property><con:name>fakeBookId</con:name><con:value>1</con:value></con:property><con:property><con:name>availableBookId</con:name><con:value>2</con:value></con:property><con:property><con:name>unavailableBookId</con:name><con:value>3</con:value></con:property><con:property><con:name>fakeBookSampleId</con:name><con:value>1</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId</con:name><con:value>2</con:value></con:property><con:property><con:name>bookAvailableBookSampleUnavailableId</con:name><con:value>3</con:value></con:property><con:property><con:name>bookUnavailableBookSampleAvailableId</con:name><con:value>4</con:value></con:property><con:property><con:name>bookUnavailableBookSampleUnavailableId</con:name><con:value>5</con:value></con:property><con:property><con:name>bookAvailableBookSampleAvailableId2</con:name><con:value>6</con:value></con:property><con:property><con:name>bookSampleBorrowedId</con:name><con:value>7</con:value></con:property><con:property><con:name>bookSampleNotBorrowedId</con:name><con:value>8</con:value></con:property><con:property><con:name>loanId</con:name><con:value>1</con:value></con:property><con:property><con:name>loanAdminId</con:name><con:value>3</con:value></con:property><con:property><con:name>loanToExtend</con:name><con:value>4</con:value></con:property><con:property><con:name>servicesUrl</con:name><con:value>http://localhost:8080/Library_webservice/services</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
